@@ -1,1 +1,93 @@
-<p>dashboard-statistic works!</p>
+<div class="main">
+  <!-- BEGIN: Mobile Menu -->
+  <div class="mobile-menu md:hidden">
+    <div class="mobile-menu-bar">
+      <a href="" class="flex mr-auto">
+        <img alt="Rubick Tailwind HTML Admin Template" class="w-6" src="/assets/images/logo.svg">
+      </a>
+      <a href="javascript:;" id="mobile-menu-toggler"><i
+          class="w-8 h-8 text-white transform -rotate-90 fas fa-chart-bar"></i> </a>
+    </div>
+    <ul class="hidden py-5 border-t border-theme-29">
+      <li>
+        <a href="side-menu-light-inbox.html" class="menu">
+          <div class="menu__icon"> <i class="fas fa-home"></i> </div>
+          <div class="menu__title"> Inbox </div>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <!-- END: Mobile Menu -->
+  <div class="flex">
+    <!-- BEGIN: Side Menu -->
+    <nav class="side-nav">
+      <a href="" class="flex items-center pt-4 pl-5 intro-x">
+        <img alt="Rubick Tailwind HTML Admin Template" class="w-6" src="/assets/images/logo.svg">
+        <span class="hidden ml-3 text-lg text-white xl:block"> Ru<span class="font-medium">bick</span> </span>
+      </a>
+      <div class="my-6 side-nav__devider"></div>
+      <ul>
+      <li>
+        <a href="side-menu-light-inbox.html" class="side-menu side-menu--active">
+          <div class="side-menu__icon"> <i class="fas fa-home"></i> </div>
+          <div class="side-menu__title"> Inbox </div>
+        </a>
+      </li>
+      </ul>
+    </nav>
+    <!-- END: Side Menu -->
+    <!-- BEGIN: Content -->
+    <div class="content">
+      <!-- BEGIN: Top Bar -->
+      <div class="top-bar">
+        <!-- BEGIN: Breadcrumb -->
+        <div class="hidden mr-auto -intro-x breadcrumb sm:flex"> <a href="">Application</a>  <i class="breadcrumb__icon fas fa-chevron-right"></i><a href=""
+            class="breadcrumb--active">Dashboard</a> </div>
+        <!-- END: Breadcrumb -->
+
+
+        <!-- BEGIN: Account Menu -->
+        <div class="w-8 h-8 intro-x dropdown">
+          <div class="w-8 h-8 overflow-hidden rounded-full shadow-lg dropdown-toggle image-fit zoom-in" role="button"
+            aria-expanded="false">
+            <img alt="Rubick Tailwind HTML Admin Template" src="/assets/images/profile-6.jpg">
+          </div>
+          <div class="w-56 dropdown-menu">
+            <div class="text-white dropdown-menu__content box bg-theme-26 dark:bg-dark-6">
+              <div class="p-4 border-b border-theme-27 dark:border-dark-3">
+                <div class="font-medium">Charlize Theron</div>
+                <div class="text-xs text-theme-28 mt-0.5 dark:text-gray-600">Software Engineer</div>
+              </div>
+              <div class="p-2">
+                <a href=""
+                  class="flex items-center block p-2 transition duration-300 ease-in-out rounded-md hover:bg-theme-1 dark:hover:bg-dark-3">
+                  <i data-feather="user" class="w-4 h-4 mr-2"></i> Profile </a>
+                <a href=""
+                  class="flex items-center block p-2 transition duration-300 ease-in-out rounded-md hover:bg-theme-1 dark:hover:bg-dark-3">
+                  <i data-feather="edit" class="w-4 h-4 mr-2"></i> Add Account </a>
+                <a href=""
+                  class="flex items-center block p-2 transition duration-300 ease-in-out rounded-md hover:bg-theme-1 dark:hover:bg-dark-3">
+                  <i data-feather="lock" class="w-4 h-4 mr-2"></i> Reset Password </a>
+                <a href=""
+                  class="flex items-center block p-2 transition duration-300 ease-in-out rounded-md hover:bg-theme-1 dark:hover:bg-dark-3">
+                  <i data-feather="help-circle" class="w-4 h-4 mr-2"></i> Help </a>
+              </div>
+              <div class="p-2 border-t border-theme-27 dark:border-dark-3">
+                <a href=""
+                  class="flex items-center block p-2 transition duration-300 ease-in-out rounded-md hover:bg-theme-1 dark:hover:bg-dark-3">
+                  <i data-feather="toggle-right" class="w-4 h-4 mr-2"></i> Logout </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- END: Account Menu -->
+      </div>
+      <!-- END: Top Bar -->
+
+    </div>
+    <!-- END: Content -->
+  </div>
+
+
+
+</div>
