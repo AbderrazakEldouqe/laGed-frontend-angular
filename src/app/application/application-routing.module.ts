@@ -9,8 +9,8 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: async () =>
-          (await import('./dashboard/dashboard.module')).DashboardModule,
+        redirectTo: '/application/dashboard',
+        pathMatch: 'full',
       },
       {
         path: 'dashboard',
