@@ -1,5 +1,20 @@
-<app-header></app-header>
+<div class="main">
+<!-- BEGIN: Mobile Menu -->
+  <app-mobile-menu></app-mobile-menu>
+<!-- END: Mobile Menu -->
 
-<router-outlet></router-outlet>
+<div class="flex">
+  <!-- BEGIN: Side Menu -->
+  <app-side-menu></app-side-menu>
+  <!-- END: Side Menu -->
+  <!-- BEGIN: Content -->
+    <div class="content">
+      <!-- BEGIN: Top Bar -->
+      <app-top-bar></app-top-bar>
+      <!-- END: Top Bar -->
+      <router-outlet></router-outlet>
+    </div>
+  <!-- END: Content -->
+</div>
 
-<app-footer></app-footer>
+</div>

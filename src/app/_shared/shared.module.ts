@@ -7,6 +7,9 @@ import { LayoutComponent } from './layout/layout.component';
 import { KeysPipe } from './pipes/keys.pipe';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { MobileMenuComponent } from './components/mobile-menu/mobile-menu.component';
+import { SideMenuComponent } from './components/side-menu/side-menu.component';
+import { TopBarComponent } from './components/top-bar/top-bar.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +18,9 @@ import { RouterModule } from '@angular/router';
     PageNotFoundComponent,
     LayoutComponent,
     KeysPipe,
+    MobileMenuComponent,
+    SideMenuComponent,
+    TopBarComponent,
   ],
   imports: [CommonModule, ReactiveFormsModule, RouterModule],
   exports: [ReactiveFormsModule, KeysPipe],
