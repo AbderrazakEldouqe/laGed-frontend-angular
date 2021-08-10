@@ -4544,7 +4544,7 @@ video {
 }
 @media (max-width: 1279px) {
   .login {
-    background: linear-gradient(to bottom, #1c3faa, #b8bece);
+    background: linear-gradient(to bottom, #b8bece, #1c3faa);
     background-repeat: no-repeat;
     background-attachment: fixed;
   }
@@ -4552,7 +4552,7 @@ video {
 .login:before {
   content: "";
   margin-left: -48%;
-  background-image: url(./assets/images/bg-login-page.svg);
+  background-image: url(./assets/images/bg-login-page.png);
   background-repeat: no-repeat;
   background-size: auto 100%;
   background-position: right;
@@ -4561,6 +4561,7 @@ video {
   left: 0px;
   height: 100%;
   width: 100%;
+  /* filter: invert(0.5) sepia(1) saturate(5) hue-rotate(175deg); */
 }
 @media (max-width: 1279px) {
   .login:before {
