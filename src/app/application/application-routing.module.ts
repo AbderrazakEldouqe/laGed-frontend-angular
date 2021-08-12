@@ -17,6 +17,12 @@ const routes: Routes = [
         loadChildren: async () =>
           (await import('./dashboard/dashboard.module')).DashboardModule,
       },
+      {
+        path: 'consult-files',
+        loadChildren: async () =>
+          (await import('./consult-files/consult-files.module'))
+            .ConsultFilesModule,
+      },
     ],
   },
 ];
