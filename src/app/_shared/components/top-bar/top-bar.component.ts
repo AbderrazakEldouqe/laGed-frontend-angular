@@ -11,6 +11,7 @@ import { filter } from 'rxjs/operators';
 })
 export class TopBarComponent implements OnInit {
   title: String = '';
+  dropdownIsShow: boolean = false;
   constructor(
     private router: Router,
     private route: ActivatedRoute,

@@ -23,6 +23,13 @@ const routes: Routes = [
           (await import('./upload-files/upload-files.module'))
             .UploadFilesModule,
       },
+
+      {
+        path: 'consult-files',
+        loadChildren: async () =>
+          (await import('./consult-files/consult-files.module'))
+            .ConsultFilesModule,
+      },
     ],
   },
 ];
