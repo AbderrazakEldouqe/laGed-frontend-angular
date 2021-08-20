@@ -1,0 +1,57 @@
+  <!-- BEGIN: Data List --> 
+  <div class="col-span-12 overflow-auto intro-y lg:overflow-visible">
+    <table class="table -mt-2 table-report">
+        <thead>
+            <tr>
+                <th class="whitespace-nowrap">FILES NAME</th>
+                <th class="text-center whitespace-nowrap">ACTIONS</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="bg-gray-100 intro-x" *ngFor="let file of studentFilesTable ; let i = index">
+                <td>
+                    <a href="" class="font-medium whitespace-nowrap">{{file.fileName}}</a> 
+                    <!-- <div class="text-gray-600 text-xs whitespace-nowrap mt-0.5">Photography</div> -->
+                </td>
+                <td class="w-56 table-report__action">
+                    <div class="flex items-center justify-center">
+                        <a class="flex items-center text-theme-6" (click)='deleteFile(i)' href="javascript:;" data-toggle="modal" data-target="#delete-confirmation-modal"> 
+                            <i class="w-4 h-4 mr-1 fas fa-trash" ></i>
+                            Delete 
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!-- END: Data List -->
+<!-- BEGIN: Pagination -->
+<!-- <div class="flex flex-wrap items-center col-span-12 intro-y sm:flex-row sm:flex-nowrap">
+    <ul class="pagination">
+        <li>
+            <a class="pagination__link" href=""> <i class="w-4 h-4" data-feather="chevrons-left"></i> </a>
+        </li>
+        <li>
+            <a class="pagination__link" href=""> <i class="w-4 h-4" data-feather="chevron-left"></i> </a>
+        </li>
+        <li> <a class="pagination__link" href="">...</a> </li>
+        <li> <a class="pagination__link" href="">1</a> </li>
+        <li> <a class="pagination__link pagination__link--active" href="">2</a> </li>
+        <li> <a class="pagination__link" href="">3</a> </li>
+        <li> <a class="pagination__link" href="">...</a> </li>
+        <li>
+            <a class="pagination__link" href=""> <i class="w-4 h-4" data-feather="chevron-right"></i> </a>
+        </li>
+        <li>
+            <a class="pagination__link" href=""> <i class="w-4 h-4" data-feather="chevrons-right"></i> </a>
+        </li>
+    </ul>
+    <select class="w-20 mt-3 form-select box sm:mt-0">
+        <option>10</option>
+        <option>25</option>
+        <option>35</option>
+        <option>50</option>
+    </select>
+</div> -->
+<!-- END: Pagination -->

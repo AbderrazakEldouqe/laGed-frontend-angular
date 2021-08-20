@@ -1,0 +1,45 @@
+<div class="">
+    <main class="container h-full max-w-screen-lg mx-auto">
+
+            
+
+        <app-upload-files-form 
+        (filesStudentUploadedEven)="filesStudentUploadedEventEmitter($event)"
+        [studentFilesTable]="studentFilesTable" 
+        >
+        </app-upload-files-form>
+
+
+      
+          <h1 class="pt-8 pb-3 font-semibold text-gray-900 sm:text-lg">
+            To Upload
+          </h1>
+<!-- *ngIf='!showTableFilesOrIconBolean' -->
+          <ul id="gallery" class="flex flex-wrap flex-1 -m-1" *ngIf='!showTableFilesOrIconBolean'>
+            <li id="empty" class="flex flex-col items-center justify-center w-full h-full text-center">
+              <img class="w-32 mx-auto" src="https://user-images.githubusercontent.com/507615/54591670-ac0a0180-4a65-11e9-846c-e55ffce0fe7b.png" alt="no data" />
+              <span class="text-gray-500 text-small">No files selected</span>
+            </li>
+          </ul>
+         <!-- BEGIN: HTML Table Data *ngIf='showTableFilesOrIconBolean'-->
+
+            <div *ngIf='showTableFilesOrIconBolean'>
+                <app-table-files 
+                [studentFilesTable] ="studentFilesTable" 
+                (studentFilesTableEvent) ='filesStudentUploadedEventEmitter($event)'>    
+                </app-table-files>
+            </div>
+
+        <!-- END: HTML Table Data -->
+
+        <!-- sticky footer -->
+        <footer class="flex justify-end px-8 pt-4 pb-8">
+          <button id="submit" class="px-3 py-1 text-white bg-blue-700 rounded-sm hover:bg-blue-500 focus:shadow-outline focus:outline-none">
+            Upload now
+          </button>
+          <button id="cancel" class="px-3 py-1 ml-3 rounded-sm hover:bg-gray-300 focus:shadow-outline focus:outline-none">
+            Cancel
+          </button>
+        </footer>
+    </main>
+  </div>

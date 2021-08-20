@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
-export class JsService {
+export class FileUploadService {
   constructor() {}
 
   handleUpload(event: any) {
