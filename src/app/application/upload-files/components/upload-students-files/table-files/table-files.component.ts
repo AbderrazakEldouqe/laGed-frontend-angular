@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
+import { FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-table-files',
@@ -6,22 +14,29 @@ import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@
   styleUrls: ['./table-files.component.css'],
 })
 export class TableFilesComponent implements OnInit {
-  @Input() studentFilesTable: any[] = [];
-  @Output() studentFilesTableEvent = new EventEmitter()
+  @Input() studentFilesFrom: FormArray = new FormArray([]);
+  @Output() studentFilesTableEvent = new EventEmitter();
 
-
+  config = {
+    id: 'custom',
+    itemsPerPage: 4,
+    currentPage: 1,
+    totalItems: this.studentFilesFrom.value .length,
+  };
+  tableSizes = [4, 8, 10, 14];
+  filter = '';
   constructor() {}
 
   ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['studentFilesTable']) {
-      console.log(this.studentFilesTable);
+    if (changes['studentFilesFrom']) {
+      console.log(this.studentFilesFrom);
     }
   }
-  deleteFile(i: number) {
+  deleteFile(index: number) {
     console.log('files Deleted');
-    this.studentFilesTable.splice(i, 1);
-    this.studentFilesTableEvent.emit(this.studentFilesTable)
+    this.studentFilesFrom.removeAt(index);
+    this.studentFilesTableEvent.emit(this.studentFilesFrom);
   }
 }

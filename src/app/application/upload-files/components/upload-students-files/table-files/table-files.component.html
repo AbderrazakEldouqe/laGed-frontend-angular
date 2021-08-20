@@ -8,9 +8,9 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="bg-gray-100 intro-x" *ngFor="let file of studentFilesTable ; let i = index">
+            <tr class="bg-gray-100 intro-x" *ngFor="let file of studentFilesFrom.value | filter: filter | paginate: config; let i = index">
                 <td>
-                    <a href="" class="font-medium whitespace-nowrap">{{file.fileName}}</a> 
+                    <a href="" class="font-medium whitespace-nowrap">{{file?.fileName}}</a> 
                     <!-- <div class="text-gray-600 text-xs whitespace-nowrap mt-0.5">Photography</div> -->
                 </td>
                 <td class="w-56 table-report__action">
@@ -24,6 +24,9 @@
             </tr>
         </tbody>
     </table>
+    <div class="py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <app-paginations (pageChange)="config.currentPage=$event"></app-paginations>
+      </div>
 </div>
 <!-- END: Data List -->
 <!-- BEGIN: Pagination -->

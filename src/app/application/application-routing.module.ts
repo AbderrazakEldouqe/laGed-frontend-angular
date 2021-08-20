@@ -18,7 +18,7 @@ const routes: Routes = [
           (await import('./dashboard/dashboard.module')).DashboardModule,
       },
       {
-        path: 'upload',
+        path: 'upload-files',
         loadChildren: async () =>
           (await import('./upload-files/upload-files.module'))
             .UploadFilesModule,

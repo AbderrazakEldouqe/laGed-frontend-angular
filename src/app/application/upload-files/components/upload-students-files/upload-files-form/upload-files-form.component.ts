@@ -16,7 +16,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class UploadFilesFormComponent implements OnInit {
   filesStudentUploadedFromGroup: FormGroup = new FormGroup({});
   @Output() filesStudentUploadedEven = new EventEmitter();
-  @Input() studentFilesTable: any[] = [];
+  @Input() studentFilesFrom: FormArray = new FormArray([]);
 
   constructor(private fb: FormBuilder) {}
 
@@ -28,13 +28,16 @@ export class UploadFilesFormComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['studentFilesTable']) {
-      console.log('File After Delete');
-      console.log(this.studentFilesTable);
+    if (changes['studentFilesFrom']) {
+      console.log('Efteer Deleet');
+      console.log(this.studentFileControl?.value);
+      console.log(this.filesStudentUploadedFromGroup);
     }
   }
 
   uploadFiles(event: any) {
+    console.log(this.filesStudentUploadedFromGroup);
+
     let files = event.target.files;
     if (files) {
       for (let file of files) {
@@ -64,6 +67,6 @@ export class UploadFilesFormComponent implements OnInit {
   }
 
   filesStudentUploadedEventEmitter() {
-    this.filesStudentUploadedEven.emit(this.studentFileControl.value);
+    this.filesStudentUploadedEven.emit(this.studentFileControl);
   }
 }

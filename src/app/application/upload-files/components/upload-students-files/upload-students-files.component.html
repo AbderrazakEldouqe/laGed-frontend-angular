@@ -5,7 +5,7 @@
 
         <app-upload-files-form 
         (filesStudentUploadedEven)="filesStudentUploadedEventEmitter($event)"
-        [studentFilesTable]="studentFilesTable" 
+        [studentFilesFrom]="studentFilesFrom" 
         >
         </app-upload-files-form>
 
@@ -25,7 +25,7 @@
 
             <div *ngIf='showTableFilesOrIconBolean'>
                 <app-table-files 
-                [studentFilesTable] ="studentFilesTable" 
+                [studentFilesFrom]="studentFilesFrom" 
                 (studentFilesTableEvent) ='filesStudentUploadedEventEmitter($event)'>    
                 </app-table-files>
             </div>
