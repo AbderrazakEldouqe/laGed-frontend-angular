@@ -4552,7 +4552,7 @@ video {
 .login:before {
   content: "";
   margin-left: -48%;
-  background-image: url(./assets/images/bg-login-page.png);
+  background-image: url(./assets/images/bg-login-page1.svg);
   background-repeat: no-repeat;
   background-size: auto 100%;
   background-position: right;
