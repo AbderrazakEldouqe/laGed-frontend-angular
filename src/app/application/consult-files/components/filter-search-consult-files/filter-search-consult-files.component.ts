@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-filter-search-consult-files',
   templateUrl: './filter-search-consult-files.component.html',
-  styleUrls: ['./filter-search-consult-files.component.css']
+  styleUrls: ['./filter-search-consult-files.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FilterSearchConsultFilesComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
