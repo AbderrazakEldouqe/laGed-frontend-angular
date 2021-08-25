@@ -6,7 +6,7 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { FormArray } from '@angular/forms';
+import { FormArray, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-table-files',
@@ -14,14 +14,14 @@ import { FormArray } from '@angular/forms';
   styleUrls: ['./table-files.component.css'],
 })
 export class TableFilesComponent implements OnInit {
-  @Input() studentFilesFrom: FormArray = new FormArray([]);
+  @Input() filesStudentUploadedFromGroup: FormGroup = new FormGroup({});
   @Output() studentFilesTableEvent = new EventEmitter();
 
   config = {
     id: 'custom',
     itemsPerPage: 4,
     currentPage: 1,
-    totalItems: this.studentFilesFrom.value .length,
+    totalItems: this.filesStudentUploadedFromGroup?.value?.studentFiles?.length,
   };
   tableSizes = [4, 8, 10, 14];
   filter = '';
@@ -30,13 +30,19 @@ export class TableFilesComponent implements OnInit {
   ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['studentFilesFrom']) {
-      console.log(this.studentFilesFrom);
+    if (changes['filesStudentUploadedFromGroup']) {
+      console.log(this.filesStudentUploadedFromGroup.value);
     }
   }
   deleteFile(index: number) {
     console.log('files Deleted');
-    this.studentFilesFrom.removeAt(index);
-    this.studentFilesTableEvent.emit(this.studentFilesFrom);
+    this.filesStudentUploadedFromGroup.controls.studentFiles.value.splice(
+      index,
+      1
+    );
+    console.log(this.filesStudentUploadedFromGroup);
+    this.studentFilesTableEvent.emit(
+      this.filesStudentUploadedFromGroup.controls.studentFiles.value
+    );
   }
 }

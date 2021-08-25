@@ -2,10 +2,22 @@
   <div class="w-1/4 p-5 intro-y ">
     <div>
       <label for="crud-form-1" class="form-label">Code Etudiant</label>
-      <input id="crud-form-1" type="text" class=" form-control" placeholder="Code Etudiant"
-        formControlName="studentCode">
+      <!-- <input id="crud-form-1" type="text" class=" form-control" placeholder="Code Etudiant"
+        formControlName="studentCode"> -->
+
+        <ng-select [items]="CodeEtudiant" 
+           bindLabel="code" 
+           bindValue="id" 
+           formControlName="studentCode"
+           placeholder="Code Etudiant"
+           >
+        </ng-select>
+        <!-- <ng-select  dropdownPosition='bottom'  id="crud-form-1" type="text">
+          <ng-option *ngFor="let code of CodeEtudiant" [value]="code.id">{{code.code}}</ng-option>
+       </ng-select> -->
     </div>
   </div>
+  
   <!-- file upload modal -->
   <article aria-label="File Upload Modal" class="relative flex flex-col h-full bg-white rounded-md shadow-xl"
     ondrop="dropHandler(event);" ondragover="dragOverHandler(event);" ondragleave="dragLeaveHandler(event);"

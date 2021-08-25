@@ -5,7 +5,7 @@
 
         <app-upload-files-form 
         (filesStudentUploadedEven)="filesStudentUploadedEventEmitter($event)"
-        [studentFilesFrom]="studentFilesFrom" 
+        [filesStudentUploadedFromGroup]="filesStudentUploadedFromGroup" 
         >
         </app-upload-files-form>
 
@@ -25,7 +25,7 @@
 
             <div *ngIf='showTableFilesOrIconBolean'>
                 <app-table-files 
-                [studentFilesFrom]="studentFilesFrom" 
+                [filesStudentUploadedFromGroup]="filesStudentUploadedFromGroup" 
                 (studentFilesTableEvent) ='filesStudentUploadedEventEmitter($event)'>    
                 </app-table-files>
             </div>
@@ -34,7 +34,7 @@
 
         <!-- sticky footer -->
         <footer class="flex justify-end px-8 pt-4 pb-8">
-          <button id="submit" class="px-3 py-1 text-white bg-blue-700 rounded-sm hover:bg-blue-500 focus:shadow-outline focus:outline-none">
+          <button id="submit" (click)='uploadNow()'class="px-3 py-1 text-white bg-blue-700 rounded-sm hover:bg-blue-500 focus:shadow-outline focus:outline-none">
             Upload now
           </button>
           <button id="cancel" class="px-3 py-1 ml-3 rounded-sm hover:bg-gray-300 focus:shadow-outline focus:outline-none">

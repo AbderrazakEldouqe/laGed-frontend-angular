@@ -13,6 +13,7 @@ import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { PaginationsComponent } from './components/paginations/paginations.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     RouterModule,
     NgxPaginationModule,
     Ng2SearchPipeModule,
+    NgSelectModule,
   ],
   exports: [
     ReactiveFormsModule,
@@ -41,6 +43,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     NgxPaginationModule,
     PaginationsComponent,
     Ng2SearchPipeModule,
+    NgSelectModule,
   ],
 })
 export class SharedModule {}

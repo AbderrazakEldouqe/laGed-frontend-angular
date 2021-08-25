@@ -8,23 +8,26 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class UploadStudentsFilesComponent implements OnInit {
   showTableFilesOrIconBolean: boolean = false;
-  studentFilesFrom: FormArray = new FormArray([]);
-
+  filesStudentUploadedFromGroup: FormGroup = new FormGroup({});
   constructor(private fb: FormBuilder) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.filesStudentUploadedFromGroup = this.fb.group({
+      studentCode: [null, Validators.required],
+      studentFiles: this.fb.array([]),
+    });
+  }
 
   showTableFilesOrIcon() {}
 
   uploadNow() {
-    ('send Files To Back-End');
-    
+    console.log('send Files To Back-End');
+    console.log(this.filesStudentUploadedFromGroup);
   }
 
   filesStudentUploadedEventEmitter(event: any) {
     if (event.length > 0) {
       this.showTableFilesOrIconBolean = true;
-      this.studentFilesFrom = event;
     } else {
       this.showTableFilesOrIconBolean = false;
     }

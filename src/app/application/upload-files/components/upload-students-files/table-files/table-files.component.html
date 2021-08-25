@@ -9,7 +9,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="bg-gray-100 intro-x" *ngFor="let file of studentFilesFrom.value | filter: filter | paginate: config; let i = index">
+            <tr class="bg-gray-100 intro-x" *ngFor="let file of filesStudentUploadedFromGroup.value.studentFiles | filter: filter | paginate: config; let i = index">
                 <td>
                     <a href="" class="font-medium whitespace-nowrap">{{file?.fileName}}</a> 
                     <!-- <div class="text-gray-600 text-xs whitespace-nowrap mt-0.5">Photography</div> -->

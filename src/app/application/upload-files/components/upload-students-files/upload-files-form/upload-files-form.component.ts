@@ -6,7 +6,8 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { IFile } from 'src/app/_core/models/i-file';
 
 @Component({
   selector: 'app-upload-files-form',
@@ -14,30 +15,26 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./upload-files-form.component.css'],
 })
 export class UploadFilesFormComponent implements OnInit {
-  filesStudentUploadedFromGroup: FormGroup = new FormGroup({});
+  @Input() filesStudentUploadedFromGroup: FormGroup = new FormGroup({});
   @Output() filesStudentUploadedEven = new EventEmitter();
-  @Input() studentFilesFrom: FormArray = new FormArray([]);
 
+  CodeEtudiant = [
+    { id: 1, code: 'Volvo' },
+    { id: 2, code: 'Saab' },
+  ];
   constructor(private fb: FormBuilder) {}
 
-  ngOnInit(): void {
-    this.filesStudentUploadedFromGroup = this.fb.group({
-      studentCode: ['', Validators.required],
-      studentFiles: this.fb.array([]),
-    });
-  }
+  ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['studentFilesFrom']) {
+    if (changes['filesStudentUploadedFromGroup']) {
       console.log('Efteer Deleet');
-      console.log(this.studentFileControl?.value);
+      console.log(this.filesStudentUploadedFromGroup?.value);
       console.log(this.filesStudentUploadedFromGroup);
     }
   }
 
   uploadFiles(event: any) {
-    console.log(this.filesStudentUploadedFromGroup);
-
     let files = event.target.files;
     if (files) {
       for (let file of files) {
@@ -56,12 +53,17 @@ export class UploadFilesFormComponent implements OnInit {
     }
   }
 
-  // We will create multiple form controls inside defined form controls photos.
-  createItem(data: any): FormGroup {
+  /*
+   *  We will create multiple form controls inside defined form controls photos.
+   */
+
+  createItem(data: IFile): FormGroup {
     return this.fb.group(data);
   }
 
-  //Help to get all photos controls as form array.
+  /**
+   *   Help to get all photos controls as form array.
+   */
   get studentFileControl(): FormArray {
     return this.filesStudentUploadedFromGroup.get('studentFiles') as FormArray;
   }
