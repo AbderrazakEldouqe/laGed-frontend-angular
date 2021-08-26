@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { IFile } from 'src/app/_core/models/i-file';
+import { FileUploadService } from 'src/app/_core/services/file-upload.service';
 
 @Component({
   selector: 'app-upload-files-form',
@@ -22,7 +23,10 @@ export class UploadFilesFormComponent implements OnInit {
     { id: 1, code: 'Volvo' },
     { id: 2, code: 'Saab' },
   ];
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private fileUploadService: FileUploadService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -35,7 +39,7 @@ export class UploadFilesFormComponent implements OnInit {
   }
 
   uploadFiles(event: any) {
-    let files = event.target.files;
+    /*let files = event.target.files;
     if (files) {
       for (let file of files) {
         let reader = new FileReader();
@@ -50,7 +54,21 @@ export class UploadFilesFormComponent implements OnInit {
         };
         reader.readAsDataURL(file);
       }
-    }
+    }*/
+    const arrayOfBase64: Promise<IFile[]> =
+      this.fileUploadService.fileListToBase64(event.target.files);
+    arrayOfBase64.then((res: IFile[]) => {
+      console.log('res', res);
+      res.forEach((element) => {
+        this.studentFileControl.push(
+          this.createItem({
+            fileName: element.fileName,
+            fileBase64: element.fileBase64, //Base64 string for preview image
+          })
+        );
+      });
+      this.filesStudentUploadedEventEmitter();
+    });
   }
 
   /*
