@@ -11,10 +11,11 @@ export class ConsultFilesService {
     this.data = [];
     for (let i = 0; i <= 10; i++) {
       this.data.push({
-        name: 'Sony A7 III',
-        category: 'Photography',
-        stock: 20,
-        status: i % 2 === 0 ? 'Inactive' : 'Active',
+        name: 'Eldouqe Abdo',
+        matricule: '0001511',
+        anneScolaire: '2018/2019',
+        typeDocument: 'Bulttin',
+        nameDocument: '0001.pdf',
       });
     }
   }
