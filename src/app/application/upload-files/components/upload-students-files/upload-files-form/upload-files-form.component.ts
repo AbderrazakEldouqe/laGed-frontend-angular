@@ -55,10 +55,10 @@ export class UploadFilesFormComponent implements OnInit {
         reader.readAsDataURL(file);
       }
     }*/
-    const arrayOfBase64: Promise<IFile[]> =
-      this.fileUploadService.fileListToBase64(event.target.files);
+  const arrayOfBase64: Promise<IFile[]> =
+   this.fileUploadService.fileListToBase64(event.target.files);
     arrayOfBase64.then((res: IFile[]) => {
-      console.log('res', res);
+     console.log('res', res);
       res.forEach((element) => {
         this.studentFileControl.push(
           this.createItem({
@@ -85,6 +85,10 @@ export class UploadFilesFormComponent implements OnInit {
   get studentFileControl(): FormArray {
     return this.filesStudentUploadedFromGroup.get('studentFiles') as FormArray;
   }
+  
+  /**
+   *   emit changes to parent component
+   */
 
   filesStudentUploadedEventEmitter() {
     this.filesStudentUploadedEven.emit(this.studentFileControl);

@@ -13,7 +13,7 @@ export class AuthService {
     data: { email: string; password: string },
     headersObject = {}
   ): Observable<object> {
-    return this.http.post(`${environment.apiUrl}/auth/login`, data, {
+    return this.http.post(`${environment.apiUrl}/apiAuth/authUser`, data, {
       headers: headersObject,
     });
   }

@@ -1,4 +1,5 @@
 
+<form [formGroup]="loginForm" (ngSubmit)="login()">
 <div >
     <div class="container sm:px-10">
         <div class="block grid-cols-2 gap-4 xl:grid">
@@ -27,8 +28,8 @@
                     </h2>
                     <div class="mt-2 text-center text-gray-500 intro-x xl:hidden">A few more clicks to sign in to your account. Manage all your e-commerce accounts in one place</div>
                     <div class="mt-8 intro-x">
-                        <input type="text" class="block px-4 py-3 border-gray-300 intro-x login__input form-control" placeholder="Email">
-                        <input type="password" class="block px-4 py-3 mt-4 border-gray-300 intro-x login__input form-control" placeholder="Password">
+                        <input type="text" formControlName="login" class="block px-4 py-3 border-gray-300 intro-x login__input form-control" placeholder="Email">
+                        <input type="password" formControlName="password" class="block px-4 py-3 mt-4 border-gray-300 intro-x login__input form-control" placeholder="Password">
                     </div>
                     <div class="flex mt-4 text-xs text-gray-700 intro-x dark:text-gray-600 sm:text-sm">
                         <div class="flex items-center mr-auto">
@@ -38,8 +39,7 @@
                         <a href="">Forgot Password?</a>
                     </div>
                     <div class="mt-5 text-center intro-x xl:mt-8 xl:text-left">
-                        <button class="w-full px-4 py-3 align-top btn btn-primary xl:w-32 xl:mr-3"  routerLink="/application/dashboard"
-                        [routerLinkActive]="['side-menu--active']">Login</button>
+                        <button type="submit" class="w-full px-4 py-3 align-top btn btn-primary xl:w-32 xl:mr-3" >Login</button>
                         <button class="w-full px-4 py-3 mt-3 align-top btn btn-outline-secondary xl:w-32 xl:mt-0">Sign up</button>
                     </div>
                     <!-- <div class="mt-10 text-center text-gray-700 intro-x xl:mt-24 dark:text-gray-600 xl:text-left">
@@ -58,3 +58,6 @@
         <div class="border dark-mode-switcher__toggle"></div>
     </div> -->
 </div>
+
+
+</form>

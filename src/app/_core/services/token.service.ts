@@ -7,8 +7,8 @@ export class TokenService {
   constructor() {}
 
   set(data: any): void {
-    localStorage.setItem('token', data.token);
-    localStorage.setItem('id', data.id);
+    localStorage.setItem('token', data.jwtToken);
+    localStorage.setItem('id', data.idUser);
   }
 
   handle(data: any): void {
@@ -45,7 +45,7 @@ export class TokenService {
     if (token) {
       const payload = this.payload(token);
       if (payload) {
-        return id === payload.id;
+        return id === payload.idUser;
       }
     }
     return false;
