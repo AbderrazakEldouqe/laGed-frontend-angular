@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './_core/core.module';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,6 +16,7 @@ import { CoreModule } from './_core/core.module';
     CoreModule,
     AppRoutingModule,
     NgxSpinnerModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

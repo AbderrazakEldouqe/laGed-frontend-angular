@@ -5,6 +5,7 @@ import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { SubSink } from 'subsink';
+import { NotificationService } from 'src/app/_core/services/notification.service';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private tokenService: TokenService,
     private accountService: AccountService,
-    private router: Router
+    private router: Router,
+    private notification: NotificationService
   ) {}
 
   ngOnInit(): void {
@@ -53,22 +55,22 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.tokenService.handle(data);
     this.accountService.changeStatus(true);
     console.log('info', this.tokenService.getInfos());
-    alert(`Bienvenu : ${this.tokenService.getInfos().userName}`);
-    // this.notification.success(
-    // `Bienvenu : ${this.tokenService.getInfos().name}`,
-    // 'Vous êtes connectés !'
-    // );
+    //alert(`Bienvenu : ${this.tokenService.getInfos().userName}`);
+    this.notification.success(
+      `Bienvenu : ${this.tokenService.getInfos().userName}`,
+      'Vous êtes connectés !'
+    );
     this.router.navigateByUrl('/application');
   }
 
   handleError(error: any): void {
     console.log(error);
-    alert('Bienvenu :' + ' ' + error);
+    //alert('Bienvenu :' + ' ' + error);
 
-    // this.notification.error(
-    // 'Merci de Vérifier votre email ou mot de passe !',
-    // ``
-    // );
+    this.notification.error(
+      'Merci de Vérifier votre email ou mot de passe !',
+      ``
+    );
   }
 
   ngOnDestroy(): void {
