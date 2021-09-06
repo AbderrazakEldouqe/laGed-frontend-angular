@@ -1,11 +1,14 @@
-
 <div class="grid grid-cols-12 gap-6 mt-5 border-t border-gray-300">
   <div
     class="flex flex-wrap items-center col-span-12 mt-2 intro-y sm:flex-nowrap"
   >
-
-    <select (change)="onTableSizeChange($event)" class="w-20 mt-3 mr-2 form-select box sm:mt-0">
-      <option *ngFor="let size of tableSizes" [ngValue]="size">{{size}}</option>
+    <select
+      (change)="onTableSizeChange($event)"
+      class="w-20 mt-3 mr-2 form-select box sm:mt-0"
+    >
+      <option *ngFor="let size of tableSizes" [ngValue]="size">
+        {{ size }}
+      </option>
     </select>
     <div class="dropdown">
       <button
@@ -16,7 +19,6 @@
           <i class="w-4 h-4 fas fa-plus"></i>
         </span>
       </button>
-
     </div>
     <div class="hidden mx-auto text-gray-600 md:block">
       <!--Showing {{config.currentPage}} to 10 of 150 entries -->
@@ -24,14 +26,13 @@
     <div class="w-full mt-3 sm:w-auto sm:mt-0 sm:ml-auto md:ml-0">
       <div class="relative w-56 text-gray-700 dark:text-gray-300">
         <input
-        [(ngModel)]="filter"
+          [(ngModel)]="filter"
           type="text"
           class="w-56 pr-10 form-control box placeholder-theme-13"
           placeholder="Search..."
         />
         <i
           class="absolute inset-y-0 right-0 w-4 h-4 my-auto mr-3 fas fa-search"
-
         ></i>
       </div>
     </div>
@@ -44,12 +45,17 @@
           <th class="whitespace-nowrap">NAME</th>
           <th class="text-center whitespace-nowrap">Anne Scolaire</th>
           <th class="text-center whitespace-nowrap">Type Document</th>
-          <th class="text-center whitespace-nowrap">Name Document</th>
           <th class="text-center whitespace-nowrap">Action</th>
         </tr>
       </thead>
       <tbody>
-        <tr class="intro-x" *ngFor="let file of filesData | filter: filter | paginate: config;let i = index">
+        <tr
+          class="intro-x"
+          *ngFor="
+            let file of filesData | filter: filter | paginate: config;
+            let i = index
+          "
+        >
           <td>
             <a href="" class="font-medium whitespace-nowrap">{{
               file?.name
@@ -60,7 +66,6 @@
           </td>
           <td class="text-center">{{ file?.anneScolaire }}</td>
           <td class="text-center">{{ file?.typeDocument }}</td>
-          <td class="text-center">{{ file?.nameDocument }}</td>
 
           <td class="w-56 table-report__action">
             <div class="flex items-center justify-center">
@@ -71,10 +76,7 @@
                 <i class="w-4 h-4 mr-1 fas fa-download"></i> Download
               </a>
 
-              <a
-                class="flex items-center text-theme-6"
-
-              >
+              <a class="flex items-center text-theme-6">
                 <i class="w-4 h-4 mr-1 far fa-trash-alt"></i> Delete
               </a>
             </div>
@@ -83,7 +85,9 @@
       </tbody>
     </table>
     <div class="py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
-      <app-paginations (pageChange)="config.currentPage=$event"></app-paginations>
+      <app-paginations
+        (pageChange)="config.currentPage = $event"
+      ></app-paginations>
     </div>
   </div>
   <!-- END: Data List -->
@@ -127,8 +131,6 @@
       <option>50</option>
     </select>
   </div>-->
-
-
 
   <!-- END: Pagination -->
 </div>

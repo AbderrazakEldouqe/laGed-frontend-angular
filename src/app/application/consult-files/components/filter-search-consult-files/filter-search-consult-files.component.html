@@ -1,33 +1,35 @@
 <!-- BEGIN: Inline Form -->
 <div class="mt-5 intro-y box">
   <div
-    class="flex flex-col items-center p-5 border-b border-gray-200 sm:flex-row dark:border-dark-5"
+    class="flex flex-col items-center p-5 border-b border-gray-200  sm:flex-row dark:border-dark-5"
   >
     <h2 class="mr-auto text-base font-medium">Search Multicritère</h2>
   </div>
   <div id="inline-form" class="p-3">
     <div class="preview">
       <div class="grid grid-cols-12 gap-2">
+        <ng-select class="col-span-3" placeholder="Anne Scolaire">
+          <ng-option>2018/2019</ng-option>
+          <ng-option>2019/2020</ng-option>
+        </ng-select>
+
+        <ng-select class="col-span-3" placeholder="TypeDocuments">
+          <ng-option
+            *ngFor="let category of categoryDocumentsData"
+            [value]="category?.id"
+            >{{ category?.cat_doc }}</ng-option
+          >
+        </ng-select>
         <input
           type="text"
-          class="col-span-3 form-control"
-          placeholder="Anne Scolaire"
-          aria-label="default input inline 1"
-        />
-        <input
-          type="text"
-          class="col-span-3 form-control"
-          placeholder="TypeDocuments"
-          aria-label="default input inline 2"
-        />
-        <input
-          type="text"
+          style="height: 90%; border-color: #b9bcc3"
           class="col-span-3 form-control"
           placeholder="Matricule Etudiant"
           aria-label="default input inline 3"
         />
         <input
           type="text"
+          style="height: 90%; border-color: #b9bcc3"
           class="col-span-3 form-control"
           placeholder="Nom Etudiant"
           aria-label="default input inline 3"

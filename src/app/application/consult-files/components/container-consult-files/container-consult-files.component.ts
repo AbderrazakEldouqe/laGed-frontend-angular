@@ -1,4 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { CategoryDocumentService } from 'src/app/application/category-document/services/category-document.service';
+import { ICategoryDoc } from 'src/app/_core/models/i-category-doc';
 import { SubSink } from 'subsink';
 import { ConsultFilesService } from '../../services/consult-files.service';
 
@@ -12,23 +14,29 @@ export class ContainerConsultFilesComponent implements OnInit, OnDestroy {
   private subs = new SubSink();
   filesData: any[] = [];
 
+  categoryDocumentsData: ICategoryDoc[] = [];
+
   /* End Variables */
-  constructor(private consultFilesService: ConsultFilesService) {}
+  constructor(
+    private consultFilesService: ConsultFilesService,
+    private categoryDocumentService: CategoryDocumentService
+  ) {}
 
   /**
    * ngOnInit
    * * is a life cycle hook called by Angular to indicate that Angular is done creating the component
    */
   ngOnInit(): void {
-    this.getAll();
+    this.getAllDocuments();
+    this.getAllCategoryDocuments();
   }
 
   /* Start Services */
   /**
-   * getAll
+   * getAllDocuments
    * * It is called for get data From Backend
    */
-  getAll(): void {
+  getAllDocuments(): void {
     this.subs.add(
       this.consultFilesService.getAll().subscribe((res: any[]) => {
         this.filesData = res;
@@ -36,6 +44,17 @@ export class ContainerConsultFilesComponent implements OnInit, OnDestroy {
     );
   }
 
+  /**
+   * getAllCategoryDocuments
+   * * It is called for get data From Backend
+   */
+  getAllCategoryDocuments(): void {
+    this.subs.add(
+      this.categoryDocumentService.getAll().subscribe((res: ICategoryDoc[]) => {
+        this.categoryDocumentsData = res;
+      })
+    );
+  }
   /* End Services */
   /**
    * ngOnDestroy
