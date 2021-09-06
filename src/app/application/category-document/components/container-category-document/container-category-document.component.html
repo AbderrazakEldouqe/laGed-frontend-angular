@@ -1,1 +1,15 @@
-<p>container-category-document works!</p>
+<app-form-add-edit-category-document
+  [hidden]="!formIsShow"
+  [categoryDocument]="selectedCategoryDocument"
+  (storeEvent)="store($event)"
+  (updateEvent)="update($event)"
+  (backToListEvent)="backToList()"
+>
+</app-form-add-edit-category-document>
+<app-list-category-document
+  [hidden]="formIsShow"
+  [categoryDocumentsData]="categoryDocumentsData"
+  (createEvent)="showForm()"
+  (editEvent)="edit($event)"
+  (deleteEvent)="delete($event)"
+></app-list-category-document>

@@ -30,6 +30,12 @@ const routes: Routes = [
           (await import('./consult-files/consult-files.module'))
             .ConsultFilesModule,
       },
+      {
+        path: 'category-document',
+        loadChildren: async () =>
+          (await import('./category-document/category-document.module'))
+            .CategoryDocumentModule,
+      },
     ],
   },
 ];
