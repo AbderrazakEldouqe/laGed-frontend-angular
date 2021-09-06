@@ -7,7 +7,11 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { CategoryDocumentService } from 'src/app/application/category-document/services/category-document.service';
+import { IEtudiant } from 'src/app/_core/models/i-etudiant';
 import { IFile } from 'src/app/_core/models/i-file';
+import { IInscription } from 'src/app/_core/models/i-inscription';
+import { EtudiantService } from 'src/app/_core/services/etudiant-service';
 import { FileUploadService } from 'src/app/_core/services/file-upload.service';
 
 @Component({
@@ -19,16 +23,34 @@ export class UploadFilesFormComponent implements OnInit {
   @Input() filesStudentUploadedFromGroup: FormGroup = new FormGroup({});
   @Output() filesStudentUploadedEven = new EventEmitter();
 
+  dataInscription?: IInscription[];
+  dataEtudiant : IEtudiant[] = [];
+
+
   CodeEtudiant = [
     { id: 1, code: 'Volvo' },
     { id: 2, code: 'Saab' },
   ];
   constructor(
     private fb: FormBuilder,
-    private fileUploadService: FileUploadService
+    private fileUploadService: FileUploadService,
+    private categoryDocumentService : CategoryDocumentService,
+    private etudiantService : EtudiantService
+
+    
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+   this.etudiantService.getAnneeInscriptionData().subscribe((res: IInscription[]) => {
+      this.dataInscription = res;
+    })
+    this.etudiantService.getdataEtudiant().subscribe((res: IEtudiant[]) => {
+      this.dataEtudiant = res;
+    })
+    console.log(this.dataInscription)
+    console.log(this.dataEtudiant)
+
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['filesStudentUploadedFromGroup']) {

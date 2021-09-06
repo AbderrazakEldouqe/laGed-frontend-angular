@@ -6,8 +6,6 @@ export interface IEtudiantDoc {
   etudiant?: IEtudiant;
   annee?: string;
   categoryDoc?: ICategoryDoc;
-
   libelle_compl?: string;
-
   doc_url?: string;
 }
