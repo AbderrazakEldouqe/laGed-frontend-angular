@@ -1,10 +1,11 @@
 <form [formGroup]="filesStudentUploadedFromGroup">
-  <div class="w-1/4 p-5 intro-y ">
+  <div class=" p-5  grid grid-cols-12 gap-2" >
+    <div class="w-1/4">
+      <label for="crud-form-1" class="form-label">Code Etudiant</label>
+      <input id="regular-form-1" type="text" class="form-control  w-4/12" placeholder="Input text">
+    </div>
     <div>
       <label for="crud-form-1" class="form-label">Code Etudiant</label>
-      <!-- <input id="crud-form-1" type="text" class=" form-control" placeholder="Code Etudiant"
-        formControlName="studentCode"> -->
-
         <ng-select [items]="CodeEtudiant" 
            bindLabel="code" 
            bindValue="id" 
@@ -12,9 +13,6 @@
            placeholder="Code Etudiant"
            >
         </ng-select>
-        <!-- <ng-select  dropdownPosition='bottom'  id="crud-form-1" type="text">
-          <ng-option *ngFor="let code of CodeEtudiant" [value]="code.id">{{code.code}}</ng-option>
-       </ng-select> -->
     </div>
   </div>
   
