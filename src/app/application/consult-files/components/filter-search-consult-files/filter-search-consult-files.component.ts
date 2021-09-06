@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnInit,
+} from '@angular/core';
+import { ICategoryDoc } from 'src/app/_core/models/i-category-doc';
 
 @Component({
   selector: 'app-filter-search-consult-files',
@@ -7,6 +13,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FilterSearchConsultFilesComponent implements OnInit {
+  @Input() categoryDocumentsData: ICategoryDoc[] = [];
   constructor() {}
 
   ngOnInit(): void {}
