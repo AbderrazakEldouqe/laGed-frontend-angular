@@ -1,5 +1,5 @@
 <form [formGroup]="filesStudentUploadedFromGroup">
-  <div class=" p-5  grid grid-cols-12 gap-2" >
+  <!-- <div class=" p-5  grid grid-cols-12 gap-2" >
     <div class="w-1/4">
       <label for="crud-form-1" class="form-label">Code Etudiant</label>
       <input id="regular-form-1" type="text" class="form-control  w-4/12" placeholder="Input text">
@@ -14,7 +14,39 @@
            >
         </ng-select>
     </div>
-  </div>
+  </div> -->
+
+  <div id="inline-form" class="p-3">
+    <div class="preview">
+      <div class="grid grid-cols-4 gap-6">
+        <div>
+
+          <label for="crud-form-1" class="form-label">Année Scolaire</label>
+
+        <ng-select class="col-span-3"
+                  placeholder="Anne Scolaire"            
+                  formControlName="AnneeScolaire"
+        >
+          <ng-option>2018/2019</ng-option>
+          <ng-option>2019/2020</ng-option>
+        </ng-select>
+ </div>
+      <div>
+        <label for="crud-form-1" class="form-label">Code Etudiant</label>
+            <ng-select class="col-span-3" 
+            placeholder="Code Etudiant"           
+                       formControlName="studentCode"
+            >
+          <ng-option
+            *ngFor="let code of CodeEtudiant"
+            [value]="code?.id"
+            >{{ code?.code }}</ng-option
+          >
+        </ng-select>
+      </div>
+        </div>
+      </div>
+    </div>
   
   <!-- file upload modal -->
   <article aria-label="File Upload Modal" class="relative flex flex-col h-full bg-white rounded-md shadow-xl"

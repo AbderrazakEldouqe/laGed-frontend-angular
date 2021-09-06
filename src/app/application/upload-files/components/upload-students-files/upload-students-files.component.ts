@@ -9,12 +9,22 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class UploadStudentsFilesComponent implements OnInit {
   showTableFilesOrIconBolean: boolean = false;
   filesStudentUploadedFromGroup: FormGroup = new FormGroup({});
+  filesUploadedFromGroup : FormGroup = new FormGroup({});
+
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.filesStudentUploadedFromGroup = this.fb.group({
+      AnneeScolaire : [null, Validators.required],
       studentCode: [null, Validators.required],
-      studentFiles: this.fb.array([]),
+      studentFiles: this.fb.array([
+        //  this.filesUploadedFromGroup = this.fb.group({
+        //   typeDocument: [null, Validators.required],
+        //   libelleComplementaire: [null, Validators.required],
+        //   fileBase64 :  [null, Validators.required],
+        //   fileName : [null, Validators.required],
+        //  })
+      ]),
     });
   }
 

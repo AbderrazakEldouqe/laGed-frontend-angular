@@ -64,6 +64,8 @@ export class UploadFilesFormComponent implements OnInit {
           this.createItem({
             fileName: element.fileName,
             fileBase64: element.fileBase64, //Base64 string for preview image
+            typeDocument : "",
+            libelleComplementaire : "" ,
           })
         );
       });

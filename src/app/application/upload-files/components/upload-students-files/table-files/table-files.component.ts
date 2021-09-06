@@ -16,6 +16,7 @@ import { FormArray, FormGroup } from '@angular/forms';
 export class TableFilesComponent implements OnInit {
   @Input() filesStudentUploadedFromGroup: FormGroup = new FormGroup({});
   @Output() studentFilesTableEvent = new EventEmitter();
+ studentFiles : FormArray = new FormArray([])
 
   config = {
     id: 'custom',
@@ -33,16 +34,23 @@ export class TableFilesComponent implements OnInit {
     if (changes['filesStudentUploadedFromGroup']) {
       console.log(this.filesStudentUploadedFromGroup.value);
     }
+    if (changes['studentFiles']) {
+      console.log(this.studentFiles);
+
+    }
   }
+
   deleteFile(index: number) {
-    console.log('files Deleted');
-    this.filesStudentUploadedFromGroup.controls.studentFiles.value.splice(
-      index,
-      1
-    );
-    console.log(this.filesStudentUploadedFromGroup);
-    this.studentFilesTableEvent.emit(
-      this.filesStudentUploadedFromGroup.controls.studentFiles.value
-    );
+    this.studentFileControl.controls.splice(index, 1);
+    this.studentFileControl.value.splice(index, 1);
+    this.studentFilesTableEvent.emit(this.studentFileControl.value);
+
+    console.log(this.filesStudentUploadedFromGroup.value)
+    console.log(this.filesStudentUploadedFromGroup.controls.value)
+
+  }
+
+  get studentFileControl(): FormArray {
+    return this.filesStudentUploadedFromGroup.get('studentFiles') as FormArray;
   }
 }
