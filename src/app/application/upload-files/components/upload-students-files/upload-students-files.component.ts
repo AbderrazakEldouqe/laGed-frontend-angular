@@ -17,14 +17,7 @@ export class UploadStudentsFilesComponent implements OnInit {
     this.filesStudentUploadedFromGroup = this.fb.group({
       AnneeScolaire : [null, Validators.required],
       studentCode: [null, Validators.required],
-      studentFiles: this.fb.array([
-        //  this.filesUploadedFromGroup = this.fb.group({
-        //   typeDocument: [null, Validators.required],
-        //   libelleComplementaire: [null, Validators.required],
-        //   fileBase64 :  [null, Validators.required],
-        //   fileName : [null, Validators.required],
-        //  })
-      ]),
+      studentFiles: this.fb.array([]),
     });
   }
 

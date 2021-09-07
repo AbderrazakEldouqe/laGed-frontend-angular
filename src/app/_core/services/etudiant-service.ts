@@ -16,7 +16,7 @@ export class EtudiantService  extends DataService {
   dataInscription?: IInscription[];
 
   constructor(http: HttpClient) {
-    super(`${environment.apiUrl}/Etudiants`, http);
+    super(`${environment.apiUrl}/etudiants`, http);
     this.createStudentData()
     this.createAnneeInscriptionData()
   }
@@ -24,7 +24,7 @@ export class EtudiantService  extends DataService {
 
 createStudentData(){
     this.dataEtudiant = [];
-    for (let i = 0; i <= 10; i++) {
+    for (let i = 0; i <= 4; i++) {
       this.dataEtudiant.push({
         id: i.toString(),        
         nom : 'Etudiants Nom' + i,
@@ -37,15 +37,14 @@ createStudentData(){
 
   createAnneeInscriptionData(){
     this.dataInscription = [];
-    for (let i = 0; i <= 4; i++) {
-      this.dataInscription.push({
-        id: i.toString(),        
-        anne: '2015'+ i,
-        inscription : 'inscription'+ i,
-        etudiant : this.dataEtudiant[i],
-      }); 
-       i = 4? 0 :  i ;
-    }
+      for (let i = 0; i < this.dataEtudiant.length ; i++) {
+        this.dataInscription.push({
+          id: i.toString(),        
+          anne: (2015+i).toString(),
+          inscription : 'inscription'+ i,
+          etudiant : this.dataEtudiant[i],
+        }); 
+      }
   }
 
 

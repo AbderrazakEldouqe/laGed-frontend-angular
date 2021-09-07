@@ -26,21 +26,25 @@
         <ng-select class="col-span-3"
                   placeholder="Anne Scolaire"            
                   formControlName="AnneeScolaire"
+                  (change) = 'getlistEtudiantByInscriptiondate()'
         >
-          <ng-option>2018/2019</ng-option>
-          <ng-option>2019/2020</ng-option>
+        <ng-option
+        *ngFor="let incp of  dataInscription"
+        [value]="incp?.id"
+        >{{ incp?.anne }}</ng-option
+      >
         </ng-select>
  </div>
       <div>
         <label for="crud-form-1" class="form-label">Code Etudiant</label>
             <ng-select class="col-span-3" 
             placeholder="Code Etudiant"           
-                       formControlName="studentCode"
+            formControlName="studentCode"
             >
           <ng-option
-            *ngFor="let code of CodeEtudiant"
-            [value]="code?.id"
-            >{{ code?.code }}</ng-option
+            *ngFor="let etud of dataEtudiant"
+            [value]="etud?.id"
+            >{{ etud?.code }}</ng-option
           >
         </ng-select>
       </div>
