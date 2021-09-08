@@ -1,21 +1,4 @@
 <form [formGroup]="filesStudentUploadedFromGroup">
-  <!-- <div class=" p-5  grid grid-cols-12 gap-2" >
-    <div class="w-1/4">
-      <label for="crud-form-1" class="form-label">Code Etudiant</label>
-      <input id="regular-form-1" type="text" class="form-control  w-4/12" placeholder="Input text">
-    </div>
-    <div>
-      <label for="crud-form-1" class="form-label">Code Etudiant</label>
-        <ng-select [items]="CodeEtudiant" 
-           bindLabel="code" 
-           bindValue="id" 
-           formControlName="studentCode"
-           placeholder="Code Etudiant"
-           >
-        </ng-select>
-    </div>
-  </div> -->
-
   <div id="inline-form" class="p-3">
     <div class="preview">
       <div class="grid grid-cols-4 gap-6">
@@ -26,10 +9,9 @@
         <ng-select class="col-span-3"
                   placeholder="Anne Scolaire"            
                   formControlName="AnneeScolaire"
-                  (change) = 'getlistEtudiantByInscriptiondate()'
-        >
+                  (change) = 'getlistEtudiantByInscriptiondate()'>
         <ng-option
-        *ngFor="let incp of  dataInscription"
+        *ngFor="let incp of dataInscription"
         [value]="incp?.id"
         >{{ incp?.anne }}</ng-option
       >

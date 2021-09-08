@@ -31,8 +31,6 @@ export class UploadFilesFormComponent implements OnInit {
     private fileUploadService: FileUploadService,
     private categoryDocumentService : CategoryDocumentService,
     private etudiantService : EtudiantService
-
-    
   ) {}
 
   ngOnInit(): void {
@@ -51,7 +49,6 @@ export class UploadFilesFormComponent implements OnInit {
   const arrayOfBase64: Promise<IFile[]> =
    this.fileUploadService.fileListToBase64(event.target.files);
     arrayOfBase64.then((res: IFile[]) => {
-     console.log('res', res);
       res.forEach((element) => {
         this.studentFileControl.push(
           this.createItem({
@@ -68,22 +65,22 @@ export class UploadFilesFormComponent implements OnInit {
   }
 
   getlistEtudiantByInscriptiondate(){
-
-    console.log('etudiant')
-
-    var etudiant : any
-    etudiant = this.dataInscription.find(insc => insc.id === 
-      this.filesStudentUploadedFromGroup.controls.AnneeScolaire.value
-      )?.etudiant;
-      console.log(etudiant)
-    this.dataEtudiant.push(etudiant)
-    
+    var etudiant : any  
+    if(this.AnneeScolaireControl?.value)   {
+      this.studentCodeControl?.enable()
+      etudiant = this.dataInscription.find(insc => insc.id === 
+      this.filesStudentUploadedFromGroup.controls.AnneeScolaire.value)?.etudiant;
+      this.dataEtudiant.push(etudiant)
+    }else{
+      this.studentCodeControl?.setValue(null);
+      this.studentCodeControl?.disable();
+      this.studentCodeControl?.updateValueAndValidity();
+    }
   }
 
   /*
    *  We will create multiple form controls inside defined form controls photos.
    */
-
   createItem(data: IFile): FormGroup {
     return this.fb.group(data);
   }
@@ -95,10 +92,14 @@ export class UploadFilesFormComponent implements OnInit {
     return this.filesStudentUploadedFromGroup.get('studentFiles') as FormArray;
   }
 
+
   get AnneeScolaireControl(){
     return this.filesStudentUploadedFromGroup.get('AnneeScolaire') ;
   }
   
+  get studentCodeControl(){
+    return this.filesStudentUploadedFromGroup.get('studentCode') ;
+  }
   /**
    *   emit changes to parent component
    */

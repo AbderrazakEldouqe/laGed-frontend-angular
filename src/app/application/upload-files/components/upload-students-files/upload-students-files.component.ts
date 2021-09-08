@@ -16,7 +16,7 @@ export class UploadStudentsFilesComponent implements OnInit {
   ngOnInit(): void {
     this.filesStudentUploadedFromGroup = this.fb.group({
       AnneeScolaire : [null, Validators.required],
-      studentCode: [null, Validators.required],
+      studentCode: [{value: null, disabled: true}, Validators.required],
       studentFiles: this.fb.array([]),
     });
   }
@@ -35,4 +35,6 @@ export class UploadStudentsFilesComponent implements OnInit {
       this.showTableFilesOrIconBolean = false;
     }
   }
+
+
 }
