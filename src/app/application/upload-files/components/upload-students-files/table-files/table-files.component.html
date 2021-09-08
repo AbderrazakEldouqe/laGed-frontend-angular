@@ -29,7 +29,7 @@
                 <!-- <div class="text-gray-600 text-xs whitespace-nowrap mt-0.5">Photography</div> -->
               </td>
               <td>
-                <select
+                <!-- <select
                   class="w-4/12 form-select form-select-sm"
                   aria-label=".form-select-sm example"
                   placeholder="typeDocument"
@@ -38,15 +38,22 @@
                   <option>Type Document 1</option>
                   <option>Type Document 2</option>
                   <option>Type Document 3</option>
-                </select>
+                </select> -->
+                <ng-select class="col-span-3" placeholder="Type Document"
+                  formControlName="typeDocument">
+                  <ng-option >Type Document 1</ng-option>
+                  <ng-option >Type Document 1</ng-option>
+
+                </ng-select>
               </td>
               <td>
                 <input
                   id="regular-form-1"
                   type="text"
-                  class="w-4/12 form-control form-control-sm"
+                  class="w-3/12 form-control form-control-sm "
                   placeholder="libellé complémentaire"
                   formControlName="libelleComplementaire"
+           
                 />
               </td>
               <td class="w-56 table-report__action">

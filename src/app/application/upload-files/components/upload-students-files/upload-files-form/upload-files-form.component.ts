@@ -7,11 +7,9 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
-import { CategoryDocumentService } from 'src/app/application/category-document/services/category-document.service';
 import { IEtudiant } from 'src/app/_core/models/i-etudiant';
 import { IFile } from 'src/app/_core/models/i-file';
 import { IInscription } from 'src/app/_core/models/i-inscription';
-import { EtudiantService } from 'src/app/_core/services/etudiant-service';
 import { FileUploadService } from 'src/app/_core/services/file-upload.service';
 
 @Component({
@@ -21,28 +19,34 @@ import { FileUploadService } from 'src/app/_core/services/file-upload.service';
 })
 export class UploadFilesFormComponent implements OnInit {
   @Input() filesStudentUploadedFromGroup: FormGroup = new FormGroup({});
+  @Input() listAnneeScolaire: string[] = [];
+  @Input() listStudentByAnneeScolaire : IEtudiant[]=[];
+
+
+  @Output() listAnneeScolaireSelectedEven = new EventEmitter();
   @Output() filesStudentUploadedEven = new EventEmitter();
 
   dataInscription: IInscription[]= [];
   dataEtudiant : IEtudiant[] = [];
 
+
   constructor(
     private fb: FormBuilder,
     private fileUploadService: FileUploadService,
-    private categoryDocumentService : CategoryDocumentService,
-    private etudiantService : EtudiantService
   ) {}
 
-  ngOnInit(): void {
-   this.etudiantService.getAnneeInscriptionData().subscribe((res: IInscription[]) => {
-      this.dataInscription = res;
-
-    })
-  }
+  ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['filesStudentUploadedFromGroup']) {
     }
+    if (changes['listAnneeScolaire']) {
+      console.log(this.listAnneeScolaire)
+    }
+    if (changes['listStudentByAnneeScolaire']) {
+      console.log(this.listStudentByAnneeScolaire)
+    }
+
   }
 
   uploadFiles(event: any) {
@@ -54,8 +58,8 @@ export class UploadFilesFormComponent implements OnInit {
           this.createItem({
             fileName: element.fileName,
             fileBase64: element.fileBase64, //Base64 string for preview image
-            typeDocument : "",
-            libelleComplementaire : "" ,
+            typeDocument: undefined,
+            libelleComplementaire : undefined ,
           })
         );
       });
@@ -65,12 +69,9 @@ export class UploadFilesFormComponent implements OnInit {
   }
 
   getlistEtudiantByInscriptiondate(){
-    var etudiant : any  
     if(this.AnneeScolaireControl?.value)   {
       this.studentCodeControl?.enable()
-      etudiant = this.dataInscription.find(insc => insc.id === 
-      this.filesStudentUploadedFromGroup.controls.AnneeScolaire.value)?.etudiant;
-      this.dataEtudiant.push(etudiant)
+      this.listAnneeScolaireSelectedEven.emit(this.AnneeScolaireControl?.value)
     }else{
       this.studentCodeControl?.setValue(null);
       this.studentCodeControl?.disable();
@@ -85,21 +86,7 @@ export class UploadFilesFormComponent implements OnInit {
     return this.fb.group(data);
   }
 
-  /**
-   *   Help to get all photos controls as form array.
-   */
-  get studentFileControl(): FormArray {
-    return this.filesStudentUploadedFromGroup.get('studentFiles') as FormArray;
-  }
 
-
-  get AnneeScolaireControl(){
-    return this.filesStudentUploadedFromGroup.get('AnneeScolaire') ;
-  }
-  
-  get studentCodeControl(){
-    return this.filesStudentUploadedFromGroup.get('studentCode') ;
-  }
   /**
    *   emit changes to parent component
    */
@@ -107,4 +94,26 @@ export class UploadFilesFormComponent implements OnInit {
   filesStudentUploadedEventEmitter() {
     this.filesStudentUploadedEven.emit(this.studentFileControl);
   }
+
+
+    /**
+   *   Help to get all student Files controls as form array.
+   */
+     get studentFileControl(): FormArray {
+      return this.filesStudentUploadedFromGroup.get('studentFiles') as FormArray;
+    }
+  
+   /**
+   *   Help to get all Année Scolaire controls as form array.
+   */
+    get AnneeScolaireControl(){
+      return this.filesStudentUploadedFromGroup.get('AnneeScolaire') ;
+    }
+
+     /**
+   *   Help to get all student Code controls as form array.
+   */
+    get studentCodeControl(){
+      return this.filesStudentUploadedFromGroup.get('studentCode') ;
+    }
 }

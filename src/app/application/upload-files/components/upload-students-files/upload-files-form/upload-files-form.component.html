@@ -6,34 +6,28 @@
 
           <label for="crud-form-1" class="form-label">Année Scolaire</label>
 
-        <ng-select class="col-span-3"
-                  placeholder="Anne Scolaire"            
-                  formControlName="AnneeScolaire"
-                  (change) = 'getlistEtudiantByInscriptiondate()'>
-        <ng-option
-        *ngFor="let incp of dataInscription"
-        [value]="incp?.id"
-        >{{ incp?.anne }}</ng-option
-      >
-        </ng-select>
- </div>
-      <div>
-        <label for="crud-form-1" class="form-label">Code Etudiant</label>
-            <ng-select class="col-span-3" 
-            placeholder="Code Etudiant"           
-            formControlName="studentCode"
-            >
-          <ng-option
-            *ngFor="let etud of dataEtudiant"
-            [value]="etud?.id"
-            >{{ etud?.code }}</ng-option
-          >
-        </ng-select>
-      </div>
+          <ng-select class="col-span-3" placeholder="Anne Scolaire" formControlName="AnneeScolaire"
+            (change)='getlistEtudiantByInscriptiondate()' [ngClass]="{
+                    'border-theme-9': filesStudentUploadedFromGroup.get('AnneeScolaire')?.valid,
+                    'border-theme-6':
+                    filesStudentUploadedFromGroup.get('AnneeScolaire')?.invalid &&
+                      (filesStudentUploadedFromGroup.get('AnneeScolaire')?.touched ||
+                      filesStudentUploadedFromGroup.get('AnneeScolaire')?.dirty)
+                  }">
+            <ng-option *ngFor="let date of listAnneeScolaire" [value]="date">{{ date }}</ng-option>
+          </ng-select>
+        </div>
+        <div>
+          <label for="crud-form-1" class="form-label">Code Etudiant</label>
+          <ng-select class="col-span-3" placeholder="Code Etudiant" formControlName="studentCode">
+            <ng-option *ngFor="let etud of listStudentByAnneeScolaire" [value]="etud?.id">{{ etud?.nom }} ,{{
+              etud?.prenom}}</ng-option>
+          </ng-select>
         </div>
       </div>
     </div>
-  
+  </div>
+
   <!-- file upload modal -->
   <article aria-label="File Upload Modal" class="relative flex flex-col h-full bg-white rounded-md shadow-xl"
     ondrop="dropHandler(event);" ondragover="dragOverHandler(event);" ondragleave="dragLeaveHandler(event);"

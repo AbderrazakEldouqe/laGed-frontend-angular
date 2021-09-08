@@ -11,54 +11,18 @@ import { IInscription } from '../models/i-inscription';
 @Injectable({
   providedIn: 'root',
 })
-export class EtudiantService  extends DataService {
+export class EtudiantService {
+ 
   dataEtudiant : IEtudiant[] = [];
   dataInscription?: IInscription[];
 
-  constructor(http: HttpClient) {
-    super(`${environment.apiUrl}/etudiants`, http);
-    this.createStudentData()
-    this.createAnneeInscriptionData()
+  constructor(private http: HttpClient) { }
+  getAnneeScolaire(): Observable<any> {
+    return this.http.get(environment.apiUrl + "/apiEtudiantDocument/getAllAnneScolaires");
+  } 
+  
+  getAllStudentByAnneeScolaire(AnneScolaires : any) : Observable<any>{
+   return this.http.get(environment.apiUrl + 
+                  "/apiEtudiant/getAllEtudiantByAnneScolaires?anneeScolaire="+AnneScolaires);
   }
-
-
-createStudentData(){
-    this.dataEtudiant = [];
-    for (let i = 0; i <= 4; i++) {
-      this.dataEtudiant.push({
-        id: i.toString(),        
-        nom : 'Etudiants Nom' + i,
-        prenom : 'Etudiants Prenom'+ i,
-        code : 'Etudiants code'+ i,
-      });
-    }
-  }
-
-
-  createAnneeInscriptionData(){
-    this.dataInscription = [];
-      for (let i = 0; i < this.dataEtudiant.length ; i++) {
-        this.dataInscription.push({
-          id: i.toString(),        
-          anne: (2015+i).toString(),
-          inscription : 'inscription'+ i,
-          etudiant : this.dataEtudiant[i],
-        }); 
-      }
-  }
-
-
-
-
-  getdataEtudiant(headersObject = {}): Observable<any> {
-    return of(this.dataEtudiant).pipe(delay(2000));
-  }
-
-
-
-
-  getAnneeInscriptionData(headersObject = {}): Observable<any> {
-    return of(this.dataInscription).pipe(delay(2000));
-  }
-
 }

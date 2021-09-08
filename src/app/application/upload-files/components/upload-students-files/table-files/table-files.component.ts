@@ -7,6 +7,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { FormArray, FormGroup } from '@angular/forms';
+import { CategoryDocumentService } from 'src/app/application/category-document/services/category-document.service';
 
 @Component({
   selector: 'app-table-files',
@@ -26,7 +27,7 @@ export class TableFilesComponent implements OnInit {
   };
   tableSizes = [4, 8, 10, 14];
   filter = '';
-  constructor() {}
+  constructor(private categoryDocumentService : CategoryDocumentService) {}
 
   ngOnInit(): void {}
 
@@ -43,13 +44,6 @@ export class TableFilesComponent implements OnInit {
     this.studentFileControl.controls.splice(index, 1);
     this.studentFileControl.value.splice(index, 1);
     this.studentFilesTableEvent.emit(this.studentFileControl.value);
-
-    console.log(this.filesStudentUploadedFromGroup.value);
-    console.log(this.filesStudentUploadedFromGroup.controls.value);
-  }
-
-  get studentFileControl(): FormArray {
-    return this.filesStudentUploadedFromGroup.get('studentFiles') as FormArray;
   }
 
   /**
@@ -58,5 +52,9 @@ export class TableFilesComponent implements OnInit {
    */
   fieldGlobalIndex(index: number) {
     return this.config.itemsPerPage * (this.config.currentPage - 1) + index;
+  } 
+  
+  get studentFileControl(): FormArray {
+    return this.filesStudentUploadedFromGroup.get('studentFiles') as FormArray;
   }
 }

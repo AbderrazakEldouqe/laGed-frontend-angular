@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { IEtudiant } from 'src/app/_core/models/i-etudiant';
+import { IInscription } from 'src/app/_core/models/i-inscription';
+import { EtudiantService } from 'src/app/_core/services/etudiant-service';
 
 @Component({
   selector: 'app-upload-students-files',
@@ -10,8 +13,11 @@ export class UploadStudentsFilesComponent implements OnInit {
   showTableFilesOrIconBolean: boolean = false;
   filesStudentUploadedFromGroup: FormGroup = new FormGroup({});
   filesUploadedFromGroup : FormGroup = new FormGroup({});
+  listAnneeScolaire: string[] = [];
+  listStudentByAnneeScolaire : IEtudiant[]=[]
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder , private etudiantService : EtudiantService ) {
+  }
 
   ngOnInit(): void {
     this.filesStudentUploadedFromGroup = this.fb.group({
@@ -19,13 +25,15 @@ export class UploadStudentsFilesComponent implements OnInit {
       studentCode: [{value: null, disabled: true}, Validators.required],
       studentFiles: this.fb.array([]),
     });
+    this.getAllAnneeScolaire();
+
   }
 
   showTableFilesOrIcon() {}
 
   uploadNow() {
     console.log('send Files To Back-End');
-    console.log(this.filesStudentUploadedFromGroup);
+    console.log(this.filesStudentUploadedFromGroup.value);
   }
 
   filesStudentUploadedEventEmitter(event: any) {
@@ -35,6 +43,20 @@ export class UploadStudentsFilesComponent implements OnInit {
       this.showTableFilesOrIconBolean = false;
     }
   }
+
+  getAllAnneeScolaire(){
+  this.etudiantService.getAnneeScolaire().subscribe((res) => {
+    console.log(res)
+    this.listAnneeScolaire = res
+  })
+}
+
+getAllStudentByAnneeScolaire(event : any){
+  console.log(event)
+  this.etudiantService.getAllStudentByAnneeScolaire(event).subscribe((res) => {
+    this.listStudentByAnneeScolaire = res
+  })
+}
 
 
 }
