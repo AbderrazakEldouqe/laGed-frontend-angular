@@ -1,65 +1,80 @@
-
-  
-  
-  <form [formGroup]="filesStudentUploadedFromGroup">
-  <!-- BEGIN: Data List --> 
+<form [formGroup]="filesStudentUploadedFromGroup">
+  <!-- BEGIN: Data List -->
   <div class="col-span-12 overflow-auto intro-y lg:overflow-visible">
     <table class="table -mt-2 table-report">
-        <thead>
-            <tr>
-                <th class="text-center whitespace-nowrap">FILES NAME</th>
-                <th class="text-center whitespace-nowrap">Type Document </th>
-                <th class="text-center whitespace-nowrap">libellé complémentaire</th>
-                <th class="text-center whitespace-nowrap">ACTIONS</th>
-            </tr>
-        </thead>
-        <tbody>                
-            <ng-container formArrayName="studentFiles">
-
-            <tr class="bg-gray-100 intro-x" *ngFor="let file of studentFileControl?.controls | filter: filter | paginate: config; let i = index">
-                <ng-container [formGroupName]="i">
-
-                <td>
-                    <a href="" class="font-medium whitespace-nowrap">{{file?.controls.fileName.value}}</a> 
-                    <!-- <div class="text-gray-600 text-xs whitespace-nowrap mt-0.5">Photography</div> -->
-                </td>
-                <td>
-                    <select class="form-select form-select-sm w-4/12" aria-label=".form-select-sm example" 
-                    placeholder="typeDocument"
-                    formControlName="typeDocument">
-
-                        <option>Type Document 1</option>
-                        <option>Type Document 2</option>
-                        <option>Type Document 3</option>
-                    </select>
-                  
-                </td>
-                <td>
-                    <input id="regular-form-1" type="text" 
-                             class="form-control form-control-sm w-4/12" 
-                             placeholder="libellé complémentaire"
-                             formControlName="libelleComplementaire">
-                </td>
-                <td class="w-56 table-report__action">
-                    <div class="flex items-center justify-center">
-                        <a class="flex items-center text-theme-6" (click)='deleteFile(i)' href="javascript:;" data-toggle="modal" data-target="#delete-confirmation-modal"> 
-                            <i class="w-4 h-4 mr-1 fas fa-trash" ></i>
-                            Delete 
-                        </a>
-                    </div>
-                </td>       
+      <thead>
+        <tr>
+          <th class="text-center whitespace-nowrap">FILES NAME</th>
+          <th class="text-center whitespace-nowrap">Type Document</th>
+          <th class="text-center whitespace-nowrap">libellé complémentaire</th>
+          <th class="text-center whitespace-nowrap">ACTIONS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container formArrayName="studentFiles">
+          <tr
+            class="bg-gray-100 intro-x"
+            *ngFor="
+              let file of studentFileControl?.controls
+                | filter: filter
+                | paginate: config;
+              let i = index
+            "
+          >
+            <ng-container [formGroupName]="fieldGlobalIndex(i)">
+              <td>
+                <a href="" class="font-medium whitespace-nowrap">{{
+                  file?.controls.fileName.value
+                }}</a>
+                <!-- <div class="text-gray-600 text-xs whitespace-nowrap mt-0.5">Photography</div> -->
+              </td>
+              <td>
+                <select
+                  class="w-4/12 form-select form-select-sm"
+                  aria-label=".form-select-sm example"
+                  placeholder="typeDocument"
+                  formControlName="typeDocument"
+                >
+                  <option>Type Document 1</option>
+                  <option>Type Document 2</option>
+                  <option>Type Document 3</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  id="regular-form-1"
+                  type="text"
+                  class="w-4/12 form-control form-control-sm"
+                  placeholder="libellé complémentaire"
+                  formControlName="libelleComplementaire"
+                />
+              </td>
+              <td class="w-56 table-report__action">
+                <div class="flex items-center justify-center">
+                  <a
+                    class="flex items-center text-theme-6"
+                    (click)="deleteFile(i)"
+                    href="javascript:;"
+                    data-toggle="modal"
+                    data-target="#delete-confirmation-modal"
+                  >
+                    <i class="w-4 h-4 mr-1 fas fa-trash"></i>
+                    Delete
+                  </a>
+                </div>
+              </td>
             </ng-container>
-
-            </tr>
-             </ng-container>
-
-        </tbody>
+          </tr>
+        </ng-container>
+      </tbody>
     </table>
     <div class="py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <app-paginations (pageChange)="config.currentPage=$event"></app-paginations>
-      </div>
-</div>
-</form >
+      <app-paginations
+        (pageChange)="config.currentPage = $event"
+      ></app-paginations>
+    </div>
+  </div>
+</form>
 
 <!-- END: Data List -->
 <!-- BEGIN: Pagination -->
