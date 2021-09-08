@@ -16,7 +16,7 @@ import { FormArray, FormGroup } from '@angular/forms';
 export class TableFilesComponent implements OnInit {
   @Input() filesStudentUploadedFromGroup: FormGroup = new FormGroup({});
   @Output() studentFilesTableEvent = new EventEmitter();
- studentFiles : FormArray = new FormArray([])
+  studentFiles: FormArray = new FormArray([]);
 
   config = {
     id: 'custom',
@@ -36,7 +36,6 @@ export class TableFilesComponent implements OnInit {
     }
     if (changes['studentFiles']) {
       console.log(this.studentFiles);
-
     }
   }
 
@@ -45,12 +44,19 @@ export class TableFilesComponent implements OnInit {
     this.studentFileControl.value.splice(index, 1);
     this.studentFilesTableEvent.emit(this.studentFileControl.value);
 
-    console.log(this.filesStudentUploadedFromGroup.value)
-    console.log(this.filesStudentUploadedFromGroup.controls.value)
-
+    console.log(this.filesStudentUploadedFromGroup.value);
+    console.log(this.filesStudentUploadedFromGroup.controls.value);
   }
 
   get studentFileControl(): FormArray {
     return this.filesStudentUploadedFromGroup.get('studentFiles') as FormArray;
+  }
+
+  /**
+   * fieldGlobalIndex
+   * * To fix pagination with formArray
+   */
+  fieldGlobalIndex(index: number) {
+    return this.config.itemsPerPage * (this.config.currentPage - 1) + index;
   }
 }
