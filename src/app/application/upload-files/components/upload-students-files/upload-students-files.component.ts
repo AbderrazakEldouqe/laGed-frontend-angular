@@ -3,6 +3,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IEtudiant } from 'src/app/_core/models/i-etudiant';
 import { IInscription } from 'src/app/_core/models/i-inscription';
 import { EtudiantService } from 'src/app/_core/services/etudiant-service';
+import { ReactiveFormsService } from 'src/app/_core/services/reactive-forms.service';
 
 @Component({
   selector: 'app-upload-students-files',
@@ -16,13 +17,13 @@ export class UploadStudentsFilesComponent implements OnInit {
   listAnneeScolaire: string[] = [];
   listStudentByAnneeScolaire : IEtudiant[]=[]
 
-  constructor(private fb: FormBuilder , private etudiantService : EtudiantService ) {
+  constructor(private fb: FormBuilder , private etudiantService : EtudiantService ,private reactiveFormsService :ReactiveFormsService) {
   }
 
   ngOnInit(): void {
     this.filesStudentUploadedFromGroup = this.fb.group({
       AnneeScolaire : [null, Validators.required],
-      studentCode: [null, Validators.required],
+      studentCode: [{value: null, disabled: true}, [Validators.required]],
       studentFiles: this.fb.array([]),
     });
     this.getAllAnneeScolaire();
@@ -33,6 +34,7 @@ export class UploadStudentsFilesComponent implements OnInit {
   uploadNow() {
     console.log('send Files To Back-End');
     console.log(this.filesStudentUploadedFromGroup.value);
+    this.reactiveFormsService.validateAllFormFields(this.filesStudentUploadedFromGroup);
   }
 
   filesStudentUploadedEventEmitter(event: any) {
