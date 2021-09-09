@@ -35,9 +35,11 @@ export class FormAddEditCategoryDocumentComponent implements OnInit {
   }
 
   onSubmit(): void {
+    console.log('ss');
     if (this.categoryDocument) {
       this.update();
     } else {
+      console.log('ss1');
       this.store();
     }
   }

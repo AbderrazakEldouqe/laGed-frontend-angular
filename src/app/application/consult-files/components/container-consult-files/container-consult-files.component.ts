@@ -69,6 +69,21 @@ export class ContainerConsultFilesComponent implements OnInit, OnDestroy {
       this.listAnneeScolaire = res;
     });
   }
+
+  searchMultiCriteria(data: any): void {
+    this.subs.add(
+      this.consultFilesService
+        .getEtudiantDocumentByCriteria(
+          data?.anneeScolaire,
+          data?.matriculeEtudiant,
+          data?.nomEtudiant,
+          data?.typeDocument
+        )
+        .subscribe((res: any[]) => {
+          this.filesData = res;
+        })
+    );
+  }
   /* End Services */
   /**
    * ngOnDestroy

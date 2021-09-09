@@ -100,7 +100,7 @@ export class ContainerCategoryDocumentComponent implements OnInit {
       this.jsService.modifyObjectElementFromArrayByKey(
         this.categoryDocumentsData,
         data,
-        'id'
+        'idCategorie'
       );
     this.notification.success(
       `Category Document bien Modfiee !`,
@@ -110,7 +110,7 @@ export class ContainerCategoryDocumentComponent implements OnInit {
   }
 
   delete(categoryDocument: any): void {
-    const id = categoryDocument.id;
+    const id = categoryDocument.idCategorie;
     this.subs.add(
       this.categoryDocumentService.delete(id).subscribe((res: ICategoryDoc) => {
         this.handleResponseDelete(categoryDocument);
@@ -123,7 +123,7 @@ export class ContainerCategoryDocumentComponent implements OnInit {
       this.jsService.deleteObjectElementFromArrayByKey(
         this.categoryDocumentsData,
         data,
-        'id'
+        'idCategorie'
       )
     );
     this.notification.success(

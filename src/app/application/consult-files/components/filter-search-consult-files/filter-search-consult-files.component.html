@@ -1,5 +1,5 @@
 <!-- BEGIN: Inline Form -->
-<div class="mt-5 intro-y box">
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="mt-5 intro-y box">
   <div
     class="flex flex-col items-center p-5 border-b border-gray-200  sm:flex-row dark:border-dark-5"
   >
@@ -8,20 +8,29 @@
   <div id="inline-form" class="p-3">
     <div class="preview">
       <div class="grid grid-cols-12 gap-2">
-        <ng-select class="col-span-3" placeholder="Anne Scolaire">
+        <ng-select
+          formControlName="anneeScolaire"
+          class="col-span-3"
+          placeholder="Anne Scolaire"
+        >
           <ng-option *ngFor="let date of listAnneeScolaire" [value]="date">{{
             date
           }}</ng-option>
         </ng-select>
 
-        <ng-select class="col-span-3" placeholder="TypeDocuments">
+        <ng-select
+          formControlName="typeDocument"
+          class="col-span-3"
+          placeholder="TypeDocuments"
+        >
           <ng-option
             *ngFor="let category of categoryDocumentsData"
-            [value]="category?.idCategorie"
+            [value]="category?.catDoc"
             >{{ category?.catDoc }}</ng-option
           >
         </ng-select>
         <input
+          formControlName="matriculeEtudiant"
           type="text"
           style="height: 90%; border-color: #b9bcc3"
           class="col-span-3 form-control"
@@ -29,6 +38,7 @@
           aria-label="default input inline 3"
         />
         <input
+          formControlName="nomEtudiant"
           type="text"
           style="height: 90%; border-color: #b9bcc3"
           class="col-span-3 form-control"
@@ -39,9 +49,12 @@
     </div>
   </div>
   <div class="flex flex-row-reverse">
-    <button class="inline-block w-24 mb-2 mr-3 btn btn-outline-primary">
+    <button
+      type="submit"
+      class="inline-block w-24 mb-2 mr-3 btn btn-outline-primary"
+    >
       Search
     </button>
   </div>
-</div>
+</form>
 <!-- END: Inline Form -->

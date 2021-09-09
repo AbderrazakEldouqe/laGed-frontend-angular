@@ -34,4 +34,32 @@ export class ConsultFilesService {
       }
     );
   }
+
+  getEtudiantDocumentByCriteria(
+    anneeScolaire: string,
+    matriculeEtudiant: string,
+    nomEtudiant: string,
+    typeDocument: string,
+    headersObject = {}
+  ): Observable<any> {
+    let query: string = '';
+    if (anneeScolaire) {
+      query += 'anneeScolaire=' + anneeScolaire;
+    }
+    if (matriculeEtudiant) {
+      query += '&matriculeEtudiant=' + matriculeEtudiant;
+    }
+    if (nomEtudiant) {
+      query += '&nomEtudiant=' + nomEtudiant;
+    }
+    if (typeDocument) {
+      query += '&typeDocument=' + typeDocument;
+    }
+    return this.http.get(
+      `${environment.apiUrl}/apiEtudiantDocument/getEtudiantDocumentCriteria?${query}`,
+      {
+        headers: headersObject,
+      }
+    );
+  }
 }
