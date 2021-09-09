@@ -23,7 +23,8 @@
 
     <div *ngIf='showTableFilesOrIconBolean'>
       <app-table-files [filesStudentUploadedFromGroup]="filesStudentUploadedFromGroup"
-        (studentFilesTableEvent)='filesStudentUploadedEventEmitter($event)'>
+        (studentFilesTableEvent)='filesStudentUploadedEventEmitter($event)'
+        [categoryDocumentsData] ="categoryDocumentsData">
       </app-table-files>
     </div>
 

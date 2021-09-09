@@ -8,15 +8,15 @@
           <ng-select
             class="col-span-3"
             placeholder="Anne Scolaire"
-            formControlName="AnneeScolaire"
+            formControlName="anneeScolaire"
             (change)="getlistEtudiantByInscriptiondate()"
             [ngClass]="{
               'is-valid':
-                filesStudentUploadedFromGroup.get('AnneeScolaire')?.valid,
+                filesStudentUploadedFromGroup.get('anneeScolaire')?.valid,
               'is-invalid':
-                filesStudentUploadedFromGroup.get('AnneeScolaire')?.invalid &&
-                (filesStudentUploadedFromGroup.get('AnneeScolaire')?.touched ||
-                  filesStudentUploadedFromGroup.get('AnneeScolaire')?.dirty)
+                filesStudentUploadedFromGroup.get('anneeScolaire')?.invalid &&
+                (filesStudentUploadedFromGroup.get('anneeScolaire')?.touched ||
+                  filesStudentUploadedFromGroup.get('anneeScolaire')?.dirty)
             }"
           >
             <ng-option *ngFor="let date of listAnneeScolaire" [value]="date">{{
@@ -25,15 +25,15 @@
           </ng-select>
           <div
             *ngIf="
-              (filesStudentUploadedFromGroup.get('AnneeScolaire')?.invalid &&
-                filesStudentUploadedFromGroup.get('AnneeScolaire')?.touched) ||
-              filesStudentUploadedFromGroup.get('AnneeScolaire')?.dirty
+              (filesStudentUploadedFromGroup.get('anneeScolaire')?.invalid &&
+                filesStudentUploadedFromGroup.get('anneeScolaire')?.touched) ||
+              filesStudentUploadedFromGroup.get('anneeScolaire')?.dirty
             "
           >
             <div
               *ngIf="
                 filesStudentUploadedFromGroup
-                  .get('AnneeScolaire')
+                  .get('anneeScolaire')
                   ?.getError('required')
               "
               class="mt-2 text-theme-6"
@@ -48,33 +48,33 @@
           <ng-select
             class="col-span-3"
             placeholder="Code Etudiant"
-            formControlName="studentCode"
+            formControlName="etudiantDTO"
             [ngClass]="{
               'is-valid':
-                filesStudentUploadedFromGroup.get('studentCode')?.valid,
+                filesStudentUploadedFromGroup.get('etudiantDTO')?.valid,
               'is-invalid':
-                filesStudentUploadedFromGroup.get('studentCode')?.invalid &&
-                (filesStudentUploadedFromGroup.get('studentCode')?.touched ||
-                  filesStudentUploadedFromGroup.get('studentCode')?.dirty)
+                filesStudentUploadedFromGroup.get('etudiantDTO')?.invalid &&
+                (filesStudentUploadedFromGroup.get('etudiantDTO')?.touched ||
+                  filesStudentUploadedFromGroup.get('etudiantDTO')?.dirty)
             }"
           >
             <ng-option
               *ngFor="let etud of listStudentByAnneeScolaire"
-              [value]="etud?.idEtudiant"
+              [value]="etud"
               >{{ etud?.nom }} ,{{ etud?.prenom }}</ng-option
             >
           </ng-select>
           <div
             *ngIf="
-              (filesStudentUploadedFromGroup.get('studentCode')?.invalid &&
-                filesStudentUploadedFromGroup.get('studentCode')?.touched) ||
-              filesStudentUploadedFromGroup.get('studentCode')?.dirty
+              (filesStudentUploadedFromGroup.get('etudiantDTO')?.invalid &&
+                filesStudentUploadedFromGroup.get('etudiantDTO')?.touched) ||
+              filesStudentUploadedFromGroup.get('etudiantDTO')?.dirty
             "
           >
             <div
               *ngIf="
                 filesStudentUploadedFromGroup
-                  .get('studentCode')
+                  .get('etudiantDTO')
                   ?.getError('required')
               "
               class="mt-2 text-theme-6"

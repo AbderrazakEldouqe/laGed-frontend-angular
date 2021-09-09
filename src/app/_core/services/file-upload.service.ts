@@ -20,7 +20,7 @@ export class FileUploadService {
         reader.onloadend = (e: any) => {
           AllFiles.push({
             fileName: file.name,
-            fileBase64: e.target.result, //Base64 string for preview image
+            filebase64: e.target.result, //Base64 string for preview image
           });
           //this.filesStudentUploadedEventEmitter();
           console.log('files', AllFiles);
@@ -59,7 +59,7 @@ export class FileUploadService {
       reader.onload = (ev: any) => {
         resolve({
           fileName: file.name,
-          fileBase64: ev.target.result, //Base64 string for preview image
+          filebase64: ev.target.result, //Base64 string for preview image
         });
       };
     });

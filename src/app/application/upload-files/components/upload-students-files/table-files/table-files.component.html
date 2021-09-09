@@ -11,7 +11,7 @@
         </tr>
       </thead>
       <tbody>
-        <ng-container formArrayName="studentFiles">
+        <ng-container formArrayName="listFileRequest">
           <tr
             class="bg-gray-100 intro-x"
             *ngFor="
@@ -29,27 +29,26 @@
               </td>
               <td>
                 <ng-select class="col-span-3" placeholder="Type Document"
-                  formControlName="typeDocument"
+                  formControlName="categorieDTO"
+                  dropdownPosition ="bottom"
                   [ngClass]="{
-                    'is-valid': file.get('typeDocument')?.valid,
+                    'is-valid': file.get('categorieDTO')?.valid,
                     'is-invalid':
-                    file.get('typeDocument')?.invalid &&
-                      (file.get('typeDocument')?.touched ||
-                      file.get('typeDocument')?.dirty)
+                    file.get('categorieDTO')?.invalid &&
+                      (file.get('categorieDTO')?.touched ||
+                      file.get('categorieDTO')?.dirty)
                   }">
-                  <ng-option >Type Document 1</ng-option>
-                  <ng-option >Type Document 1</ng-option>
-
+                  <ng-option *ngFor='let cat of categoryDocumentsData' [value]='cat'>{{cat.catDoc}}</ng-option>
                 </ng-select>
                 <div
                 *ngIf="
-                  (file.get('typeDocument')?.invalid 
-                  && file.get('typeDocument')?.touched) ||
-                  file.get('typeDocument')?.dirty
+                  (file.get('categorieDTO')?.invalid 
+                  && file.get('categorieDTO')?.touched) ||
+                  file.get('categorieDTO')?.dirty
                 "
               >
                 <div
-                  *ngIf="file.get('typeDocument')?.getError('required')"
+                  *ngIf="file.get('categorieDTO')?.getError('required')"
                   class="mt-2 text-theme-6"
                 >
                   This field is required

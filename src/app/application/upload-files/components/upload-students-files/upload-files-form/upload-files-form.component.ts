@@ -57,8 +57,8 @@ export class UploadFilesFormComponent implements OnInit {
         this.studentFileControl.push(
           this.createItem({
             fileName: element.fileName,
-            fileBase64: element.fileBase64, //Base64 string for preview image
-            typeDocument: undefined,
+            filebase64: element.filebase64, //Base64 string for preview image
+            categorieDTO: undefined,
             libelleComplementaire : undefined ,
           })
         );
@@ -87,8 +87,8 @@ export class UploadFilesFormComponent implements OnInit {
     console.log(data)
     return this.fb.group({
             fileName: [data.fileName, Validators.required],
-            fileBase64: [data.fileBase64,  Validators.required],
-            typeDocument: [null, Validators.required],
+            filebase64: [data.filebase64,  Validators.required],
+            categorieDTO: [null, Validators.required],
             libelleComplementaire: [null ,Validators.required],
           });
   }
@@ -107,20 +107,20 @@ export class UploadFilesFormComponent implements OnInit {
    *   Help to get all student Files controls as form array.
    */
      get studentFileControl(): FormArray {
-      return this.filesStudentUploadedFromGroup.get('studentFiles') as FormArray;
+      return this.filesStudentUploadedFromGroup.get('listFileRequest') as FormArray;
     }
   
    /**
    *   Help to get all Année Scolaire controls as form array.
    */
     get AnneeScolaireControl(){
-      return this.filesStudentUploadedFromGroup.get('AnneeScolaire') ;
+      return this.filesStudentUploadedFromGroup.get('anneeScolaire') ;
     }
 
      /**
    *   Help to get all student Code controls as form array.
    */
     get studentCodeControl(){
-      return this.filesStudentUploadedFromGroup.get('studentCode') ;
+      return this.filesStudentUploadedFromGroup.get('etudiantDTO') ;
     }
 }

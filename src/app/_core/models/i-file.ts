@@ -1,7 +1,7 @@
 export interface IFile {
   fileName?: string;
-  fileBase64?: string;
+  filebase64?: string;
   libelleComplementaire?: string,
-  typeDocument?: string,
+  categorieDTO?: string,
   
 }

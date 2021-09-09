@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { FormArray, FormGroup } from '@angular/forms';
 import { CategoryDocumentService } from 'src/app/application/category-document/services/category-document.service';
+import { ICategoryDoc } from 'src/app/_core/models/i-category-doc';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -17,18 +18,20 @@ import Swal from 'sweetalert2';
 })
 export class TableFilesComponent implements OnInit {
   @Input() filesStudentUploadedFromGroup: FormGroup = new FormGroup({});
+  @Input() categoryDocumentsData : ICategoryDoc []=[];
+
   @Output() studentFilesTableEvent = new EventEmitter();
-  studentFiles: FormArray = new FormArray([]);
+  listFileRequest: FormArray = new FormArray([]);
 
   config = {
     id: 'custom',
     itemsPerPage: 4,
     currentPage: 1,
-    totalItems: this.filesStudentUploadedFromGroup?.value?.studentFiles?.length,
+    totalItems: this.filesStudentUploadedFromGroup?.value?.listFileRequest?.length,
   };
   tableSizes = [4, 8, 10, 14];
   filter = '';
-  constructor(private categoryDocumentService : CategoryDocumentService) {}
+  constructor() {}
 
   ngOnInit(): void {}
 
@@ -36,8 +39,8 @@ export class TableFilesComponent implements OnInit {
     if (changes['filesStudentUploadedFromGroup']) {
       console.log(this.filesStudentUploadedFromGroup.value);
     }
-    if (changes['studentFiles']) {
-      console.log(this.studentFiles);
+    if (changes['categoryDocumentsData']) {
+      console.log(this.categoryDocumentsData);
     }
   }
 
@@ -70,6 +73,6 @@ export class TableFilesComponent implements OnInit {
   } 
   
   get studentFileControl(): FormArray {
-    return this.filesStudentUploadedFromGroup.get('studentFiles') as FormArray;
+    return this.filesStudentUploadedFromGroup.get('listFileRequest') as FormArray;
   }
 }
