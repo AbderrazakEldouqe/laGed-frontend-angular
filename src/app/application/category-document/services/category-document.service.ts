@@ -10,20 +10,20 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class CategoryDocumentService extends DataService {
-  data: ICategoryDoc[];
+  //data: ICategoryDoc[];
   constructor(http: HttpClient) {
-    super(`${environment.apiUrl}/category-document`, http);
-    this.data = [];
+    super(`${environment.apiUrl}/apiCategorie/Categories`, http);
+    /*this.data = [];
     for (let i = 0; i <= 10; i++) {
       this.data.push({
         id: i.toString(),
         cat_doc: 'bulltin' + i,
         libelle: 'bulltin' + i,
       });
-    }
+    }*/
   }
 
-  getAll(headersObject = {}): Observable<any> {
+  /*getAll(headersObject = {}): Observable<any> {
     return of(this.data).pipe(delay(2000));
-  }
+  }*/
 }

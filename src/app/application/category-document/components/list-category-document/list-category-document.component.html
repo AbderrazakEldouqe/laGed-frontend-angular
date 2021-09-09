@@ -61,25 +61,24 @@
         >
           <td>
             <a href="" class="font-medium whitespace-nowrap">{{
-              category?.id
+              category?.idCategorie
             }}</a>
             <div class="text-gray-600 text-xs whitespace-nowrap mt-0.5">
-              {{ category?.cat_doc }}
+              {{ category?.catDoc }}
             </div>
           </td>
-          <td class="text-center">{{ category?.cat_doc }}</td>
+          <td class="text-center">{{ category?.catDoc }}</td>
           <td class="text-center">{{ category?.libelle }}</td>
 
           <td class="w-56 table-report__action">
             <div class="flex items-center justify-center">
-              <button
-                (click)="edit(category)"
-                class="flex items-center mr-3"
-
-              >
+              <button (click)="edit(category)" class="flex items-center mr-3">
                 <i class="w-4 h-4 mr-1 far fa-edit"></i> Edit
               </button>
-               <button (click)="delete(category)" class="flex items-center text-theme-6">
+              <button
+                (click)="delete(category)"
+                class="flex items-center text-theme-6"
+              >
                 <i class="w-4 h-4 mr-1 far fa-trash-alt"></i> Delete
               </button>
             </div>

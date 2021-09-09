@@ -29,15 +29,17 @@ export class FormAddEditCategoryDocumentComponent implements OnInit {
 
   initialFormGroupe(): void {
     this.form = new FormGroup({
-      cat_doc: new FormControl(null, [Validators.required]),
+      catDoc: new FormControl(null, [Validators.required]),
       libelle: new FormControl(null, [Validators.required]),
     });
   }
 
   onSubmit(): void {
+    console.log('ss');
     if (this.categoryDocument) {
       this.update();
     } else {
+      console.log('ss1');
       this.store();
     }
   }
@@ -50,7 +52,7 @@ export class FormAddEditCategoryDocumentComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges): void {
     if (this.categoryDocument) {
       this.form.patchValue({
-        cat_doc: this.categoryDocument.cat_doc,
+        catDoc: this.categoryDocument.catDoc,
         libelle: this.categoryDocument.libelle,
       });
     }
@@ -58,7 +60,7 @@ export class FormAddEditCategoryDocumentComponent implements OnInit {
 
   update(): void {
     let updatedTask: any = this.form.value;
-    updatedTask['id'] = this.categoryDocument?.id;
+    updatedTask['idCategorie'] = this.categoryDocument?.idCategorie;
     this.updateEvent.emit(updatedTask);
     this.form.reset();
     this.categoryDocument = null;

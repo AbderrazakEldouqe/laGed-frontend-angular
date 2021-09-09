@@ -10,28 +10,28 @@
     <!-- BEGIN: Form Layout -->
     <form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-5 intro-y box">
       <div>
-        <label for="cat_doc" class="form-label">cat_doc</label>
+        <label for="catDoc" class="form-label">catDoc</label>
         <input
-          formControlName="cat_doc"
-          id="cat_doc"
+          formControlName="catDoc"
+          id="catDoc"
           type="text"
           class="w-full form-control"
           placeholder="Input text"
           [ngClass]="{
-            'border-theme-9': form.get('cat_doc')?.valid,
+            'border-theme-9': form.get('catDoc')?.valid,
             'border-theme-6':
-              form.get('cat_doc')?.invalid &&
-              (form.get('cat_doc')?.touched || form.get('cat_doc')?.dirty)
+              form.get('catDoc')?.invalid &&
+              (form.get('catDoc')?.touched || form.get('catDoc')?.dirty)
           }"
         />
         <div
           *ngIf="
-            (form.get('cat_doc')?.invalid && form.get('cat_doc')?.touched) ||
-            form.get('cat_doc')?.dirty
+            (form.get('catDoc')?.invalid && form.get('catDoc')?.touched) ||
+            form.get('catDoc')?.dirty
           "
         >
           <div
-            *ngIf="form.get('cat_doc')?.getError('required')"
+            *ngIf="form.get('catDoc')?.getError('required')"
             class="mt-2 text-theme-6"
           >
             This field is required
@@ -75,7 +75,7 @@
         >
           Cancel
         </button>
-        <button type="button" class="w-24 btn btn-primary">
+        <button type="submit" class="w-24 btn btn-primary">
           {{ categoryDocument ? "Update" : "Create" }}
         </button>
       </div>
