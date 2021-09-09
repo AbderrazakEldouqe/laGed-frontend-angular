@@ -1,12 +1,14 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ConsultFilesService {
-  data: any[];
+  /*data: any[];
   constructor() {
     this.data = [];
     for (let i = 0; i <= 10; i++) {
@@ -22,5 +24,14 @@ export class ConsultFilesService {
 
   getAll(headersObject = {}): Observable<any> {
     return of(this.data).pipe(delay(2000));
+  }*/
+  constructor(private http: HttpClient) {}
+  getAllCategoryByLastAnneScolaire(headersObject = {}): Observable<any> {
+    return this.http.get(
+      `${environment.apiUrl}/apiEtudiantDocument/getEtudiantDocumentByLastAnneScolaire`,
+      {
+        headers: headersObject,
+      }
+    );
   }
 }

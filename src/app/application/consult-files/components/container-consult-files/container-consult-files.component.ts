@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CategoryDocumentService } from 'src/app/application/category-document/services/category-document.service';
 import { ICategoryDoc } from 'src/app/_core/models/i-category-doc';
+import { EtudiantService } from 'src/app/_core/services/etudiant-service';
 import { SubSink } from 'subsink';
 import { ConsultFilesService } from '../../services/consult-files.service';
 
@@ -16,10 +17,13 @@ export class ContainerConsultFilesComponent implements OnInit, OnDestroy {
 
   categoryDocumentsData: ICategoryDoc[] = [];
 
+  listAnneeScolaire: string[] = [];
+
   /* End Variables */
   constructor(
     private consultFilesService: ConsultFilesService,
-    private categoryDocumentService: CategoryDocumentService
+    private categoryDocumentService: CategoryDocumentService,
+    private etudiantService: EtudiantService
   ) {}
 
   /**
@@ -29,6 +33,7 @@ export class ContainerConsultFilesComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.getAllDocuments();
     this.getAllCategoryDocuments();
+    this.getAllAnneeScolaire();
   }
 
   /* Start Services */
@@ -38,9 +43,11 @@ export class ContainerConsultFilesComponent implements OnInit, OnDestroy {
    */
   getAllDocuments(): void {
     this.subs.add(
-      this.consultFilesService.getAll().subscribe((res: any[]) => {
-        this.filesData = res;
-      })
+      this.consultFilesService
+        .getAllCategoryByLastAnneScolaire()
+        .subscribe((res: any[]) => {
+          this.filesData = res;
+        })
     );
   }
 
@@ -54,6 +61,13 @@ export class ContainerConsultFilesComponent implements OnInit, OnDestroy {
         this.categoryDocumentsData = res;
       })
     );
+  }
+
+  getAllAnneeScolaire() {
+    this.etudiantService.getAnneeScolaire().subscribe((res) => {
+      console.log(res);
+      this.listAnneeScolaire = res;
+    });
   }
   /* End Services */
   /**

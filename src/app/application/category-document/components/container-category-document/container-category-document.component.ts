@@ -81,10 +81,10 @@ export class ContainerCategoryDocumentComponent implements OnInit {
   }
 
   update(categoryDocument: ICategoryDoc): void {
-    const id = categoryDocument?.id;
+    const id = categoryDocument?.idCategorie;
     categoryDocument = this.jsService.deleteElementFromObjectByKey(
       categoryDocument,
-      'id'
+      'idCategorie'
     );
     this.subs.add(
       this.categoryDocumentService

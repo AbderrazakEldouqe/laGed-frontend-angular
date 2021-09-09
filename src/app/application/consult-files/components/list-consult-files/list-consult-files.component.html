@@ -57,15 +57,15 @@
           "
         >
           <td>
-            <a href="" class="font-medium whitespace-nowrap">{{
-              file?.name
-            }}</a>
+            <a href="" class="font-medium whitespace-nowrap"
+              >{{ file?.etudiantDTO?.nom }} {{ file?.etudiantDTO?.prenom }}</a
+            >
             <div class="text-gray-600 text-xs whitespace-nowrap mt-0.5">
-              {{ file?.matricule }}
+              {{ file?.etudiantDTO?.idEtudiant }}
             </div>
           </td>
-          <td class="text-center">{{ file?.anneScolaire }}</td>
-          <td class="text-center">{{ file?.typeDocument }}</td>
+          <td class="text-center">{{ file?.anneeScolaire }}</td>
+          <td class="text-center">{{ file?.categorieDTO?.catDoc }}</td>
 
           <td class="w-56 table-report__action">
             <div class="flex items-center justify-center">

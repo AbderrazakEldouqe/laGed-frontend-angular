@@ -14,6 +14,8 @@ import { ICategoryDoc } from 'src/app/_core/models/i-category-doc';
 })
 export class FilterSearchConsultFilesComponent implements OnInit {
   @Input() categoryDocumentsData: ICategoryDoc[] = [];
+
+  @Input() listAnneeScolaire: string[] = [];
   constructor() {}
 
   ngOnInit(): void {}

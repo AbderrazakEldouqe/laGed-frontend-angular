@@ -9,15 +9,16 @@
     <div class="preview">
       <div class="grid grid-cols-12 gap-2">
         <ng-select class="col-span-3" placeholder="Anne Scolaire">
-          <ng-option>2018/2019</ng-option>
-          <ng-option>2019/2020</ng-option>
+          <ng-option *ngFor="let date of listAnneeScolaire" [value]="date">{{
+            date
+          }}</ng-option>
         </ng-select>
 
         <ng-select class="col-span-3" placeholder="TypeDocuments">
           <ng-option
             *ngFor="let category of categoryDocumentsData"
-            [value]="category?.id"
-            >{{ category?.cat_doc }}</ng-option
+            [value]="category?.idCategorie"
+            >{{ category?.catDoc }}</ng-option
           >
         </ng-select>
         <input

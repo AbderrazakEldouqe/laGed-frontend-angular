@@ -3,81 +3,122 @@
     <div class="preview">
       <div class="grid grid-cols-4 gap-6">
         <div>
-
           <label for="crud-form-1" class="form-label">Année Scolaire</label>
 
-          <ng-select class="col-span-3" placeholder="Anne Scolaire" formControlName="AnneeScolaire"
-            (change)='getlistEtudiantByInscriptiondate()' 
+          <ng-select
+            class="col-span-3"
+            placeholder="Anne Scolaire"
+            formControlName="AnneeScolaire"
+            (change)="getlistEtudiantByInscriptiondate()"
             [ngClass]="{
-                    'is-valid': filesStudentUploadedFromGroup.get('AnneeScolaire')?.valid,
-                    'is-invalid':
-                    filesStudentUploadedFromGroup.get('AnneeScolaire')?.invalid &&
-                      (filesStudentUploadedFromGroup.get('AnneeScolaire')?.touched ||
-                      filesStudentUploadedFromGroup.get('AnneeScolaire')?.dirty)
-                  }">
-            <ng-option *ngFor="let date of listAnneeScolaire" [value]="date">{{ date }}</ng-option>
+              'is-valid':
+                filesStudentUploadedFromGroup.get('AnneeScolaire')?.valid,
+              'is-invalid':
+                filesStudentUploadedFromGroup.get('AnneeScolaire')?.invalid &&
+                (filesStudentUploadedFromGroup.get('AnneeScolaire')?.touched ||
+                  filesStudentUploadedFromGroup.get('AnneeScolaire')?.dirty)
+            }"
+          >
+            <ng-option *ngFor="let date of listAnneeScolaire" [value]="date">{{
+              date
+            }}</ng-option>
           </ng-select>
           <div
-          *ngIf="
-            (filesStudentUploadedFromGroup.get('AnneeScolaire')?.invalid && filesStudentUploadedFromGroup.get('AnneeScolaire')?.touched) ||
-            filesStudentUploadedFromGroup.get('AnneeScolaire')?.dirty
-          "
-        >
-          <div
-            *ngIf="filesStudentUploadedFromGroup.get('AnneeScolaire')?.getError('required')"
-            class="mt-2 text-theme-6"
+            *ngIf="
+              (filesStudentUploadedFromGroup.get('AnneeScolaire')?.invalid &&
+                filesStudentUploadedFromGroup.get('AnneeScolaire')?.touched) ||
+              filesStudentUploadedFromGroup.get('AnneeScolaire')?.dirty
+            "
           >
-            This field is required
+            <div
+              *ngIf="
+                filesStudentUploadedFromGroup
+                  .get('AnneeScolaire')
+                  ?.getError('required')
+              "
+              class="mt-2 text-theme-6"
+            >
+              This field is required
+            </div>
           </div>
-        </div>
         </div>
         <div>
           <label for="crud-form-1" class="form-label">Code Etudiant</label>
-          <ng-select class="col-span-3" placeholder="Code Etudiant" formControlName="studentCode"
-          [ngClass]="{
-            'is-valid': filesStudentUploadedFromGroup.get('studentCode')?.valid,
-            'is-invalid':
-              filesStudentUploadedFromGroup.get('studentCode')?.invalid &&
-              (filesStudentUploadedFromGroup.get('studentCode')?.touched ||
-              filesStudentUploadedFromGroup.get('studentCode')?.dirty)}">
-            <ng-option *ngFor="let etud of listStudentByAnneeScolaire" [value]="etud?.id"
-              >{{ etud?.nom }} ,{{
-              etud?.prenom}}</ng-option>
+          <ng-select
+            class="col-span-3"
+            placeholder="Code Etudiant"
+            formControlName="studentCode"
+            [ngClass]="{
+              'is-valid':
+                filesStudentUploadedFromGroup.get('studentCode')?.valid,
+              'is-invalid':
+                filesStudentUploadedFromGroup.get('studentCode')?.invalid &&
+                (filesStudentUploadedFromGroup.get('studentCode')?.touched ||
+                  filesStudentUploadedFromGroup.get('studentCode')?.dirty)
+            }"
+          >
+            <ng-option
+              *ngFor="let etud of listStudentByAnneeScolaire"
+              [value]="etud?.idEtudiant"
+              >{{ etud?.nom }} ,{{ etud?.prenom }}</ng-option
+            >
           </ng-select>
           <div
-          *ngIf="
-            (filesStudentUploadedFromGroup.get('studentCode')?.invalid && filesStudentUploadedFromGroup.get('studentCode')?.touched) ||
-            filesStudentUploadedFromGroup.get('studentCode')?.dirty
-          "
-        >
-          <div
-            *ngIf="filesStudentUploadedFromGroup.get('studentCode')?.getError('required')"
-            class="mt-2 text-theme-6"
+            *ngIf="
+              (filesStudentUploadedFromGroup.get('studentCode')?.invalid &&
+                filesStudentUploadedFromGroup.get('studentCode')?.touched) ||
+              filesStudentUploadedFromGroup.get('studentCode')?.dirty
+            "
           >
-            This field is required
+            <div
+              *ngIf="
+                filesStudentUploadedFromGroup
+                  .get('studentCode')
+                  ?.getError('required')
+              "
+              class="mt-2 text-theme-6"
+            >
+              This field is required
+            </div>
           </div>
-        </div>
         </div>
       </div>
     </div>
   </div>
 
   <!-- file upload modal -->
-  <article aria-label="File Upload Modal" class="relative flex flex-col h-full bg-white rounded-md shadow-xl"
-    ondrop="dropHandler(event);" ondragover="dragOverHandler(event);" ondragleave="dragLeaveHandler(event);"
-    ondragenter="dragEnterHandler(event);">
+  <article
+    aria-label="File Upload Modal"
+    class="relative flex flex-col h-full bg-white rounded-md shadow-xl"
+    ondrop="dropHandler(event);"
+    ondragover="dragOverHandler(event);"
+    ondragleave="dragLeaveHandler(event);"
+    ondragenter="dragEnterHandler(event);"
+  >
     <section class="flex flex-col w-full h-full p-8 overflow-auto">
-      <header class="flex flex-col items-center justify-center py-12 border-2 border-gray-400 border-dashed">
-        <p class="flex flex-wrap justify-center mb-3 font-semibold text-gray-900">
+      <header
+        class="flex flex-col items-center justify-center py-12 border-2 border-gray-400 border-dashed "
+      >
+        <p
+          class="flex flex-wrap justify-center mb-3 font-semibold text-gray-900"
+        >
           <span>Drag and drop your</span>&nbsp;<span>files anywhere or</span>
         </p>
-        <input id="hidden-input" type="file" multiple class="hidden" (change)="uploadFiles($event)" />
-        <label for='hidden-input' id="button"
-          class="px-3 py-1 mt-2 bg-gray-200 rounded-sm hover:bg-gray-300 focus:shadow-outline focus:outline-none">
+        <input
+          id="hidden-input"
+          type="file"
+          multiple
+          class="hidden"
+          (change)="uploadFiles($event)"
+        />
+        <label
+          for="hidden-input"
+          id="button"
+          class="px-3 py-1 mt-2 bg-gray-200 rounded-sm  hover:bg-gray-300 focus:shadow-outline focus:outline-none"
+        >
           Upload a file
         </label>
       </header>
     </section>
   </article>
-
 </form>
