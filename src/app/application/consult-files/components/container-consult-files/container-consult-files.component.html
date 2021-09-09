@@ -1,9 +1,20 @@
+<app-form-edit-consult-files
+  [hidden]="!formIsShow"
+  [etudiantDocument]="selectedEtudiantDocument"
+  [categoryDocumentsData]="categoryDocumentsData"
+  (updateEvent)="update($event)"
+  (backToListEvent)="backToList()"
+>
+</app-form-edit-consult-files>
 <app-filter-search-consult-files
+  [hidden]="formIsShow"
   [categoryDocumentsData]="categoryDocumentsData"
   [listAnneeScolaire]="listAnneeScolaire"
   (SearchFilterEvent)="searchMultiCriteria($event)"
 ></app-filter-search-consult-files>
 <app-list-consult-files
+  [hidden]="formIsShow"
   [filesData]="filesData"
+  (editEvent)="edit($event)"
   (downloadEvent)="downloadFile($event)"
 ></app-list-consult-files>

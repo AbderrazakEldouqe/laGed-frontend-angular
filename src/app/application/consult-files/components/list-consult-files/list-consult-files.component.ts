@@ -6,6 +6,8 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
+import { IEtudiantDoc } from 'src/app/_core/models/i-etudiant-doc';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-list-consult-files',
@@ -18,6 +20,8 @@ export class ListConsultFilesComponent implements OnInit {
   @Input() filesData: any[] = [];
 
   @Output() downloadEvent = new EventEmitter();
+
+  @Output() editEvent = new EventEmitter();
 
   config = {
     id: 'custom',
@@ -43,5 +47,27 @@ export class ListConsultFilesComponent implements OnInit {
   }
   download(data: any) {
     this.downloadEvent.emit(data);
+  }
+
+  annuler(data: any) {
+    //this.downloadEvent.emit(data);
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You will not be able to recover this imaginary file!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, cancel it!',
+      cancelButtonText: 'No, keep it',
+    }).then((result) => {
+      if (result.value) {
+        //this.deleteEvent.emit(categoryDocuments);
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire('Cancelled', 'Your imaginary file is safe :)', 'error');
+      }
+    });
+  }
+
+  edit(etudiantDocument: IEtudiantDoc): void {
+    this.editEvent.emit(etudiantDocument);
   }
 }
