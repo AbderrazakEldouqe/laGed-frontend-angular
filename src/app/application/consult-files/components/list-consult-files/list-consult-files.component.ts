@@ -1,8 +1,10 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  EventEmitter,
   Input,
   OnInit,
+  Output,
 } from '@angular/core';
 
 @Component({
@@ -14,6 +16,8 @@ import {
 export class ListConsultFilesComponent implements OnInit {
   /* Start Variables */
   @Input() filesData: any[] = [];
+
+  @Output() downloadEvent = new EventEmitter();
 
   config = {
     id: 'custom',
@@ -36,5 +40,8 @@ export class ListConsultFilesComponent implements OnInit {
   onTableSizeChange(event: any): void {
     this.config.itemsPerPage = event.target.value;
     this.config.currentPage = 1;
+  }
+  download(data: any) {
+    this.downloadEvent.emit(data);
   }
 }

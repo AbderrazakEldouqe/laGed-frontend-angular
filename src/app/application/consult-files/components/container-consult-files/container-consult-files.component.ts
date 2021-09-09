@@ -4,6 +4,7 @@ import { ICategoryDoc } from 'src/app/_core/models/i-category-doc';
 import { EtudiantService } from 'src/app/_core/services/etudiant-service';
 import { SubSink } from 'subsink';
 import { ConsultFilesService } from '../../services/consult-files.service';
+import * as fileSaver from 'file-saver';
 
 @Component({
   selector: 'app-container-consult-files',
@@ -81,6 +82,20 @@ export class ContainerConsultFilesComponent implements OnInit, OnDestroy {
         )
         .subscribe((res: any[]) => {
           this.filesData = res;
+        })
+    );
+  }
+
+  downloadFile(data: any) {
+    this.subs.add(
+      this.consultFilesService
+        .GetFile(data?.idDocument)
+        .subscribe((response) => {
+          const blob: any = new Blob([response.body], {
+            type: 'application/octet-stream',
+          });
+          const url = window.URL.createObjectURL(blob);
+          fileSaver.saveAs(blob, data?.nomDoc);
         })
     );
   }

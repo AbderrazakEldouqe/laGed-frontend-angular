@@ -3,4 +3,7 @@
   [listAnneeScolaire]="listAnneeScolaire"
   (SearchFilterEvent)="searchMultiCriteria($event)"
 ></app-filter-search-consult-files>
-<app-list-consult-files [filesData]="filesData"></app-list-consult-files>
+<app-list-consult-files
+  [filesData]="filesData"
+  (downloadEvent)="downloadFile($event)"
+></app-list-consult-files>

@@ -12,4 +12,6 @@ export interface IEtudiantDoc {
   dateCreation?: string;
   createur?: string;
   fileBase64?: string;
+
+  nomDoc?: string;
 }

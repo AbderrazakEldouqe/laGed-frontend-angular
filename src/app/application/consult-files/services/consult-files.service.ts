@@ -62,4 +62,13 @@ export class ConsultFilesService {
       }
     );
   }
+
+  GetFile(idDoc: any, headersObject = {}): Observable<any> {
+    return this.http.get(
+      `${environment.apiUrl}/apiEtudiantDocument/getEtudiantDocumentByLastAnneScolaire?idDocument=${idDoc}`,
+      {
+        headers: headersObject,
+      }
+    );
+  }
 }
