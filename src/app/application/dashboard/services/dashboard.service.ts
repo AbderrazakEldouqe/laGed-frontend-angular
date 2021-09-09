@@ -12,4 +12,12 @@ export class DashboardService {
   getUserById(idUser: number): Observable<object> {
     return this.http.get(environment.apiUrl + '/apiUser/getUserById/' + idUser);
   }
+  getCountAllDocuments(){
+    return this.http.get(environment.apiUrl + '/apiEtudiantDocument/getCountAllDocuments');
+  }
+ 
+
+  getCountAllEtudiants(){
+    return this.http.get(environment.apiUrl + '/apiEtudiant/getCountAllEtudiants');
+  }
 }
