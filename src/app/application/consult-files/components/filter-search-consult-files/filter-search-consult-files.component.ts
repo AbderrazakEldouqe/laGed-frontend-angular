@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ICategoryDoc } from 'src/app/_core/models/i-category-doc';
+import { JsService } from 'src/app/_core/services/js.service';
 
 @Component({
   selector: 'app-filter-search-consult-files',
@@ -23,7 +24,7 @@ export class FilterSearchConsultFilesComponent implements OnInit {
   @Output() SearchFilterEvent = new EventEmitter();
 
   form!: FormGroup;
-  constructor() {}
+  constructor(public jsService: JsService) {}
 
   ngOnInit(): void {
     this.initialFormGroupe();
