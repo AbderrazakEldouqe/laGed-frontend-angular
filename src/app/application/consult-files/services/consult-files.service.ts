@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
@@ -59,6 +59,17 @@ export class ConsultFilesService {
       `${environment.apiUrl}/apiEtudiantDocument/getEtudiantDocumentCriteria?${query}`,
       {
         headers: headersObject,
+      }
+    );
+  }
+
+  GetFile(idDoc: any, headersObject = {}): Observable<HttpResponse<any>> {
+    return this.http.get(
+      `${environment.apiUrl}/apiEtudiantDocument/downloadFile?idDocument=${idDoc}`,
+      {
+        headers: headersObject,
+        responseType: 'blob',
+        observe: 'response',
       }
     );
   }

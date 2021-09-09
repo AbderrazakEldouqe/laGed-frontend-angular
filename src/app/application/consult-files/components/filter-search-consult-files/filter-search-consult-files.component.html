@@ -30,6 +30,7 @@
           >
         </ng-select>
         <input
+          (keypress)="jsService.numberOnly($event)"
           formControlName="matriculeEtudiant"
           type="text"
           style="height: 90%; border-color: #b9bcc3"

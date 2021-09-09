@@ -1,12 +1,10 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class JsService {
-
-  constructor() {
-  }
+  constructor() {}
 
   // for spread Operator
   spread(data: any, newElement: any = null): any[] {
@@ -51,8 +49,12 @@ export class JsService {
   }
 
   // for modify Object element from Array By Key
-  modifyObjectElementFromArrayByKey(data: any[], element: any, key: string): any {
-    return data.map(item => {
+  modifyObjectElementFromArrayByKey(
+    data: any[],
+    element: any,
+    key: string
+  ): any {
+    return data.map((item) => {
       if (element[key] === item[key]) {
         item = element;
       }
@@ -61,7 +63,11 @@ export class JsService {
   }
 
   // for delete Object element from Array By Key
-  deleteObjectElementFromArrayByKey(data: any[], element: any, key: string): any {
+  deleteObjectElementFromArrayByKey(
+    data: any[],
+    element: any,
+    key: string
+  ): any {
     const index = data.findIndex((item, i) => {
       return element[key] === item[key];
     });
@@ -81,5 +87,18 @@ export class JsService {
   deleteElementFromObjectByKey(object: any, key: string): any {
     delete object[key];
     return object;
+  }
+
+  /**
+   * numberOnly
+   * * For number only in inputs
+   */
+  numberOnly(event: any): boolean {
+    const charCode = event.which ? event.which : event.keyCode;
+    console.log('charCode', charCode);
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
   }
 }
