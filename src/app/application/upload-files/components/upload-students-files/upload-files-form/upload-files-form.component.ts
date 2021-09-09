@@ -6,7 +6,7 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IEtudiant } from 'src/app/_core/models/i-etudiant';
 import { IFile } from 'src/app/_core/models/i-file';
 import { IInscription } from 'src/app/_core/models/i-inscription';
@@ -83,7 +83,14 @@ export class UploadFilesFormComponent implements OnInit {
    *  We will create multiple form controls inside defined form controls photos.
    */
   createItem(data: IFile): FormGroup {
-    return this.fb.group(data);
+    // return this.fb.group(data);
+    console.log(data)
+    return this.fb.group({
+            fileName: [data.fileName, Validators.required],
+            fileBase64: [data.fileBase64,  Validators.required],
+            typeDocument: [null, Validators.required],
+            libelleComplementaire: [null ,Validators.required],
+          });
   }
 
 

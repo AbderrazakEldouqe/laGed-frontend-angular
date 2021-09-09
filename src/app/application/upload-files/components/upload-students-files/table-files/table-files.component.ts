@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { FormArray, FormGroup } from '@angular/forms';
 import { CategoryDocumentService } from 'src/app/application/category-document/services/category-document.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-table-files',
@@ -41,9 +42,23 @@ export class TableFilesComponent implements OnInit {
   }
 
   deleteFile(index: number) {
-    this.studentFileControl.controls.splice(index, 1);
-    this.studentFileControl.value.splice(index, 1);
-    this.studentFilesTableEvent.emit(this.studentFileControl.value);
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You will not be able to recover this imaginary file!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it',
+    }).then((result) => {
+      if (result.value) {
+        this.studentFileControl.controls.splice(index, 1);
+        this.studentFileControl.value.splice(index, 1);
+        this.studentFilesTableEvent.emit(this.studentFileControl.value);
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire('Cancelled', 'Your imaginary file is safe :)', 'error');
+      }
+    });
+    
   }
 
   /**

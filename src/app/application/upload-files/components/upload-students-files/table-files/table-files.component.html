@@ -26,25 +26,35 @@
                 <a href="" class="font-medium whitespace-nowrap">{{
                   file?.controls.fileName.value
                 }}</a>
-                <!-- <div class="text-gray-600 text-xs whitespace-nowrap mt-0.5">Photography</div> -->
               </td>
               <td>
-                <!-- <select
-                  class="w-4/12 form-select form-select-sm"
-                  aria-label=".form-select-sm example"
-                  placeholder="typeDocument"
-                  formControlName="typeDocument"
-                >
-                  <option>Type Document 1</option>
-                  <option>Type Document 2</option>
-                  <option>Type Document 3</option>
-                </select> -->
                 <ng-select class="col-span-3" placeholder="Type Document"
-                  formControlName="typeDocument">
+                  formControlName="typeDocument"
+                  [ngClass]="{
+                    'is-valid': file.get('typeDocument')?.valid,
+                    'is-invalid':
+                    file.get('typeDocument')?.invalid &&
+                      (file.get('typeDocument')?.touched ||
+                      file.get('typeDocument')?.dirty)
+                  }">
                   <ng-option >Type Document 1</ng-option>
                   <ng-option >Type Document 1</ng-option>
 
                 </ng-select>
+                <div
+                *ngIf="
+                  (file.get('typeDocument')?.invalid 
+                  && file.get('typeDocument')?.touched) ||
+                  file.get('typeDocument')?.dirty
+                "
+              >
+                <div
+                  *ngIf="file.get('typeDocument')?.getError('required')"
+                  class="mt-2 text-theme-6"
+                >
+                  This field is required
+                </div>
+              </div>
               </td>
               <td>
                 <input
@@ -53,8 +63,29 @@
                   class="w-3/12 form-control form-control-sm "
                   placeholder="libellé complémentaire"
                   formControlName="libelleComplementaire"
+                  [ngClass]="{
+                    'border-theme-9': file.get('libelleComplementaire')?.valid,
+                    'border-theme-6':
+                    file.get('libelleComplementaire')?.invalid &&
+                      (file.get('libelleComplementaire')?.touched || 
+                      file.get('libelleComplementaire')?.dirty)
+                  }"
            
                 />
+                <div
+                *ngIf="
+                  (file.get('libelleComplementaire')?.invalid 
+                  && file.get('libelleComplementaire')?.touched) ||
+                  file.get('libelleComplementaire')?.dirty
+                "
+              >
+                <div
+                  *ngIf="file.get('libelleComplementaire')?.getError('required')"
+                  class="mt-2 text-theme-6"
+                >
+                  This field is required
+                </div>
+              </div>
               </td>
               <td class="w-56 table-report__action">
                 <div class="flex items-center justify-center">
@@ -66,7 +97,7 @@
                     data-target="#delete-confirmation-modal"
                   >
                     <i class="w-4 h-4 mr-1 fas fa-trash"></i>
-                    Delete
+                    Delete {{file.get('libelleComplementaire')?.invalid}}
                   </a>
                 </div>
               </td>

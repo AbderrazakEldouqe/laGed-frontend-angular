@@ -22,14 +22,13 @@ export class UploadStudentsFilesComponent implements OnInit {
   ngOnInit(): void {
     this.filesStudentUploadedFromGroup = this.fb.group({
       AnneeScolaire : [null, Validators.required],
-      studentCode: [{value: null, disabled: true}, Validators.required],
+      studentCode: [null, Validators.required],
       studentFiles: this.fb.array([]),
     });
     this.getAllAnneeScolaire();
 
   }
 
-  showTableFilesOrIcon() {}
 
   uploadNow() {
     console.log('send Files To Back-End');
@@ -38,25 +37,24 @@ export class UploadStudentsFilesComponent implements OnInit {
 
   filesStudentUploadedEventEmitter(event: any) {
     if (event.length > 0) {
-      this.showTableFilesOrIconBolean = true;
-    } else {
-      this.showTableFilesOrIconBolean = false;
+        this.showTableFilesOrIconBolean = true;
+      } else {
+        this.showTableFilesOrIconBolean = false;
     }
   }
 
   getAllAnneeScolaire(){
-  this.etudiantService.getAnneeScolaire().subscribe((res) => {
-    console.log(res)
-    this.listAnneeScolaire = res
-  })
-}
+    this.etudiantService.getAnneeScolaire().subscribe((res) => {
+      console.log(res)
+      this.listAnneeScolaire = res
+    })
+  }
 
-getAllStudentByAnneeScolaire(event : any){
-  console.log(event)
-  this.etudiantService.getAllStudentByAnneeScolaire(event).subscribe((res) => {
-    this.listStudentByAnneeScolaire = res
-  })
-}
+  getAllStudentByAnneeScolaire(event : any){
+    this.etudiantService.getAllStudentByAnneeScolaire(event).subscribe((res) => {
+      this.listStudentByAnneeScolaire = res
+    })
+  }
 
 
 }
