@@ -14,7 +14,7 @@ import { ERoles } from '../models/Enum/E-roles';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanActivate {
+export class RoleGuard implements CanActivate {
   constructor(
     private tokenService: TokenService,
     private accountService: AccountService,
@@ -25,12 +25,10 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean {
-    if (!this.tokenService.loggedIn()) {
-      this.tokenService.remove();
-      this.accountService.changeStatus(false);
-      this.router.navigateByUrl('/auth');
-      return false;
+    if(this.tokenService.getInfos().userRole !== ERoles.Admin){
+       this.router.navigateByUrl('/application/dashboard');
+      
     }
-    return true;
-  }
+      return true
+    }
 }

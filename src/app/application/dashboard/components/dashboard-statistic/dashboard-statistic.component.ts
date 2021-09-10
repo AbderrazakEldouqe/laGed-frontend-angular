@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { forkJoin } from 'rxjs';
+import { TokenService } from 'src/app/_core/services/token.service';
 import { DashboardService } from '../../services/dashboard.service';
 
 @Component({
@@ -11,7 +12,8 @@ export class DashboardStatisticComponent implements OnInit {
 
   CountAllDocuments : number  | null = null;
   CountAllEtudiants: number  | null = null;
-  constructor(private dashboardService: DashboardService) {}
+  constructor(private dashboardService: DashboardService ,    private tokenService: TokenService,
+    ) {}
 
   ngOnInit(): void {
     this.allRequests()
@@ -26,6 +28,7 @@ export class DashboardStatisticComponent implements OnInit {
    * * For ForkJoin (merge) All request In one response
    */
   allRequests() {
+
     /**
          * getMambers
          * * For Get All getMambers By ID

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AccountService } from 'src/app/_core/services/account.service';
+import { TokenService } from 'src/app/_core/services/token.service';
 
 @Component({
   selector: 'app-side-menu',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideMenuComponent implements OnInit {
 
-  constructor() { }
+  constructor(private tokenService: TokenService) { }
 
   ngOnInit(): void {
+
+    console.log(this.tokenService.isAdmin())
+  }
+
+
+  get isAdmin(){
+    return this.tokenService.isAdmin();
   }
 
 }

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ERoles } from '../models/Enum/E-roles';
 
 @Injectable({
   providedIn: 'root',
@@ -34,7 +35,6 @@ export class TokenService {
 
   payload(token: any): any {
     const payload = token.split('.')[1];
-    console.log('payload', payload);
     return this.decode(payload);
   }
 
@@ -45,7 +45,7 @@ export class TokenService {
     if (token) {
       const payload = this.payload(token);
       if (payload) {
-        return id === payload.idUser;
+        return id?parseInt(id) === parseInt(payload.userId): false;
       }
     }
     return false;
@@ -62,5 +62,9 @@ export class TokenService {
 
   loggedIn(): boolean {
     return this.isValid();
+  }
+
+  isAdmin(){
+   return this.getInfos().userRole === ERoles.Admin
   }
 }

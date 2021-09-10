@@ -33,7 +33,7 @@
         <div class="side-menu__title">Consult Files</div>
       </a>
     </li>
-    <li>
+    <li *ngIf="isAdmin">
       <a
         routerLink="/application/upload-files"
         [routerLinkActive]="['side-menu--active']"
@@ -46,7 +46,7 @@
       </a>
     </li>
     
-    <li>
+    <li *ngIf="isAdmin">
       <a
         routerLink="/application/category-document"
         [routerLinkActive]="['side-menu--active']"
