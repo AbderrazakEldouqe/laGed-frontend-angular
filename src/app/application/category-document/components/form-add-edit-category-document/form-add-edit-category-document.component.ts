@@ -60,6 +60,7 @@ export class FormAddEditCategoryDocumentComponent implements OnInit {
 
   update(): void {
     let updatedTask: any = this.form.value;
+    console.log(this.form.value);
     updatedTask['idCategorie'] = this.categoryDocument?.idCategorie;
     this.updateEvent.emit(updatedTask);
     this.form.reset();
