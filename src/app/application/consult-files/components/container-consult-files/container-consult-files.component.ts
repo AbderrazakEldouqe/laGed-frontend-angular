@@ -5,6 +5,8 @@ import { EtudiantService } from 'src/app/_core/services/etudiant-service';
 import { SubSink } from 'subsink';
 import { ConsultFilesService } from '../../services/consult-files.service';
 import * as fileSaver from 'file-saver';
+import { IEtudiantDoc } from 'src/app/_core/models/i-etudiant-doc';
+import { JsService } from 'src/app/_core/services/js.service';
 
 @Component({
   selector: 'app-container-consult-files',
@@ -20,11 +22,16 @@ export class ContainerConsultFilesComponent implements OnInit, OnDestroy {
 
   listAnneeScolaire: string[] = [];
 
+  formIsShow = false;
+
+  selectedEtudiantDocument: IEtudiantDoc | null = null;
+
   /* End Variables */
   constructor(
     private consultFilesService: ConsultFilesService,
     private categoryDocumentService: CategoryDocumentService,
-    private etudiantService: EtudiantService
+    private etudiantService: EtudiantService,
+    private jsService: JsService
   ) {}
 
   /**
@@ -37,6 +44,20 @@ export class ContainerConsultFilesComponent implements OnInit, OnDestroy {
     this.getAllAnneeScolaire();
   }
 
+  edit(categoryDocument: any): void {
+    this.selectedEtudiantDocument =
+      this.jsService.objectAssign(categoryDocument);
+    this.showForm();
+  }
+
+  showForm(): void {
+    this.formIsShow = true;
+  }
+
+  backToList(): void {
+    this.selectedEtudiantDocument = null;
+    this.formIsShow = false;
+  }
   /* Start Services */
   /**
    * getAllDocuments
@@ -99,6 +120,34 @@ export class ContainerConsultFilesComponent implements OnInit, OnDestroy {
         })
     );
   }
+
+  update(etudiantDocument: IEtudiantDoc): void {
+    /*const id = categoryDocument?.idCategorie;
+    categoryDocument = this.jsService.deleteElementFromObjectByKey(
+      categoryDocument,
+      'idCategorie'
+    );*/
+    /*this.subs.add(
+      this.consultFilesService
+        .update(id, etudiantDocument)
+        .subscribe((res: IEtudiantDoc) => {
+          this.handleResponseUpdate(res);
+        })
+    );*/
+  }
+  /*handleResponseUpdate(data: ICategoryDoc): void {
+    this.categoryDocumentsData =
+      this.jsService.modifyObjectElementFromArrayByKey(
+        this.categoryDocumentsData,
+        data,
+        'idCategorie'
+      );
+    this.notification.success(
+      `Category Document bien Modfiee !`,
+      'bien Modfiee !'
+    );
+    this.formIsShow = false;
+  }*/
   /* End Services */
   /**
    * ngOnDestroy
