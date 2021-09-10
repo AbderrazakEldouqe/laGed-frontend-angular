@@ -7,6 +7,7 @@ import {
   Output,
 } from '@angular/core';
 import { IEtudiantDoc } from 'src/app/_core/models/i-etudiant-doc';
+import { TokenService } from 'src/app/_core/services/token.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -33,7 +34,7 @@ export class ListConsultFilesComponent implements OnInit {
   filter = '';
 
   /* End Variables */
-  constructor() {}
+  constructor(private tokenService: TokenService) {}
 
   ngOnInit(): void {}
 
@@ -69,5 +70,10 @@ export class ListConsultFilesComponent implements OnInit {
 
   edit(etudiantDocument: IEtudiantDoc): void {
     this.editEvent.emit(etudiantDocument);
+  }
+
+
+  get isAdmin(){
+    return this.tokenService.isAdmin();
   }
 }

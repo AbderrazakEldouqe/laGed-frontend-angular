@@ -52,8 +52,6 @@ export class UploadStudentsFilesComponent implements OnInit {
 
   uploadNow() {
     console.log('send Files To Back-End');
-    console.log(this.filesStudentUploadedFromGroup.value);
-
     if (this.filesStudentUploadedFromGroup.valid) {
       if (this.studentFileControl.length > 0) {
         console.log('this Form is valid');
