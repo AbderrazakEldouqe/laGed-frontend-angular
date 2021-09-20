@@ -11,14 +11,15 @@
       </option>
     </select>
     <div class="dropdown">
-      <button
+      <a
+        routerLink="/application/upload-files"
         class="px-2 text-gray-700 dropdown-toggle btn box dark:text-gray-300"
         aria-expanded="false"
       >
         <span class="flex items-center justify-center w-5 h-5">
           <i class="w-4 h-4 fas fa-plus"></i>
         </span>
-      </button>
+      </a>
     </div>
     <div class="hidden mx-auto text-gray-600 md:block">
       <!--Showing {{config.currentPage}} to 10 of 150 entries -->
@@ -45,6 +46,7 @@
           <th class="whitespace-nowrap">NAME</th>
           <th class="text-center whitespace-nowrap">Anne Scolaire</th>
           <th class="text-center whitespace-nowrap">Type Document</th>
+          <th class="text-center whitespace-nowrap">Libelle Complementaire</th>
           <th class="text-center whitespace-nowrap">Action</th>
         </tr>
       </thead>
@@ -66,15 +68,11 @@
           </td>
           <td class="text-center">{{ file?.anneeScolaire }}</td>
           <td class="text-center">{{ file?.categorieDTO?.catDoc }}</td>
-
+          <td class="text-center">{{ file?.libelleCompl }}</td>
           <td class="w-56 table-report__action">
             <div class="flex items-center justify-center">
-              <button
-                (click)="edit(file)"
-                class="flex items-center mr-3"
-                *ngIf="isAdmin"
-              >
-                <i class="w-4 h-4 mr-1 far fa-edit"></i> Edit
+              <button class="flex items-center mr-3 text-green-500">
+                <i class="w-4 h-4 mr-1 text-green-500 fas fa-share"></i> Share
               </button>
               <button (click)="download(file)" class="flex items-center mr-3">
                 <i class="w-4 h-4 mr-1 fas fa-download"></i> Download
