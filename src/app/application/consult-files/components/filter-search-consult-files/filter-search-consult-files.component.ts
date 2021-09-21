@@ -33,7 +33,7 @@ export class FilterSearchConsultFilesComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['listAnneeScolaire']) {
+    /*if (changes['listAnneeScolaire']) {
       if (this.listAnneeScolaire.length > 0) {
         this.form
           .get('anneeScolaire')
@@ -41,7 +41,7 @@ export class FilterSearchConsultFilesComponent implements OnInit, OnChanges {
             this.listAnneeScolaire[this.listAnneeScolaire.length - 1]
           );
       }
-    }
+    }*/
   }
   initialFormGroupe(): void {
     this.form = new FormGroup({

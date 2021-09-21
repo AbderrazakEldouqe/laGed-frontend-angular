@@ -12,17 +12,21 @@ import { IInscription } from '../models/i-inscription';
   providedIn: 'root',
 })
 export class EtudiantService {
- 
-  dataEtudiant : IEtudiant[] = [];
+  dataEtudiant: IEtudiant[] = [];
   dataInscription?: IInscription[];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
   getAnneeScolaire(): Observable<any> {
-    return this.http.get(environment.apiUrl + "/apiEtudiantDocument/getAllAnneScolaires");
-  } 
-  
-  getAllStudentByAnneeScolaire(AnneScolaires : any) : Observable<any>{
-   return this.http.get(environment.apiUrl + 
-                  "/apiEtudiant/getAllEtudiantByAnneScolaires?anneeScolaire="+AnneScolaires);
+    return this.http.get(
+      environment.apiUrl + '/apiInscription/getAllAnneScolaires'
+    );
+  }
+
+  getAllStudentByAnneeScolaire(AnneScolaires: any): Observable<any> {
+    return this.http.get(
+      environment.apiUrl +
+        '/apiEtudiant/getAllEtudiantByAnneScolaires?anneeScolaire=' +
+        AnneScolaires
+    );
   }
 }

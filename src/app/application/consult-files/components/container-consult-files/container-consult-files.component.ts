@@ -7,6 +7,7 @@ import { ConsultFilesService } from '../../services/consult-files.service';
 import * as fileSaver from 'file-saver';
 import { IEtudiantDoc } from 'src/app/_core/models/i-etudiant-doc';
 import { JsService } from 'src/app/_core/services/js.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-container-consult-files',
@@ -24,6 +25,8 @@ export class ContainerConsultFilesComponent implements OnInit, OnDestroy {
 
   formIsShow = false;
 
+  isStartSearch = false;
+
   selectedEtudiantDocument: IEtudiantDoc | null = null;
 
   /* End Variables */
@@ -39,7 +42,7 @@ export class ContainerConsultFilesComponent implements OnInit, OnDestroy {
    * * is a life cycle hook called by Angular to indicate that Angular is done creating the component
    */
   ngOnInit(): void {
-    this.getAllDocuments();
+    //this.getAllDocuments();
     this.getAllCategoryDocuments();
     this.getAllAnneeScolaire();
   }
@@ -104,6 +107,7 @@ export class ContainerConsultFilesComponent implements OnInit, OnDestroy {
         )
         .subscribe((res: any[]) => {
           this.filesData = res;
+          this.isStartSearch = true;
         })
     );
   }
@@ -163,8 +167,20 @@ export class ContainerConsultFilesComponent implements OnInit, OnDestroy {
 
   annulerFile(data: { idFile: any; motif: any }) {
     this.consultFilesService.annulerFile(data).subscribe((res) => {
+      this.handleResponseAnnule(data?.idFile);
       console.log('annulerFile ok');
     });
+  }
+  handleResponseAnnule(idFile: any): void {
+    const index = this.filesData.findIndex((item, i) => {
+      console.log();
+      return idFile === item['idDocument'];
+    });
+    if (index !== -1) {
+      this.filesData.splice(index, 1);
+    }
+    this.filesData = this.jsService.spread(this.filesData);
+    Swal.fire('Canceled !', '', 'success');
   }
   ngOnDestroy(): void {
     this.subs.unsubscribe();
