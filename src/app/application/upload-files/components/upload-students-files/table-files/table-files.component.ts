@@ -9,6 +9,7 @@ import {
 import { FormArray, FormGroup } from '@angular/forms';
 import { CategoryDocumentService } from 'src/app/application/category-document/services/category-document.service';
 import { ICategoryDoc } from 'src/app/_core/models/i-category-doc';
+import { ISousCategoryDoc } from 'src/app/_core/models/i-sous-category-doc';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -18,7 +19,8 @@ import Swal from 'sweetalert2';
 })
 export class TableFilesComponent implements OnInit {
   @Input() filesStudentUploadedFromGroup: FormGroup = new FormGroup({});
-  @Input() categoryDocumentsData : ICategoryDoc []=[];
+  // @Input() categoryDocumentsData : ICategoryDoc []=[];
+  @Input() sousCategoryDocumentsData : ISousCategoryDoc []=[];
 
   @Output() studentFilesTableEvent = new EventEmitter();
   listFileRequest: FormArray = new FormArray([]);
@@ -39,8 +41,8 @@ export class TableFilesComponent implements OnInit {
     if (changes['filesStudentUploadedFromGroup']) {
       console.log(this.filesStudentUploadedFromGroup.value);
     }
-    if (changes['categoryDocumentsData']) {
-      console.log(this.categoryDocumentsData);
+    if (changes['sousCategoryDocumentsData']) {
+      console.log(this.sousCategoryDocumentsData);
     }
   }
 

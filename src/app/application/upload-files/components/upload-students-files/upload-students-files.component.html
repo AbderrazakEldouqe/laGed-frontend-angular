@@ -3,7 +3,8 @@
 
     <app-upload-files-form (filesStudentUploadedEven)="filesStudentUploadedEventEmitter($event)"
       (listAnneeScolaireSelectedEven)="getAllStudentByAnneeScolaire($event)"
-      [filesStudentUploadedFromGroup]="filesStudentUploadedFromGroup" [listAnneeScolaire]="listAnneeScolaire"
+      [filesStudentUploadedFromGroup]="filesStudentUploadedFromGroup" 
+      [listAnneeScolaire]="listAnneeScolaire"
       [listStudentByAnneeScolaire]='listStudentByAnneeScolaire'>
     </app-upload-files-form>
 
@@ -24,7 +25,7 @@
     <div *ngIf='showTableFilesOrIconBolean'>
       <app-table-files [filesStudentUploadedFromGroup]="filesStudentUploadedFromGroup"
         (studentFilesTableEvent)='filesStudentUploadedEventEmitter($event)'
-        [categoryDocumentsData] ="categoryDocumentsData">
+        [sousCategoryDocumentsData] ="sousCategoryDocumentsData">
       </app-table-files>
     </div>
 

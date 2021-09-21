@@ -29,26 +29,26 @@
               </td>
               <td>
                 <ng-select class="col-span-3" placeholder="Type Document"
-                  formControlName="categorieDTO"
+                  formControlName="sousCategorieDTO"
                   dropdownPosition ="bottom"
                   [ngClass]="{
-                    'is-valid': file.get('categorieDTO')?.valid,
+                    'is-valid': file.get('sousCategorieDTO')?.valid,
                     'is-invalid':
-                    file.get('categorieDTO')?.invalid &&
-                      (file.get('categorieDTO')?.touched ||
-                      file.get('categorieDTO')?.dirty)
+                    file.get('sousCategorieDTO')?.invalid &&
+                      (file.get('sousCategorieDTO')?.touched ||
+                      file.get('sousCategorieDTO')?.dirty)
                   }">
-                  <ng-option *ngFor='let cat of categoryDocumentsData' [value]='cat'>{{cat.catDoc}}</ng-option>
+                  <ng-option *ngFor='let sousCat of sousCategoryDocumentsData' [value]='sousCat'>{{sousCat.libelle}}</ng-option>
                 </ng-select>
                 <div
                 *ngIf="
-                  (file.get('categorieDTO')?.invalid 
-                  && file.get('categorieDTO')?.touched) ||
-                  file.get('categorieDTO')?.dirty
+                  (file.get('sousCategorieDTO')?.invalid 
+                  && file.get('sousCategorieDTO')?.touched) ||
+                  file.get('sousCategorieDTO')?.dirty
                 "
               >
                 <div
-                  *ngIf="file.get('categorieDTO')?.getError('required')"
+                  *ngIf="file.get('sousCategorieDTO')?.getError('required')"
                   class="mt-2 text-theme-6"
                 >
                   This field is required

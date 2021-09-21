@@ -18,7 +18,7 @@ export class EtudiantService {
 
   constructor(private http: HttpClient) { }
   getAnneeScolaire(): Observable<any> {
-    return this.http.get(environment.apiUrl + "/apiEtudiantDocument/getAllAnneScolaires");
+    return this.http.get(environment.apiUrl + "/apiInscription/getAllAnneScolaires");
   } 
   
   getAllStudentByAnneeScolaire(AnneScolaires : any) : Observable<any>{

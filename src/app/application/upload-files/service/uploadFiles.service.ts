@@ -10,9 +10,6 @@ import { environment } from 'src/environments/environment';
 export class UploadStudentFileService{
   constructor(private http : HttpClient) {}
 
-
-
-
   uploadFilesStudent(StudentFilesFrom : any) : Observable<any>{
     const formData = new FormData();
     formData.append('UploadFilesRequest', JSON.stringify( StudentFilesFrom));

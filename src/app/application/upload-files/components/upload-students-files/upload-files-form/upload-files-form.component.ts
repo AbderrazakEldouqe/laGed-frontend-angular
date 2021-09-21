@@ -58,7 +58,7 @@ export class UploadFilesFormComponent implements OnInit {
           this.createItem({
             fileName: element.fileName,
             filebase64: element.filebase64, //Base64 string for preview image
-            categorieDTO: undefined,
+            sousCategorieDTO: undefined,
             libelleComplementaire : undefined ,
           })
         );
@@ -88,7 +88,7 @@ export class UploadFilesFormComponent implements OnInit {
     return this.fb.group({
             fileName: [data.fileName, Validators.required],
             filebase64: [data.filebase64,  Validators.required],
-            categorieDTO: [null, Validators.required],
+            sousCategorieDTO: [null, Validators.required],
             libelleComplementaire: [null ,Validators.required],
           });
   }

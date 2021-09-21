@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CategoryDocumentService } from 'src/app/application/category-document/services/category-document.service';
+import { SousCategoryDocumentService } from 'src/app/application/sous-category-document/services/sous-category-document.service';
 import { ICategoryDoc } from 'src/app/_core/models/i-category-doc';
 import { IEtudiant } from 'src/app/_core/models/i-etudiant';
+import { ISousCategoryDoc } from 'src/app/_core/models/i-sous-category-doc';
 import { EtudiantService } from 'src/app/_core/services/etudiant.service';
 import { NotificationService } from 'src/app/_core/services/notification.service';
 import { ReactiveFormsService } from 'src/app/_core/services/reactive-forms.service';
@@ -23,11 +25,14 @@ export class UploadStudentsFilesComponent implements OnInit {
   listStudentByAnneeScolaire: IEtudiant[] = [];
 
   private subs = new SubSink();
-  categoryDocumentsData: ICategoryDoc[] = [];
+  // categoryDocumentsData: ICategoryDoc[] = [];
+  sousCategoryDocumentsData: ISousCategoryDoc[] = [];
+
 
   constructor(
     private fb: FormBuilder,
-    private categoryDocumentService: CategoryDocumentService,
+    // private categoryDocumentService: CategoryDocumentService,
+    private sousCategoryDocumentService: SousCategoryDocumentService,
     private etudiantService: EtudiantService,
     private reactiveFormsService: ReactiveFormsService,
     private notification: NotificationService,
@@ -39,7 +44,7 @@ export class UploadStudentsFilesComponent implements OnInit {
   ngOnInit(): void {
     this.createFromUpload();
     this.getAllAnneeScolaire();
-    this.getAllCategoryDocuments();
+    this.getAllSousCategoryDocuments();
   }
 
   createFromUpload() {
@@ -93,7 +98,7 @@ export class UploadStudentsFilesComponent implements OnInit {
 
   getAllAnneeScolaire() {
     this.etudiantService.getAnneeScolaire().subscribe((res) => {
-      console.log(res);
+      console.log("***********" ,res);
       this.listAnneeScolaire = res;
     });
   }
@@ -110,10 +115,10 @@ export class UploadStudentsFilesComponent implements OnInit {
    * getAllCategoryDocuments
    * * It is called for get data From Backend
    */
-  getAllCategoryDocuments(): void {
+  getAllSousCategoryDocuments(): void {
     this.subs.add(
-      this.categoryDocumentService.getAll().subscribe((res: ICategoryDoc[]) => {
-        this.categoryDocumentsData = res;
+      this.sousCategoryDocumentService.getAll().subscribe((res: ISousCategoryDoc[]) => {
+        this.sousCategoryDocumentsData = res;
       })
     );
   }
