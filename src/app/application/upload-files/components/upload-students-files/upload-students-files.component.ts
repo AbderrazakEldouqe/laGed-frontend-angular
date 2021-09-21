@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { CategoryDocumentService } from 'src/app/application/category-document/services/category-document.service';
 import { ICategoryDoc } from 'src/app/_core/models/i-category-doc';
 import { IEtudiant } from 'src/app/_core/models/i-etudiant';
-import { EtudiantService } from 'src/app/_core/services/etudiant-service';
+import { EtudiantService } from 'src/app/_core/services/etudiant.service';
 import { NotificationService } from 'src/app/_core/services/notification.service';
 import { ReactiveFormsService } from 'src/app/_core/services/reactive-forms.service';
 import { SubSink } from 'subsink';
