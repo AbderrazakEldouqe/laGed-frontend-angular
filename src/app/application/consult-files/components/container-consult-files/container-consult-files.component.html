@@ -15,6 +15,7 @@
 <app-list-consult-files
   [hidden]="formIsShow"
   [filesData]="filesData"
+  [isStartSearch]="isStartSearch"
   (editEvent)="edit($event)"
   (downloadEvent)="downloadFile($event)"
   (shareEvent)="sendEmail($event)"

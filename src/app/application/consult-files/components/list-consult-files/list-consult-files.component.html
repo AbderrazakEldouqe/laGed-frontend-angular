@@ -1,4 +1,7 @@
-<div class="grid grid-cols-12 gap-6 mt-5 border-t border-gray-300">
+<div
+  *ngIf="isStartSearch"
+  class="grid grid-cols-12 gap-6 mt-5 border-t border-gray-300"
+>
   <div
     class="flex flex-wrap items-center col-span-12 mt-2 intro-y sm:flex-nowrap"
   >
@@ -67,7 +70,7 @@
             </div>
           </td>
           <td class="text-center">{{ file?.anneeScolaire }}</td>
-          <td class="text-center">{{ file?.categorieDTO?.catDoc }}</td>
+          <td class="text-center">{{ file?.sousCategorieDTO?.libelle }}</td>
           <td class="text-center">{{ file?.libelleCompl }}</td>
           <td class="w-56 table-report__action">
             <div class="flex items-center justify-center">
@@ -84,9 +87,17 @@
               <button
                 (click)="annuler(file?.idDocument)"
                 class="flex items-center text-theme-6"
-                *ngIf="isAdmin"
+                *ngIf="isAdmin && !file?.annule"
               >
                 <i class="w-4 h-4 mr-1 far fa-trash-alt"></i> Annuler
+              </button>
+              <button
+                (click)="infoFile(file)"
+                class="flex items-center text-blue-500"
+                *ngIf="isAdmin && file?.annule"
+              >
+                <i class="w-4 h-4 mr-1 text-blue-500 fas fa-info-circle"></i>
+                Info
               </button>
             </div>
           </td>

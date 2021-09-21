@@ -20,6 +20,7 @@ export class ListConsultFilesComponent implements OnInit {
   /* Start Variables */
   @Input() filesData: any[] = [];
 
+  @Input() isStartSearch = false;
   @Output() downloadEvent = new EventEmitter();
 
   @Output() editEvent = new EventEmitter();
@@ -87,7 +88,7 @@ export class ListConsultFilesComponent implements OnInit {
           backdrop: true,
         }).then((result) => {
           if (result.isConfirmed) {
-            Swal.fire('Saved !' + result.value, '', 'success');
+            //Swal.fire('Saved !' + result.value, '', 'success');
             this.AnnulerEvent.emit({ idFile, motif: result.value });
           }
         });
@@ -131,5 +132,9 @@ export class ListConsultFilesComponent implements OnInit {
         this.shareEvent.emit({ idFile, email: result.value });
       }
     });
+  }
+
+  infoFile(data: any) {
+    console.log('data', data);
   }
 }

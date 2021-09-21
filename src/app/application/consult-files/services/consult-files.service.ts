@@ -88,8 +88,12 @@ export class ConsultFilesService {
     data: { idFile: any; motif: any },
     headersObject = {}
   ): Observable<any> {
-    return this.http.post(`${environment.apiUrl}/annulerFile`, data, {
-      headers: headersObject,
-    });
+    return this.http.post(
+      `${environment.apiUrl}/apiEtudiantDocumentAnnule/annuleeEtudiantDocument`,
+      data,
+      {
+        headers: headersObject,
+      }
+    );
   }
 }
