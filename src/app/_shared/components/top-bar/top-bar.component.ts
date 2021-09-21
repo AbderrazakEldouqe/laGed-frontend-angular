@@ -2,6 +2,7 @@ import { TitleCasePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { TokenService } from 'src/app/_core/services/token.service';
 
 @Component({
   selector: 'app-top-bar',
@@ -15,6 +16,7 @@ export class TopBarComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
+    private tokenService: TokenService,
     private pipeCaseUpper: TitleCasePipe
   ) {
     router.events
@@ -27,4 +29,9 @@ export class TopBarComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  logout(): void {
+    this.tokenService.remove();
+    this.router.navigateByUrl('/auth/login');
+  }
 }

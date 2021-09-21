@@ -99,7 +99,8 @@ export class ContainerConsultFilesComponent implements OnInit, OnDestroy {
           data?.anneeScolaire,
           data?.matriculeEtudiant,
           data?.nomEtudiant,
-          data?.typeDocument
+          data?.typeDocument,
+          data?.isDocumentAnnule
         )
         .subscribe((res: any[]) => {
           this.filesData = res;
@@ -153,6 +154,18 @@ export class ContainerConsultFilesComponent implements OnInit, OnDestroy {
    * ngOnDestroy
    * * It is called for cleanup logic when a component is destroyed
    */
+
+  sendEmail(data: { idFile: any; email: any }) {
+    this.consultFilesService.SendEmail(data).subscribe((res) => {
+      console.log('send mail ok');
+    });
+  }
+
+  annulerFile(data: { idFile: any; motif: any }) {
+    this.consultFilesService.annulerFile(data).subscribe((res) => {
+      console.log('annulerFile ok');
+    });
+  }
   ngOnDestroy(): void {
     this.subs.unsubscribe();
   }
