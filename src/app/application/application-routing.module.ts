@@ -45,6 +45,14 @@ const routes: Routes = [
           canActivate: [RoleGuard],
 
       },
+      {
+        path: 'sous-category-document',
+        loadChildren: async () =>
+          (await import('./sous-category-document/sous-category-document.module'))
+            .SousCategoryDocumentModule,
+          canActivate: [RoleGuard],
+
+      },
     ],
   },
 ];

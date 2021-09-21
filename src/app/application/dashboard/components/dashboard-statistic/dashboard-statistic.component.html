@@ -50,7 +50,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="mt-6 text-3xl font-bold leading-8">{{CountAllDocuments}}</div>
+                <div class="mt-6 text-3xl font-bold leading-8">{{CountAllDocuments}}
+                  {{ CountAllDocuments ? CountAllDocuments : "0" }}
+                </div>
                 <div class="mt-1 text-base text-gray-600">Files</div>
               </div>
             </div>
@@ -92,7 +94,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="mt-6 text-3xl font-bold leading-8">{{CountAllEtudiants}}</div>
+                <div class="mt-6 text-3xl font-bold leading-8">
+                  {{ CountAllEtudiants ? CountAllEtudiants : "0" }}
+                </div>
                 <div class="mt-1 text-base text-gray-600">Etudiants</div>
               </div>
             </div>

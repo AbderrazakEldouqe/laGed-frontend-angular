@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CategoryDocumentService } from 'src/app/application/category-document/services/category-document.service';
 import { ICategoryDoc } from 'src/app/_core/models/i-category-doc';
-import { EtudiantService } from 'src/app/_core/services/etudiant-service';
+import { EtudiantService } from 'src/app/_core/services/etudiant.service';
 import { SubSink } from 'subsink';
 import { ConsultFilesService } from '../../services/consult-files.service';
 import * as fileSaver from 'file-saver';

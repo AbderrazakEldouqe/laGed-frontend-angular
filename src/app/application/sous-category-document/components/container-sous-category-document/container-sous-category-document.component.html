@@ -1,0 +1,18 @@
+<app-form-add-edit-sous-category-document
+  [hidden]="!formIsShow"
+  [selectedSousCategoryDocument]="selectedSousCategoryDocument"
+  [categoryDocumentsData]="categoryDocumentsData"
+  (storeEvent)="store($event)"
+  (updateEvent)="update($event)"
+  (backToListEvent)="backToList()"
+>
+</app-form-add-edit-sous-category-document>
+
+
+<app-list-sous-category-document
+[hidden]="formIsShow"
+[sousCategoryDocumentsData]="sousCategoryDocumentsData"
+(createEvent)="showForm()"
+(editEvent)="edit($event)"
+(deleteEvent)="delete($event)"
+></app-list-sous-category-document> 

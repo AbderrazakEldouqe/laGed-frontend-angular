@@ -58,5 +58,17 @@
         <div class="side-menu__title">Category Files</div>
       </a>
     </li>
+    <li *ngIf="isAdmin">
+      <a
+        routerLink="/application/sous-category-document"
+        [routerLinkActive]="['side-menu--active']"
+        class="side-menu"
+      >
+        <div class="side-menu__icon">
+          <i class="fas fa-folder"></i>
+        </div>
+        <div class="side-menu__title">Sous Categorie Documents</div>
+      </a>
+    </li>
   </ul>
 </nav>
