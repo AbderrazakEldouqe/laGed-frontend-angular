@@ -40,11 +40,12 @@ export class ConsultFilesService {
     matriculeEtudiant: string,
     nomEtudiant: string,
     typeDocument: string,
+    isDocumentAnnule: boolean,
     headersObject = {}
   ): Observable<any> {
-    let query: string = '';
+    let query: string = 'isDocumentAnnule=' + isDocumentAnnule;
     if (anneeScolaire) {
-      query += 'anneeScolaire=' + anneeScolaire;
+      query += '&anneeScolaire=' + anneeScolaire;
     }
     if (matriculeEtudiant) {
       query += '&matriculeEtudiant=' + matriculeEtudiant;
@@ -72,5 +73,23 @@ export class ConsultFilesService {
         observe: 'response',
       }
     );
+  }
+
+  SendEmail(
+    data: { idFile: any; email: any },
+    headersObject = {}
+  ): Observable<any> {
+    return this.http.post(`${environment.apiUrl}/sendEmail`, data, {
+      headers: headersObject,
+    });
+  }
+
+  annulerFile(
+    data: { idFile: any; motif: any },
+    headersObject = {}
+  ): Observable<any> {
+    return this.http.post(`${environment.apiUrl}/annulerFile`, data, {
+      headers: headersObject,
+    });
   }
 }

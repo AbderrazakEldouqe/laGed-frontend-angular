@@ -24,6 +24,10 @@ export class ListConsultFilesComponent implements OnInit {
 
   @Output() editEvent = new EventEmitter();
 
+  @Output() shareEvent = new EventEmitter();
+
+  @Output() AnnulerEvent = new EventEmitter();
+
   config = {
     id: 'custom',
     itemsPerPage: 4,
@@ -50,7 +54,7 @@ export class ListConsultFilesComponent implements OnInit {
     this.downloadEvent.emit(data);
   }
 
-  annuler(data: any) {
+  annuler(idFile: any) {
     //this.downloadEvent.emit(data);
     Swal.fire({
       title: 'Are you sure?',
@@ -62,6 +66,31 @@ export class ListConsultFilesComponent implements OnInit {
     }).then((result) => {
       if (result.value) {
         //this.deleteEvent.emit(categoryDocuments);
+        Swal.fire({
+          title: 'Enter Your Motif',
+          input: 'text',
+          inputAttributes: {
+            autocapitalize: 'off',
+          },
+          customClass: {
+            validationMessage: 'my-validation-message',
+          },
+          showCancelButton: true,
+          confirmButtonText: 'Send',
+          showLoaderOnConfirm: true,
+          preConfirm: (value) => {
+            if (!value) {
+              Swal.showValidationMessage(' Motif is required');
+            }
+          },
+          allowOutsideClick: () => !Swal.isLoading(),
+          backdrop: true,
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire('Saved !' + result.value, '', 'success');
+            this.AnnulerEvent.emit({ idFile, motif: result.value });
+          }
+        });
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         Swal.fire('Cancelled', 'Your imaginary file is safe :)', 'error');
       }
@@ -72,8 +101,35 @@ export class ListConsultFilesComponent implements OnInit {
     this.editEvent.emit(etudiantDocument);
   }
 
-
-  get isAdmin(){
+  get isAdmin() {
     return this.tokenService.isAdmin();
+  }
+
+  shareWithEmail(idFile: any) {
+    Swal.fire({
+      title: 'Enter Your Email',
+      input: 'text',
+      inputValue: 'test@gmail.com',
+      inputAttributes: {
+        autocapitalize: 'off',
+      },
+      customClass: {
+        validationMessage: 'my-validation-message',
+      },
+      showCancelButton: true,
+      confirmButtonText: 'Send',
+      showLoaderOnConfirm: true,
+      preConfirm: (value) => {
+        if (!value) {
+          Swal.showValidationMessage(' Email is required');
+        }
+      },
+      allowOutsideClick: () => !Swal.isLoading(),
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire('Saved !' + result.value, '', 'success');
+        this.shareEvent.emit({ idFile, email: result.value });
+      }
+    });
   }
 }

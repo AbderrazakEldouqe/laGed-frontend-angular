@@ -49,6 +49,7 @@ export class FilterSearchConsultFilesComponent implements OnInit, OnChanges {
       matriculeEtudiant: new FormControl(null, []),
       nomEtudiant: new FormControl(null, []),
       typeDocument: new FormControl(null, []),
+      isDocumentAnnule: new FormControl(false, []),
     });
   }
 

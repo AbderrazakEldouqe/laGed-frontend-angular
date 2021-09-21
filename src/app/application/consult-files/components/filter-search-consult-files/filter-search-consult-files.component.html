@@ -11,7 +11,7 @@
         <ng-select
           formControlName="anneeScolaire"
           class="col-span-3"
-          placeholder="Anne Scolaire"
+          placeholder="Année Universitaire"
         >
           <ng-option *ngFor="let date of listAnneeScolaire" [value]="date">{{
             date
@@ -49,7 +49,21 @@
       </div>
     </div>
   </div>
-  <div class="flex flex-row-reverse">
+  <div class="flex justify-between">
+    <!--<div class="p-3">
+      <input type="checkbox" class="form-check-switch" /> Annullé
+    </div> -->
+    <div class="p-3 form-check">
+      <input
+        id="vertical-form-3"
+        class="form-check-input"
+        type="checkbox"
+        formControlName="isDocumentAnnule"
+      />
+      <label class="form-check-label" for="vertical-form-3"
+        >Documents Annulée</label
+      >
+    </div>
     <button
       type="submit"
       class="inline-block w-24 mb-2 mr-3 btn btn-outline-primary"

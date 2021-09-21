@@ -17,4 +17,6 @@
   [filesData]="filesData"
   (editEvent)="edit($event)"
   (downloadEvent)="downloadFile($event)"
+  (shareEvent)="sendEmail($event)"
+  (AnnulerEvent)="annulerFile($event)"
 ></app-list-consult-files>

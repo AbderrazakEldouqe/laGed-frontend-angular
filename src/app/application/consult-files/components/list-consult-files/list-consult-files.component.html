@@ -44,7 +44,7 @@
       <thead>
         <tr>
           <th class="whitespace-nowrap">NAME</th>
-          <th class="text-center whitespace-nowrap">Anne Scolaire</th>
+          <th class="text-center whitespace-nowrap">Année Universitaire</th>
           <th class="text-center whitespace-nowrap">Type Document</th>
           <th class="text-center whitespace-nowrap">Libelle Complementaire</th>
           <th class="text-center whitespace-nowrap">Action</th>
@@ -71,7 +71,10 @@
           <td class="text-center">{{ file?.libelleCompl }}</td>
           <td class="w-56 table-report__action">
             <div class="flex items-center justify-center">
-              <button class="flex items-center mr-3 text-green-500">
+              <button
+                (click)="shareWithEmail(file?.idDocument)"
+                class="flex items-center mr-3 text-green-500"
+              >
                 <i class="w-4 h-4 mr-1 text-green-500 fas fa-share"></i> Share
               </button>
               <button (click)="download(file)" class="flex items-center mr-3">
@@ -79,7 +82,7 @@
               </button>
 
               <button
-                (click)="annuler(file)"
+                (click)="annuler(file?.idDocument)"
                 class="flex items-center text-theme-6"
                 *ngIf="isAdmin"
               >
