@@ -10,11 +10,11 @@ export class AppComponent {
   title = 'laGed-frontend-angular';
   selectedTr: string = 'fr';
   constructor(public translate: TranslateService) {
-    translate.addLangs(['en', 'fr']);
-    translate.setDefaultLang('en');
+    translate.addLangs(['fr', 'en']);
+    translate.setDefaultLang('fr');
 
     const browserLang = translate.getBrowserLang();
-    translate.use(browserLang.match(/en|fr/) ? browserLang : 'en');
+    translate.use(browserLang.match(/fr|en/) ? browserLang : 'fr');
   }
 
   changeLanguage(event: any) {

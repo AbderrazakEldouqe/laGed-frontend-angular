@@ -7,7 +7,8 @@
     "Search": "Search",
     "StudentFullName": "FullName",
     "Share": "Share",
-    "Download": "Download" 
+    "Download": "Download",
+    "Info": "Info"
   },
 
     "UniversityYear": "University Year",
@@ -25,17 +26,18 @@
     "Cancel": "Cancel",
     "ToUpload": "To Upload",
 
+
     "Category": "Category",
     "worded": "worded",
     "description": "description",
-    "Edit":"Edit",
-    "Create":"Create",
-    "Update":"Update",
-    "UpdateCategoryDocument":"Update Category Document",
-    "CreateCategoryDocument":"Create Category Document",
-    "GeneralReport":"General Report",
-    "Files":"Files",
-    "Students":"Students",
+    "Edit": "Edit",
+    "Create": "Create",
+    "Update": "Update",
+    "UpdateCategoryDocument": "Update Category Document",
+    "CreateCategoryDocument": "Create Category Document",
+    "GeneralReport": "General Report",
+    "Files": "Files",
+    "Students": "Students",
 
 
     "Dashboard" : "Dashboard",
@@ -47,5 +49,5 @@
     "FieldRequired" :"This field is required",
     "NoFilesSelected" :"No files selected" 
 
- 
+
 }
