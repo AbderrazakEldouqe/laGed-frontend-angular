@@ -1,7 +1,25 @@
 <!--<button class="bg-red-500">hi</button> -->
 <div
   data-url="login-dark-login.html"
-  class="fixed bottom-0 z-50 flex items-center justify-center w-40 h-12 mb-10 mr-10 border rounded-full shadow-md cursor-pointer  dark-mode-switcher box dark:bg-dark-2"
+  class="
+    fixed
+    bottom-0
+    z-50
+    flex
+    items-center
+    justify-center
+    w-40
+    h-12
+    mb-10
+    mr-10
+    border
+    rounded-full
+    shadow-md
+    cursor-pointer
+    dark-mode-switcher
+    box
+    dark:bg-dark-2
+  "
 >
   <div class="mr-4 text-gray-700 dark:text-gray-300">Fr</div>
   <div class="form-check">
@@ -10,6 +28,9 @@
       class="form-check-switch"
       style="background-image: none !important"
       type="checkbox"
+      #langChackbox
+      [value]="selectedTr"
+      (change)="changeLanguage(langChackbox.value)"
     />
     <label class="form-check-label" for="checkbox-switch-7"></label>
   </div>
