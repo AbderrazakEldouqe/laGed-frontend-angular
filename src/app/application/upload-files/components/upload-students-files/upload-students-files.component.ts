@@ -56,9 +56,9 @@ export class UploadStudentsFilesComponent implements OnInit {
   }
 
   uploadNow() {
-    console.log('send Files To Back-End');
-    if (this.filesStudentUploadedFromGroup.valid) {
-      if (this.studentFileControl.length > 0) {
+    console.log('send Files To Back-End' ,this.filesStudentUploadedFromGroup);
+     if (this.studentFileControl.length > 0) {
+       if (this.filesStudentUploadedFromGroup.valid) {
         console.log('this Form is valid');
         this.uploadStudentFileService
           .uploadFilesStudent(this.filesStudentUploadedFromGroup.value)
@@ -67,12 +67,16 @@ export class UploadStudentsFilesComponent implements OnInit {
             this.notification.success(`documents has been saved`, 'Success');
             this.router.navigateByUrl('/application/consult-files')
           });
-      } else {
-        console.log('add Files ');
-        this.notification.error(`No Files Added`, 'Add Files!');
-
+      } 
+      else {
+        this.notification.error(`veuillez remplire tous les champ`, 'remplire!');
+        this.reactiveFormsService.validateAllFormFields(
+          this.filesStudentUploadedFromGroup
+        );
       }
     } else {
+      console.log('add Files ');
+      this.notification.error(`No Files Added`, 'Add Files!');
       this.reactiveFormsService.validateAllFormFields(
         this.filesStudentUploadedFromGroup
       );
