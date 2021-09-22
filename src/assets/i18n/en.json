@@ -29,7 +29,7 @@
 
     "Category": "Category",
     "worded": "worded",
-    "description": "description",
+    "description": "Description",
     "Edit": "Edit",
     "Create": "Create",
     "Update": "Update",
@@ -47,7 +47,11 @@
     "SubCategoryFiles" :"SubCategory Files",
 
     "FieldRequired" :"This field is required",
-    "NoFilesSelected" :"No files selected" 
+    "NoFilesSelected" :"No files selected" ,
+
+
+    "logout": "Sign out",
+    "Profile": "Your Profile"
 
 
 }

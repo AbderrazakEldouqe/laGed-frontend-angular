@@ -47,6 +47,10 @@
 
 
     "FieldRequired" :"Ce Champ est Obligatoire",
-    "NoFilesSelected":"Aucun fichier sélectionné"
+    "NoFilesSelected":"Aucun fichier sélectionné",
+
+
+    "logout": "Déconnecter",
+    "Profile": "Votre Profile"
 
 }

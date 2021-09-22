@@ -13,8 +13,10 @@ export class AppComponent {
     translate.addLangs(['fr', 'en']);
     translate.setDefaultLang('fr');
 
-    const browserLang = translate.getBrowserLang();
-    translate.use(browserLang.match(/fr|en/) ? browserLang : 'fr');
+    // const browserLang = translate.getBrowserLang();
+    // translate.use(browserLang.match(/fr|en/) ? browserLang : 'fr');
+    translate.use(this.selectedTr);
+
   }
 
   changeLanguage(event: any) {

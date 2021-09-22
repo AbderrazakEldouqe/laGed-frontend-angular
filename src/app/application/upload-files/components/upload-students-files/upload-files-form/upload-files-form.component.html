@@ -8,7 +8,7 @@
 
           <ng-select
             class="col-span-3"
-            placeholder="Anne Scolaire"
+            placeholder="{{ 'UniversityYear' | translate }}"
             formControlName="anneeScolaire"
             (change)="getlistEtudiantByInscriptiondate()"
             [ngClass]="{
@@ -49,7 +49,7 @@
           </label>
           <ng-select
             class="col-span-3"
-            placeholder="Code Etudiant"
+            placeholder="{{ 'StudentCode' | translate }}"
             formControlName="etudiantDTO"
             [ngClass]="{
               'is-valid':

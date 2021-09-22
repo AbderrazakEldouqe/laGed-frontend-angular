@@ -43,10 +43,10 @@
       <table class="table -mt-2 table-report">
         <thead>
           <tr>
-            <th class="text-center whitespace-nowrap">Categorie</th>
-            <th class="text-center whitespace-nowrap">Libelle</th>
-            <th class="text-center whitespace-nowrap">Description</th>
-            <th class="text-center whitespace-nowrap">Action</th>
+            <th class="text-center whitespace-nowrap">{{ 'Category' | translate }}</th>
+            <th class="text-center whitespace-nowrap">{{ 'worded' | translate }}</th>
+            <th class="text-center whitespace-nowrap">{{ 'description' | translate }}</th>
+            <th class="text-center whitespace-nowrap">{{ 'Actions' | translate }}</th>
           </tr>
         </thead>
         <tbody>
@@ -68,13 +68,13 @@
             <td class="w-56 table-report__action">
               <div class="flex items-center justify-center">
                 <button (click)="edit(sousCat)" class="flex items-center mr-3">
-                  <i class="w-4 h-4 mr-1 far fa-edit"></i> Edit
+                  <i class="w-4 h-4 mr-1 far fa-edit"></i> {{ 'Edit' | translate }}
                 </button>
                 <button
                   (click)="delete(sousCat)"
                   class="flex items-center text-theme-6"
                 >
-                  <i class="w-4 h-4 mr-1 far fa-trash-alt"></i> Delete
+                  <i class="w-4 h-4 mr-1 far fa-trash-alt"></i> {{ 'Delete' | translate }}
                 </button>
               </div>
             </td>
