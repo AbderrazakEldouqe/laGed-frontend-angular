@@ -67,7 +67,7 @@ export class FormAddEditSousCategoryDocumentComponent implements OnInit {
   update(): void {
     let updatedsousCategory: any = this.form.value;
     console.log(this.form.value);
-    updatedsousCategory['idsousCategorie'] = this.selectedSousCategoryDocument?.idSousCategorie;
+    updatedsousCategory['idSousCategorie'] = this.selectedSousCategoryDocument?.idSousCategorie;
     this.updateEvent.emit(updatedsousCategory);
     this.form.reset();
     this.selectedSousCategoryDocument = null;

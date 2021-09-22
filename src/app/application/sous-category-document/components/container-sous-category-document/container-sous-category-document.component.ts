@@ -63,7 +63,7 @@ export class ContainerSousCategoryDocumentComponent implements OnInit {
     this.subs.add(
      this.sousCategoryDocumentService.getAll().subscribe((res: ISousCategoryDoc[]) => {
       this.sousCategoryDocumentsData = res;
-      console.log( this.sousCategoryDocumentsData)
+      console.log(this.sousCategoryDocumentsData)
     })
     );
   }
@@ -77,7 +77,7 @@ export class ContainerSousCategoryDocumentComponent implements OnInit {
   delete(sousCategoryDocument: any): void {
     const id = sousCategoryDocument.idSousCategorie;
     this.subs.add(
-      this.categoryDocumentService.delete(id).subscribe((res: ICategoryDoc) => {
+      this.sousCategoryDocumentService.delete(id).subscribe((res: ISousCategoryDoc) => {
         this.handleResponseDelete(sousCategoryDocument);
       })
     );
@@ -86,7 +86,7 @@ export class ContainerSousCategoryDocumentComponent implements OnInit {
     this.subs.add(
       this.sousCategoryDocumentService
         .create(sousCategoryDocument)
-        .subscribe((res: ICategoryDoc) => {
+        .subscribe((res: ISousCategoryDoc) => {
           this.handleResponseStore(res);
         })
     );
@@ -97,7 +97,7 @@ export class ContainerSousCategoryDocumentComponent implements OnInit {
       this.sousCategoryDocumentsData,
       data
     );
-    this.notification.success('Category Document bien crée !', 'bien crée !');
+    this.notification.success('Sous Category Document bien crée !', 'bien crée !');
     this.formIsShow = false;
   }
 
@@ -106,7 +106,7 @@ export class ContainerSousCategoryDocumentComponent implements OnInit {
       this.jsService.deleteObjectElementFromArrayByKey(
         this.sousCategoryDocumentsData,
         data,
-        'idCategorie'
+        'idSousCategorie'
       )
     );
     this.notification.success(
@@ -120,7 +120,7 @@ export class ContainerSousCategoryDocumentComponent implements OnInit {
     this.subs.add(
       this.sousCategoryDocumentService
         .update(id, sousCategoryDocument)
-        .subscribe((res: ICategoryDoc) => {
+        .subscribe((res: ISousCategoryDoc) => {
           this.handleResponseUpdate(res);
         })
     );
@@ -131,7 +131,7 @@ export class ContainerSousCategoryDocumentComponent implements OnInit {
       this.jsService.modifyObjectElementFromArrayByKey(
         this.sousCategoryDocumentsData,
         data,
-        'idCategorie'
+        'idSousCategorie'
       );
     this.notification.success(
       `Category Document bien Modfiee !`,
