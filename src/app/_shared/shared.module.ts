@@ -14,6 +14,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { PaginationsComponent } from './components/paginations/paginations.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
     NgxPaginationModule,
     Ng2SearchPipeModule,
     NgSelectModule,
+    TranslateModule,
   ],
   exports: [
     ReactiveFormsModule,
@@ -44,6 +46,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
     PaginationsComponent,
     Ng2SearchPipeModule,
     NgSelectModule,
+    TranslateModule,
   ],
 })
 export class SharedModule {}
