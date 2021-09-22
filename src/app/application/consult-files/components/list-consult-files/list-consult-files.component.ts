@@ -141,11 +141,11 @@ export class ListConsultFilesComponent implements OnInit {
     Swal.fire({
       title: `<strong> Info </strong>`,
       icon: 'info',
-      html: `<b>Date Annulation</b>:${this.transformDate(
+      html: `<b>Date Annulation</b>: ${this.transformDate(
         data.dateAnnulation
-      )} <br><b>Annulée Par</b>:${
+      )} <br><b>Annulée Par</b>: ${
         data?.annulePar ? data?.annulePar : ''
-      } <br><b>Motif </b>: ${data?.Motif ? data?.Motif : ''}`,
+      } <br><b>Motif </b>: ${data?.motif ? data?.motif : ''}`,
     });
   }
 
