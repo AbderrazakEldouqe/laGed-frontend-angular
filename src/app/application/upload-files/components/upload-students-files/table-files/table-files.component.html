@@ -4,10 +4,10 @@
     <table class="table -mt-2 table-report">
       <thead>
         <tr>
-          <th class="text-center whitespace-nowrap">FILES NAME</th>
-          <th class="text-center whitespace-nowrap">Type Document</th>
-          <th class="text-center whitespace-nowrap">libellé complémentaire</th>
-          <th class="text-center whitespace-nowrap">ACTIONS</th>
+          <th class="text-center whitespace-nowrap">{{ 'FilesName' | translate }}</th>
+          <th class="text-center whitespace-nowrap">{{ 'DocumentType' | translate }}</th>
+          <th class="text-center whitespace-nowrap">{{ 'SupplementaryText' | translate }}</th>
+          <th class="text-center whitespace-nowrap">{{ 'Actions' | translate }}</th>
         </tr>
       </thead>
       <tbody>
@@ -82,7 +82,8 @@
                   *ngIf="file.get('libelleComplementaire')?.getError('required')"
                   class="mt-2 text-theme-6"
                 >
-                  This field is required
+                 {{ 'FieldRequired' | translate }}
+
                 </div>
               </div>
               </td>
@@ -96,7 +97,7 @@
                     data-target="#delete-confirmation-modal"
                   >
                     <i class="w-4 h-4 mr-1 fas fa-trash"></i>
-                    Delete
+                    {{ 'Delete' | translate }}
                   </a>
                 </div>
               </td>

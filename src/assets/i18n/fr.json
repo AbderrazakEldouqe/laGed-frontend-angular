@@ -41,6 +41,10 @@
     "ConsultationFiles" :"Consultation des Fichiers",
     "UploadFiles" :"Uploader des Fichiers",
     "CategoryFiles" :"Catégorie Fichiers",
-    "SubCategoryFiles" :"Sous-catégorie Fichiers"
+    "SubCategoryFiles" :"Sous-catégorie Fichiers",
+
+
+    "FieldRequired" :"Ce Champ est Obligatoire",
+    "NoFilesSelected":"Aucun fichier sélectionné"
 
 }

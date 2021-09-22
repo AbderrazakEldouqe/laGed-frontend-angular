@@ -21,7 +21,7 @@
     "Previous": "Previous",
     "Next": "Next", 
     "Delete": "Delete",
-    "UploadNow": "UploadNow",
+    "UploadNow": "Upload Now",
     "Cancel": "Cancel",
     "ToUpload": "To Upload",
 
@@ -42,7 +42,10 @@
     "ConsultationFiles" :"Consultation Files",
     "UploadFiles" :"Upload Files",
     "CategoryFiles" :"Category Files",
-    "SubCategoryFiles" :"SubCategory Files"
+    "SubCategoryFiles" :"SubCategory Files",
+
+    "FieldRequired" :"This field is required",
+    "NoFilesSelected" :"No files selected" 
 
  
 }

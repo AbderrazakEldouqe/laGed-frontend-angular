@@ -3,7 +3,8 @@
     <div class="preview">
       <div class="grid grid-cols-4 gap-6">
         <div>
-          <label for="crud-form-1" class="form-label">Année Universitaire</label>
+          <label for="crud-form-1" class="form-label"> {{ 'UniversityYear' | translate }}
+          </label>
 
           <ng-select
             class="col-span-3"
@@ -38,13 +39,14 @@
               "
               class="mt-2 text-theme-6"
             >
-              This field is required
+            {{ 'FieldRequired' | translate }}
             </div>
           </div>
         </div>
         <div>
 
-          <label for="crud-form-1" class="form-label">Code Etudiant</label>
+          <label for="crud-form-1" class="form-label">{{ 'StudentCode' | translate }}
+          </label>
           <ng-select
             class="col-span-3"
             placeholder="Code Etudiant"
@@ -79,7 +81,7 @@
               "
               class="mt-2 text-theme-6"
             >
-              This field is required
+            {{ 'FieldRequired' | translate }}
             </div>
           </div>
         </div>
@@ -103,7 +105,7 @@
         <p
           class="flex flex-wrap justify-center mb-3 font-semibold text-gray-900"
         >
-          <span>Drag and drop your</span>&nbsp;<span>files anywhere or</span>
+          <span>  {{ 'DragDrop' | translate }} </span>
         </p>
         <input
           id="hidden-input"
@@ -117,7 +119,7 @@
           id="button"
           class="px-3 py-1 mt-2 bg-gray-200 rounded-sm  hover:bg-gray-300 focus:shadow-outline focus:outline-none"
         >
-          Upload a file
+          {{ 'Uploadafile' | translate }} 
         </label>
       </header>
     </section>
