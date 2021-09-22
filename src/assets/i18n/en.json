@@ -7,7 +7,8 @@
     "Search": "Search",
     "StudentFullName": "FullName",
     "Share": "Share",
-    "Download": "Download",
+    "Download": "Download" 
+  },
 
     "UniversityYear": "University Year",
     "StudentCode": "Student Code",
@@ -43,5 +44,5 @@
     "CategoryFiles" :"Category Files",
     "SubCategoryFiles" :"SubCategory Files"
 
-  }
+ 
 }

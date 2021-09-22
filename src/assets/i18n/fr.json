@@ -7,7 +7,7 @@
     "Search": "Rechercher",
     "StudentFullName": "Nom - Prénom",
     "Share": "Partager",
-    "Download": "Télecharger",
+    "Download": "Télecharger"},
 
     "UniversityYear": "Année universitaire",
     "StudentCode": "Code Etudiant",
@@ -42,5 +42,5 @@
     "UploadFiles" :"Uploader des Fichiers",
     "CategoryFiles" :"Catégorie Fichiers",
     "SubCategoryFiles" :"Sous-catégorie Fichiers"
-  }
+
 }
