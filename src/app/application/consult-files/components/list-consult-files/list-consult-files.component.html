@@ -33,7 +33,7 @@
           [(ngModel)]="filter"
           type="text"
           class="w-56 pr-10 form-control box placeholder-theme-13"
-          placeholder="Search..."
+          placeholder=" {{ 'ConsultFiles.Search' | translate }}..."
         />
         <i
           class="absolute inset-y-0 right-0 w-4 h-4 my-auto mr-3 fas fa-search"
@@ -46,11 +46,21 @@
     <table class="table -mt-2 table-report">
       <thead>
         <tr>
-          <th class="whitespace-nowrap">NAME</th>
-          <th class="text-center whitespace-nowrap">Année Universitaire</th>
-          <th class="text-center whitespace-nowrap">Type Document</th>
-          <th class="text-center whitespace-nowrap">Libelle Complementaire</th>
-          <th class="text-center whitespace-nowrap">Action</th>
+          <th class="whitespace-nowrap">
+            {{ "ConsultFiles.StudentFullName" | translate }}
+          </th>
+          <th class="text-center whitespace-nowrap">
+            {{ "UniversityYear" | translate }}
+          </th>
+          <th class="text-center whitespace-nowrap">
+            {{ "DocumentType" | translate }}
+          </th>
+          <th class="text-center whitespace-nowrap">
+            {{ "SupplementaryText" | translate }}
+          </th>
+          <th class="text-center whitespace-nowrap">
+            {{ "Actions" | translate }}
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -78,10 +88,12 @@
                 (click)="shareWithEmail(file?.idDocument)"
                 class="flex items-center mr-3 text-green-500"
               >
-                <i class="w-4 h-4 mr-1 text-green-500 fas fa-share"></i> Share
+                <i class="w-4 h-4 mr-1 text-green-500 fas fa-share"></i>
+                {{ "ConsultFiles.Share" | translate }}
               </button>
               <button (click)="download(file)" class="flex items-center mr-3">
-                <i class="w-4 h-4 mr-1 fas fa-download"></i> Download
+                <i class="w-4 h-4 mr-1 fas fa-download"></i>
+                {{ "ConsultFiles.Download" | translate }}
               </button>
 
               <button
@@ -89,7 +101,8 @@
                 class="flex items-center text-theme-6"
                 *ngIf="isAdmin && !file?.annule"
               >
-                <i class="w-4 h-4 mr-1 far fa-trash-alt"></i> Annuler
+                <i class="w-4 h-4 mr-1 far fa-trash-alt"></i>
+                {{ "Cancel" | translate }}
               </button>
               <button
                 (click)="infoFile(file)"
@@ -97,7 +110,7 @@
                 *ngIf="isAdmin && file?.annule"
               >
                 <i class="w-4 h-4 mr-1 text-blue-500 fas fa-info-circle"></i>
-                Info
+                {{ "ConsultFiles.Info" | translate }}
               </button>
             </div>
           </td>

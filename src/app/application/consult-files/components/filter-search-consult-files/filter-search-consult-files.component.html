@@ -13,7 +13,7 @@
         <ng-select
           formControlName="anneeScolaire"
           class="col-span-3"
-          placeholder="Année Universitaire"
+          placeholder="{{ 'UniversityYear' | translate }}"
         >
           <ng-option *ngFor="let date of listAnneeScolaire" [value]="date">{{
             date
@@ -23,7 +23,7 @@
         <ng-select
           formControlName="typeDocument"
           class="col-span-3"
-          placeholder="TypeDocuments"
+          placeholder="{{ 'DocumentType' | translate }}"
         >
           <ng-option
             *ngFor="let category of categoryDocumentsData"
@@ -37,7 +37,7 @@
           type="text"
           style="height: 90%; border-color: #b9bcc3"
           class="col-span-3 form-control"
-          placeholder="Matricule Etudiant"
+          placeholder="{{ 'ConsultFiles.StudentMatricule' | translate }}"
           aria-label="default input inline 3"
         />
         <input
@@ -45,7 +45,7 @@
           type="text"
           style="height: 90%; border-color: #b9bcc3"
           class="col-span-3 form-control"
-          placeholder="Nom Etudiant"
+          placeholder="{{ 'ConsultFiles.StudentName' | translate }}"
           aria-label="default input inline 3"
         />
       </div>
@@ -62,15 +62,15 @@
         type="checkbox"
         formControlName="isDocumentAnnule"
       />
-      <label class="form-check-label" for="vertical-form-3"
-        >Documents Annulée</label
-      >
+      <label class="form-check-label" for="vertical-form-3">{{
+        "ConsultFiles.CanceledFiles" | translate
+      }}</label>
     </div>
     <button
       type="submit"
       class="inline-block w-24 mb-2 mr-3 btn btn-outline-primary"
     >
-      Search
+      {{ "ConsultFiles.Search" | translate }}
     </button>
   </div>
 </form>

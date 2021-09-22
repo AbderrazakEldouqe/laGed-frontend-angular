@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -15,6 +16,7 @@ import Swal from 'sweetalert2';
   templateUrl: './list-consult-files.component.html',
   styleUrls: ['./list-consult-files.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [DatePipe],
 })
 export class ListConsultFilesComponent implements OnInit {
   /* Start Variables */
@@ -39,7 +41,7 @@ export class ListConsultFilesComponent implements OnInit {
   filter = '';
 
   /* End Variables */
-  constructor(private tokenService: TokenService) {}
+  constructor(private tokenService: TokenService, private datePipe: DatePipe) {}
 
   ngOnInit(): void {}
 
@@ -136,5 +138,18 @@ export class ListConsultFilesComponent implements OnInit {
 
   infoFile(data: any) {
     console.log('data', data);
+    Swal.fire({
+      title: `<strong> Info </strong>`,
+      icon: 'info',
+      html: `<b>Date Annulation</b>:${this.transformDate(
+        data.dateAnnulation
+      )} <br><b>Annulée Par</b>:${
+        data?.annulePar ? data?.annulePar : ''
+      } <br><b>Motif </b>: ${data?.Motif ? data?.Motif : ''}`,
+    });
+  }
+
+  transformDate(date: any) {
+    return this.datePipe.transform(date, 'yyyy-MM-dd');
   }
 }
