@@ -18,7 +18,7 @@
         class="side-menu"
       >
         <div class="side-menu__icon"><i class="fas fa-home"></i></div>
-        <div class="side-menu__title">Dashboard</div>
+        <div class="side-menu__title">{{ "Dashboard" | translate }}</div>
       </a>
     </li>
     <li>
@@ -30,7 +30,9 @@
         <div class="side-menu__icon">
           <i class="far fa-eye"></i>
         </div>
-        <div class="side-menu__title">Consult Files</div>
+        <div class="side-menu__title">
+          {{ "ConsultationFiles" | translate }}
+        </div>
       </a>
     </li>
     <li *ngIf="isAdmin">
@@ -42,10 +44,10 @@
         <div class="side-menu__icon">
           <i class="fas fa-file-import"></i>
         </div>
-        <div class="side-menu__title">Upload Files</div>
+        <div class="side-menu__title">{{ "UploadFiles" | translate }}</div>
       </a>
     </li>
-    
+
     <li *ngIf="isAdmin">
       <a
         routerLink="/application/category-document"
@@ -55,7 +57,7 @@
         <div class="side-menu__icon">
           <i class="fas fa-folder"></i>
         </div>
-        <div class="side-menu__title">Category Files</div>
+        <div class="side-menu__title">{{ "CategoryFiles" | translate }}</div>
       </a>
     </li>
     <li *ngIf="isAdmin">
@@ -67,7 +69,7 @@
         <div class="side-menu__icon">
           <i class="fas fa-folder"></i>
         </div>
-        <div class="side-menu__title">Sous Categorie Documents</div>
+        <div class="side-menu__title">{{ "SubCategoryFiles" | translate }}</div>
       </a>
     </li>
   </ul>
