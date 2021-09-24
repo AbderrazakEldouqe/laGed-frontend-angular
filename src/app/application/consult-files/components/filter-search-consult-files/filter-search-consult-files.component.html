@@ -26,9 +26,9 @@
           placeholder="{{ 'DocumentType' | translate }}"
         >
           <ng-option
-            *ngFor="let category of categoryDocumentsData"
-            [value]="category?.catDoc"
-            >{{ category?.catDoc }}</ng-option
+            *ngFor="let sccategory of sousCategoryDocumentsData"
+            [value]="sccategory?.libelle"
+            >{{ sccategory?.libelle }}</ng-option
           >
         </ng-select>
         <input

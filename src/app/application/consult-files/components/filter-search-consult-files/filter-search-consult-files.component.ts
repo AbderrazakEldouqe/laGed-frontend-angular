@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ICategoryDoc } from 'src/app/_core/models/i-category-doc';
+import { ISousCategoryDoc } from 'src/app/_core/models/i-sous-category-doc';
 import { JsService } from 'src/app/_core/services/js.service';
 
 @Component({
@@ -19,7 +20,7 @@ import { JsService } from 'src/app/_core/services/js.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FilterSearchConsultFilesComponent implements OnInit, OnChanges {
-  @Input() categoryDocumentsData: ICategoryDoc[] = [];
+  @Input() sousCategoryDocumentsData: ISousCategoryDoc[] = [];
 
   @Input() listAnneeScolaire: string[] = [];
 

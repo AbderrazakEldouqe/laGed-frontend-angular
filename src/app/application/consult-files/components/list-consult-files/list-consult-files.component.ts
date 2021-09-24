@@ -60,17 +60,17 @@ export class ListConsultFilesComponent implements OnInit {
   annuler(idFile: any) {
     //this.downloadEvent.emit(data);
     Swal.fire({
-      title: 'Are you sure?',
-      text: 'You will not be able to recover this imaginary file!',
+      title: 'Tu es sure?',
+      text: 'Voulez-vous vraiment annuler ce document',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Yes, cancel it!',
-      cancelButtonText: 'No, keep it',
+      confirmButtonText: 'Oui!',
+      cancelButtonText: 'Non',
     }).then((result) => {
       if (result.value) {
         //this.deleteEvent.emit(categoryDocuments);
         Swal.fire({
-          title: 'Enter Your Motif',
+          title: 'Entrer Votre Motif',
           input: 'text',
           inputAttributes: {
             autocapitalize: 'off',
@@ -79,11 +79,12 @@ export class ListConsultFilesComponent implements OnInit {
             validationMessage: 'my-validation-message',
           },
           showCancelButton: true,
-          confirmButtonText: 'Send',
+          confirmButtonText: 'Envoyé',
+          cancelButtonText: 'revenir',
           showLoaderOnConfirm: true,
           preConfirm: (value) => {
             if (!value) {
-              Swal.showValidationMessage(' Motif is required');
+              Swal.showValidationMessage(' Motif est obligatoire');
             }
           },
           allowOutsideClick: () => !Swal.isLoading(),
@@ -94,8 +95,6 @@ export class ListConsultFilesComponent implements OnInit {
             this.AnnulerEvent.emit({ idFile, motif: result.value });
           }
         });
-      } else if (result.dismiss === Swal.DismissReason.cancel) {
-        Swal.fire('Cancelled', 'Your imaginary file is safe :)', 'error');
       }
     });
   }
@@ -110,7 +109,7 @@ export class ListConsultFilesComponent implements OnInit {
 
   shareWithEmail(idFile: any) {
     Swal.fire({
-      title: 'Enter Your Email',
+      title: 'Entrer Votre Email',
       input: 'text',
       inputValue: 'test@gmail.com',
       inputAttributes: {
@@ -120,17 +119,18 @@ export class ListConsultFilesComponent implements OnInit {
         validationMessage: 'my-validation-message',
       },
       showCancelButton: true,
-      confirmButtonText: 'Send',
+      confirmButtonText: 'Envoyé',
+      cancelButtonText: 'revenir',
       showLoaderOnConfirm: true,
       preConfirm: (value) => {
         if (!value) {
-          Swal.showValidationMessage(' Email is required');
+          Swal.showValidationMessage(' Email est obligatoire');
         }
       },
       allowOutsideClick: () => !Swal.isLoading(),
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire('Saved !' + result.value, '', 'success');
+        Swal.fire('Annuler ' + result.value, '', 'success');
         this.shareEvent.emit({ idFile, email: result.value });
       }
     });

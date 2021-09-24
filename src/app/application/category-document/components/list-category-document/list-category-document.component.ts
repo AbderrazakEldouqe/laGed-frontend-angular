@@ -47,17 +47,15 @@ export class ListCategoryDocumentComponent implements OnInit {
 
   delete(categoryDocuments: ICategoryDoc): void {
     Swal.fire({
-      title: 'Are you sure?',
-      text: 'You will not be able to recover this imaginary file!',
+      title: 'Tu es sure?',
+      text: 'Vous ne pourrez pas récupérer ce categorie',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Yes, delete it!',
-      cancelButtonText: 'No, keep it',
+      confirmButtonText: 'Oui!',
+      cancelButtonText: 'Non',
     }).then((result) => {
       if (result.value) {
         this.deleteEvent.emit(categoryDocuments);
-      } else if (result.dismiss === Swal.DismissReason.cancel) {
-        Swal.fire('Cancelled', 'Your imaginary file is safe :)', 'error');
       }
     });
   }

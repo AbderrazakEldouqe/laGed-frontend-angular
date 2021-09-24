@@ -107,7 +107,7 @@
               <button
                 (click)="infoFile(file)"
                 class="flex items-center text-blue-500"
-                *ngIf="isAdmin && file?.annule"
+                *ngIf="file?.annule"
               >
                 <i class="w-4 h-4 mr-1 text-blue-500 fas fa-info-circle"></i>
                 {{ "ConsultFiles.Info" | translate }}

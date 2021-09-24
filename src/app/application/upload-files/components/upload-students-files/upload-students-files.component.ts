@@ -28,7 +28,6 @@ export class UploadStudentsFilesComponent implements OnInit {
   // categoryDocumentsData: ICategoryDoc[] = [];
   sousCategoryDocumentsData: ISousCategoryDoc[] = [];
 
-
   constructor(
     private fb: FormBuilder,
     // private categoryDocumentService: CategoryDocumentService,
@@ -37,8 +36,7 @@ export class UploadStudentsFilesComponent implements OnInit {
     private reactiveFormsService: ReactiveFormsService,
     private notification: NotificationService,
     private uploadStudentFileService: UploadStudentFileService,
-    private router: Router,
-
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -56,27 +54,26 @@ export class UploadStudentsFilesComponent implements OnInit {
   }
 
   uploadNow() {
-    console.log('send Files To Back-End' ,this.filesStudentUploadedFromGroup);
-     if (this.studentFileControl.length > 0) {
-       if (this.filesStudentUploadedFromGroup.valid) {
+    console.log('send Files To Back-End', this.filesStudentUploadedFromGroup);
+    if (this.studentFileControl.length > 0) {
+      if (this.filesStudentUploadedFromGroup.valid) {
         console.log('this Form is valid');
         this.uploadStudentFileService
           .uploadFilesStudent(this.filesStudentUploadedFromGroup.value)
           .subscribe((res) => {
             console.log(res);
-            this.notification.success(`documents has been saved`, 'Success');
-            this.router.navigateByUrl('/application/consult-files')
+            this.notification.success(`Les documents bien uploader`, 'Success');
+            this.router.navigateByUrl('/application/consult-files');
           });
-      } 
-      else {
-        this.notification.error(`veuillez remplire tous les champ`, 'remplire!');
+      } else {
+        this.notification.error(`Veuillez remplir tous les champs`, '');
         this.reactiveFormsService.validateAllFormFields(
           this.filesStudentUploadedFromGroup
         );
       }
     } else {
       console.log('add Files ');
-      this.notification.error(`No Files Added`, 'Add Files!');
+      this.notification.error(`Merci d'ajouté des documents`, '');
       this.reactiveFormsService.validateAllFormFields(
         this.filesStudentUploadedFromGroup
       );
@@ -102,7 +99,7 @@ export class UploadStudentsFilesComponent implements OnInit {
 
   getAllAnneeScolaire() {
     this.etudiantService.getAnneeScolaire().subscribe((res) => {
-      console.log("***********" ,res);
+      console.log('***********', res);
       this.listAnneeScolaire = res;
     });
   }
@@ -121,9 +118,11 @@ export class UploadStudentsFilesComponent implements OnInit {
    */
   getAllSousCategoryDocuments(): void {
     this.subs.add(
-      this.sousCategoryDocumentService.getAll().subscribe((res: ISousCategoryDoc[]) => {
-        this.sousCategoryDocumentsData = res;
-      })
+      this.sousCategoryDocumentService
+        .getAll()
+        .subscribe((res: ISousCategoryDoc[]) => {
+          this.sousCategoryDocumentsData = res;
+        })
     );
   }
 }

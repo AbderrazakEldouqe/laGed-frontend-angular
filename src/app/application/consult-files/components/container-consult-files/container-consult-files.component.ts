@@ -8,6 +8,8 @@ import * as fileSaver from 'file-saver';
 import { IEtudiantDoc } from 'src/app/_core/models/i-etudiant-doc';
 import { JsService } from 'src/app/_core/services/js.service';
 import Swal from 'sweetalert2';
+import { ISousCategoryDoc } from 'src/app/_core/models/i-sous-category-doc';
+import { SousCategoryDocumentService } from 'src/app/application/sous-category-document/services/sous-category-document.service';
 
 @Component({
   selector: 'app-container-consult-files',
@@ -18,8 +20,7 @@ export class ContainerConsultFilesComponent implements OnInit, OnDestroy {
   /* Start Variables */
   private subs = new SubSink();
   filesData: any[] = [];
-
-  categoryDocumentsData: ICategoryDoc[] = [];
+  sousCategoryDocumentsData: ISousCategoryDoc[] = [];
 
   listAnneeScolaire: string[] = [];
 
@@ -32,7 +33,7 @@ export class ContainerConsultFilesComponent implements OnInit, OnDestroy {
   /* End Variables */
   constructor(
     private consultFilesService: ConsultFilesService,
-    private categoryDocumentService: CategoryDocumentService,
+    private sousCategoryDocumentService: SousCategoryDocumentService,
     private etudiantService: EtudiantService,
     private jsService: JsService
   ) {}
@@ -43,7 +44,7 @@ export class ContainerConsultFilesComponent implements OnInit, OnDestroy {
    */
   ngOnInit(): void {
     //this.getAllDocuments();
-    this.getAllCategoryDocuments();
+    this.getAllSousCategoryDocuments();
     this.getAllAnneeScolaire();
   }
 
@@ -80,11 +81,14 @@ export class ContainerConsultFilesComponent implements OnInit, OnDestroy {
    * getAllCategoryDocuments
    * * It is called for get data From Backend
    */
-  getAllCategoryDocuments(): void {
+  getAllSousCategoryDocuments(): void {
     this.subs.add(
-      this.categoryDocumentService.getAll().subscribe((res: ICategoryDoc[]) => {
-        this.categoryDocumentsData = res;
-      })
+      this.sousCategoryDocumentService
+        .getAll()
+        .subscribe((res: ISousCategoryDoc[]) => {
+          this.sousCategoryDocumentsData = res;
+          console.log(this.sousCategoryDocumentsData);
+        })
     );
   }
 
@@ -180,7 +184,7 @@ export class ContainerConsultFilesComponent implements OnInit, OnDestroy {
       this.filesData.splice(index, 1);
     }
     this.filesData = this.jsService.spread(this.filesData);
-    Swal.fire('Canceled !', '', 'success');
+    Swal.fire('Le document est Annulée !', '', 'success');
   }
   ngOnDestroy(): void {
     this.subs.unsubscribe();

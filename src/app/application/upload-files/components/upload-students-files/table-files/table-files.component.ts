@@ -20,7 +20,7 @@ import Swal from 'sweetalert2';
 export class TableFilesComponent implements OnInit {
   @Input() filesStudentUploadedFromGroup: FormGroup = new FormGroup({});
   // @Input() categoryDocumentsData : ICategoryDoc []=[];
-  @Input() sousCategoryDocumentsData : ISousCategoryDoc []=[];
+  @Input() sousCategoryDocumentsData: ISousCategoryDoc[] = [];
 
   @Output() studentFilesTableEvent = new EventEmitter();
   listFileRequest: FormArray = new FormArray([]);
@@ -29,7 +29,8 @@ export class TableFilesComponent implements OnInit {
     id: 'custom',
     itemsPerPage: 4,
     currentPage: 1,
-    totalItems: this.filesStudentUploadedFromGroup?.value?.listFileRequest?.length,
+    totalItems:
+      this.filesStudentUploadedFromGroup?.value?.listFileRequest?.length,
   };
   tableSizes = [4, 8, 10, 14];
   filter = '';
@@ -48,22 +49,19 @@ export class TableFilesComponent implements OnInit {
 
   deleteFile(index: number) {
     Swal.fire({
-      title: 'Are you sure?',
-      text: 'You will not be able to recover this imaginary file!',
+      title: 'Tu es sure?',
+      text: 'Vous ne pourrez pas récupérer ce document',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Yes, delete it!',
-      cancelButtonText: 'No, keep it',
+      confirmButtonText: 'Oui!',
+      cancelButtonText: 'Non',
     }).then((result) => {
       if (result.value) {
         this.studentFileControl.controls.splice(index, 1);
         this.studentFileControl.value.splice(index, 1);
         this.studentFilesTableEvent.emit(this.studentFileControl.value);
-      } else if (result.dismiss === Swal.DismissReason.cancel) {
-        Swal.fire('Cancelled', 'Your imaginary file is safe :)', 'error');
       }
     });
-    
   }
 
   /**
@@ -72,9 +70,11 @@ export class TableFilesComponent implements OnInit {
    */
   fieldGlobalIndex(index: number) {
     return this.config.itemsPerPage * (this.config.currentPage - 1) + index;
-  } 
-  
+  }
+
   get studentFileControl(): FormArray {
-    return this.filesStudentUploadedFromGroup.get('listFileRequest') as FormArray;
+    return this.filesStudentUploadedFromGroup.get(
+      'listFileRequest'
+    ) as FormArray;
   }
 }

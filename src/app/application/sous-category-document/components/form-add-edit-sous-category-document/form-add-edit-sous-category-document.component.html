@@ -1,122 +1,133 @@
 <div class="flex items-center mt-8 intro-y">
-    <h2 class="mr-auto text-lg font-medium">
-      {{ selectedSousCategoryDocument ? "Update" : "Create" }} Category Document
-    </h2>
-  </div>
-  <div class="flex justify-center mt-5">
-    <!-- <div class="grid grid-cols-12 gap-6 mx-auto mt-5 " > -->
-  
-    <div class="w-2/3 col-span-12 intro-y lg:col-span-6">
-      <!-- BEGIN: Form Layout -->
-      <form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-5 intro-y box">
-        <div>
-            <label for="catDoc" class="form-label"> {{ 'CategoryFiles' | translate }}
-            </label>
-            <ng-select
-            class="col-span-3"
-            placeholder="{{ 'CategoryFiles' | translate }}"
-            formControlName="categorieDTO"
-            [compareWith]='comparewith'
-            [ngClass]="{
-              'is-valid':
-              form.get('categorieDTO')?.valid,
-              'is-invalid':
+  <h2 class="mr-auto text-lg font-medium">
+    {{ selectedSousCategoryDocument ? "Update" : "Create" }} Sous Category
+    Document
+  </h2>
+</div>
+<div class="flex justify-center mt-5">
+  <!-- <div class="grid grid-cols-12 gap-6 mx-auto mt-5 " > -->
+
+  <div class="w-2/3 col-span-12 intro-y lg:col-span-6">
+    <!-- BEGIN: Form Layout -->
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-5 intro-y box">
+      <div>
+        <label for="catDoc" class="form-label">
+          {{ "CategoryFiles" | translate }}
+        </label>
+        <ng-select
+          class="col-span-3"
+          placeholder="{{ 'CategoryFiles' | translate }}"
+          formControlName="categorieDTO"
+          [compareWith]="comparewith"
+          [ngClass]="{
+            'is-valid': form.get('categorieDTO')?.valid,
+            'is-invalid':
               form.get('categorieDTO')?.invalid &&
-                (form.get('categorieDTO')?.touched ||
+              (form.get('categorieDTO')?.touched ||
                 form.get('categorieDTO')?.dirty)
-            }"
-          >
-            <ng-option *ngFor="let cat of categoryDocumentsData" [value]="cat">{{
-              cat.catDoc
-            }}</ng-option>
-          </ng-select>
-            <div
-              *ngIf="
-                (form.get('categorieDTO')?.invalid && form.get('categorieDTO')?.touched) ||
-                form.get('categorieDTO')?.dirty
-              "
-            >
-              <div
-                *ngIf="form.get('categorieDTO')?.getError('required')"
-                class="mt-2 text-theme-6"
-              >
-              {{ 'FieldRequired' | translate }}
-            </div>
-            </div>
-          </div>
-        <div class="mt-3">
-          <label for="catDoc" class="form-label">{{ 'description' | translate }}</label>
-          <input
-            formControlName="description"
-            id="description"
-            type="text"
-            class="w-full form-control"
-            placeholder="{{ 'description' | translate }}"
-            [ngClass]="{
-              'border-theme-9': form.get('description')?.valid,
-              'border-theme-6':
-                form.get('description')?.invalid &&
-                (form.get('description')?.touched || form.get('description')?.dirty)
-            }"
-          />
+          }"
+        >
+          <ng-option *ngFor="let cat of categoryDocumentsData" [value]="cat">{{
+            cat.catDoc
+          }}</ng-option>
+        </ng-select>
+        <div
+          *ngIf="
+            (form.get('categorieDTO')?.invalid &&
+              form.get('categorieDTO')?.touched) ||
+            form.get('categorieDTO')?.dirty
+          "
+        >
           <div
-            *ngIf="
-              (form.get('description')?.invalid && form.get('description')?.touched) ||
-              form.get('description')?.dirty
-            "
+            *ngIf="form.get('categorieDTO')?.getError('required')"
+            class="mt-2 text-theme-6"
           >
-            <div
-              *ngIf="form.get('description')?.getError('required')"
-              class="mt-2 text-theme-6"
-            >
-            {{ 'FieldRequired' | translate }}
-            </div>
+            {{ "FieldRequired" | translate }}
           </div>
         </div>
-        <div class="mt-3">
-          <label for="libelle" class="form-label">{{ 'worded' | translate }}</label>
-          <input
-            formControlName="libelle"
-            id="libelle"
-            type="text"
-            class="w-full form-control"
-            placeholder="{{ 'worded' | translate }}"
-            [ngClass]="{
-              'border-theme-9': form.get('libelle')?.valid,
-              'border-theme-6':
-                form.get('libelle')?.invalid &&
-                (form.get('libelle')?.touched || form.get('libelle')?.dirty)
-            }"
-          />
+      </div>
+      <div class="mt-3">
+        <label for="catDoc" class="form-label">{{
+          "description" | translate
+        }}</label>
+        <input
+          formControlName="description"
+          id="description"
+          type="text"
+          class="w-full form-control"
+          placeholder="{{ 'description' | translate }}"
+          [ngClass]="{
+            'border-theme-9': form.get('description')?.valid,
+            'border-theme-6':
+              form.get('description')?.invalid &&
+              (form.get('description')?.touched ||
+                form.get('description')?.dirty)
+          }"
+        />
+        <div
+          *ngIf="
+            (form.get('description')?.invalid &&
+              form.get('description')?.touched) ||
+            form.get('description')?.dirty
+          "
+        >
           <div
-            *ngIf="
-              (form.get('libelle')?.invalid && form.get('libelle')?.touched) ||
-              form.get('libelle')?.dirty
-            "
+            *ngIf="form.get('description')?.getError('required')"
+            class="mt-2 text-theme-6"
           >
-            <div
-              *ngIf="form.get('libelle')?.getError('required')"
-              class="mt-2 text-theme-6"
-            >
-            {{ 'FieldRequired' | translate }}
-            </div>
+            {{ "FieldRequired" | translate }}
           </div>
         </div>
-        <div class="mt-5 text-right">
-          <button
-            (click)="back()"
-            type="button"
-            class="w-24 mr-1 btn btn-outline-secondary"
+      </div>
+      <div class="mt-3">
+        <label for="libelle" class="form-label">{{
+          "worded" | translate
+        }}</label>
+        <input
+          formControlName="libelle"
+          id="libelle"
+          type="text"
+          class="w-full form-control"
+          placeholder="{{ 'worded' | translate }}"
+          [ngClass]="{
+            'border-theme-9': form.get('libelle')?.valid,
+            'border-theme-6':
+              form.get('libelle')?.invalid &&
+              (form.get('libelle')?.touched || form.get('libelle')?.dirty)
+          }"
+        />
+        <div
+          *ngIf="
+            (form.get('libelle')?.invalid && form.get('libelle')?.touched) ||
+            form.get('libelle')?.dirty
+          "
+        >
+          <div
+            *ngIf="form.get('libelle')?.getError('required')"
+            class="mt-2 text-theme-6"
           >
-          {{ 'Cancel' | translate }}
-          </button>
-          <button type="submit" class="w-24 btn btn-primary disabled:border-none disabled:cursor-not-allowed" [disabled]='!form.valid'>
-            <!-- {{ selectedSousCategoryDocument ? "{{ 'Update' | translate }}" : "{{ 'Create' | translate }}" }} -->
-            {{ selectedSousCategoryDocument ? "Update" : "Create" }}
-          </button>
+            {{ "FieldRequired" | translate }}
+          </div>
         </div>
-      </form>
-      <!-- END: Form Layout -->
-    </div>
+      </div>
+      <div class="mt-5 text-right">
+        <button
+          (click)="back()"
+          type="button"
+          class="w-24 mr-1 btn btn-outline-secondary"
+        >
+          {{ "Cancel" | translate }}
+        </button>
+        <button
+          type="submit"
+          class="w-24  btn btn-primary disabled:border-none disabled:cursor-not-allowed"
+          [disabled]="!form.valid"
+        >
+          <!-- {{ selectedSousCategoryDocument ? "{{ 'Update' | translate }}" : "{{ 'Create' | translate }}" }} -->
+          {{ selectedSousCategoryDocument ? "Update" : "Create" }}
+        </button>
+      </div>
+    </form>
+    <!-- END: Form Layout -->
   </div>
-  
+</div>
