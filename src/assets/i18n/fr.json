@@ -10,7 +10,6 @@
     "Download": "Télecharger",
     "Info": "Info"
   },
-
   "UniversityYear": "Année universitaire",
   "StudentCode": "Code Etudiant",
   "DragDrop": "Faites glisser et déposez vos fichiers n'importe où ou",
@@ -25,32 +24,40 @@
   "UploadNow": "Uploader maintenant",
   "Cancel": "Annuler",
   "ToUpload": "À Uploader",
-
-    "Category": "Catégorie",
-    "worded": "Libellé ",
-    "description": "Description",
-    "Edit":"Modifier",
-    "Create":"Créer",
-    "Update":"Mettre à jour",
-    "UpdateCategoryDocument":"Mettre à jour Catégorie",
-    "CreateCategoryDocument":"Créer une Catégorie",
-    "GeneralReport":"Rapport Général",
-    "Files":"Fichiers",
-    "Students":"Etudiants",
-
-
-    "Dashboard" : "Tableau de bord",
-    "ConsultationFiles" :"Consultation des Fichiers",
-    "UploadFiles" :"Uploader des Fichiers",
-    "CategoryFiles" :"Catégorie Fichiers",
-    "SubCategoryFiles" :"Sous-catégorie Fichiers",
-
-
-    "FieldRequired" :"Ce Champ est Obligatoire",
-    "NoFilesSelected":"Aucun fichier sélectionné",
-
-
-    "logout": "Déconnecter",
-    "Profile": "Votre Profile"
-
+  "Category": "Catégorie",
+  "worded": "Libellé ",
+  "description": "Description",
+  "Edit": "Modifier",
+  "Create": "Créer",
+  "Update": "Mettre à jour",
+  "UpdateCategoryDocument": "Mettre à jour Catégorie",
+  "CreateCategoryDocument": "Créer une Catégorie",
+  "GeneralReport": "Rapport Général",
+  "Files": "Fichiers",
+  "Students": "Etudiants",
+  "Dashboard": "Tableau de bord",
+  "ConsultationFiles": "Consultation des Fichiers",
+  "UploadFiles": "Uploader des Fichiers",
+  "CategoryFiles": "Catégorie Fichiers",
+  "SubCategoryFiles": "Sous-catégorie Fichiers",
+  "FieldRequired": "Ce Champ est Obligatoire",
+  "NoFilesSelected": "Aucun fichier sélectionné",
+  "logout": "Déconnecter",
+  "Profile": "Votre Profile",
+  "auth": {
+    "description1": "Gérez tous vos fichiers Etudiants",
+    "description2": "dans un seul endroit",
+    "loginTitre": "S'identifier",
+    "email": "Email",
+    "password": "Mot de pass",
+    "login": "Connexion"
+  },
+  "notFound": {
+    "description1": "Oups. Cette page a disparu",
+    "description2": "Vous avez peut-être mal saisi l'adresse ou la page a peut-être bougé",
+    "Back": "Retour à le tableau de board"
+  },
+  "dashboard": {
+    "generalReport": "Rapport General"
+  }
 }

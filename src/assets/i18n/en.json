@@ -10,48 +10,54 @@
     "Download": "Download",
     "Info": "Info"
   },
-
-    "UniversityYear": "University Year",
-    "StudentCode": "Student Code",
-    "DragDrop": "Drag and drop yourfiles anywhere or",
-    "Uploadafile": "Upload a File",
-    "FilesName": "Files Name",
-    "DocumentType": "Document Type",
-    "SupplementaryText": "Supplementary Text",
-    "Actions": "Actions",
-    "Previous": "Previous",
-    "Next": "Next", 
-    "Delete": "Delete",
-    "UploadNow": "Upload Now",
-    "Cancel": "Cancel",
-    "ToUpload": "To Upload",
-
-
-    "Category": "Category",
-    "worded": "worded",
-    "description": "Description",
-    "Edit": "Edit",
-    "Create": "Create",
-    "Update": "Update",
-    "UpdateCategoryDocument": "Update Category Document",
-    "CreateCategoryDocument": "Create Category Document",
-    "GeneralReport": "General Report",
-    "Files": "Files",
-    "Students": "Students",
-
-
-    "Dashboard" : "Dashboard",
-    "ConsultationFiles" :"Consultation Files",
-    "UploadFiles" :"Upload Files",
-    "CategoryFiles" :"Category Files",
-    "SubCategoryFiles" :"SubCategory Files",
-
-    "FieldRequired" :"This field is required",
-    "NoFilesSelected" :"No files selected" ,
-
-
-    "logout": "Sign out",
-    "Profile": "Your Profile"
-
-
+  "UniversityYear": "University Year",
+  "StudentCode": "Student Code",
+  "DragDrop": "Drag and drop yourfiles anywhere or",
+  "Uploadafile": "Upload a File",
+  "FilesName": "Files Name",
+  "DocumentType": "Document Type",
+  "SupplementaryText": "Supplementary Text",
+  "Actions": "Actions",
+  "Previous": "Previous",
+  "Next": "Next",
+  "Delete": "Delete",
+  "UploadNow": "Upload Now",
+  "Cancel": "Cancel",
+  "ToUpload": "To Upload",
+  "Category": "Category",
+  "worded": "worded",
+  "description": "Description",
+  "Edit": "Edit",
+  "Create": "Create",
+  "Update": "Update",
+  "UpdateCategoryDocument": "Update Category Document",
+  "CreateCategoryDocument": "Create Category Document",
+  "GeneralReport": "General Report",
+  "Files": "Files",
+  "Students": "Students",
+  "Dashboard": "Dashboard",
+  "ConsultationFiles": "Consultation Files",
+  "UploadFiles": "Upload Files",
+  "CategoryFiles": "Category Files",
+  "SubCategoryFiles": "SubCategory Files",
+  "FieldRequired": "This field is required",
+  "NoFilesSelected": "No files selected",
+  "logout": "Sign out",
+  "Profile": "Your Profile",
+  "auth": {
+    "description1": "Manage all your Students files",
+    "description2": "in one place",
+    "loginTitre": "Sign In",
+    "email": "Email",
+    "password": "Password",
+    "login": "Login"
+  },
+  "notFound": {
+    "description1": "Oops. This page has gone missing",
+    "description2": "You may have mistyped the address or the page may have moved",
+    "Back": "Back to home"
+  },
+  "dashboard": {
+    "generalReport": "General Report"
+  }
 }

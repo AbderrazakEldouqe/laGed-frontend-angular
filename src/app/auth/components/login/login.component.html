@@ -16,15 +16,13 @@
             <div
               class="mt-10 text-4xl font-medium leading-tight text-white  -intro-x"
             >
-              A few more clicks to
+              {{ "auth.description1" | translate }}
               <br />
-              sign in to your account.
+              {{ "auth.description2" | translate }}.
             </div>
             <div
               class="mt-5 text-lg text-white  -intro-x text-opacity-70 dark:text-gray-500"
-            >
-              Manage all your Student files in one place
-            </div>
+            ></div>
           </div>
         </div>
         <!-- END: Login Info -->
@@ -36,51 +34,33 @@
             <h2
               class="text-2xl font-bold text-center  intro-x xl:text-3xl xl:text-left"
             >
-              Sign In
+              {{ "auth.loginTitre" | translate }}.
             </h2>
             <div class="mt-2 text-center text-gray-500 intro-x xl:hidden">
-              Manage all your Student files in one place
+              {{ "auth.description1" | translate }}
+              {{ "auth.description2" | translate }}.
             </div>
             <div class="mt-8 intro-x">
               <input
                 type="text"
                 formControlName="login"
                 class="block px-4 py-3 border-gray-300  intro-x login__input form-control"
-                placeholder="Email"
+                placeholder="{{ 'auth.email' | translate }}"
               />
               <input
                 type="password"
                 formControlName="password"
                 class="block px-4 py-3 mt-4 border-gray-300  intro-x login__input form-control"
-                placeholder="Password"
+                placeholder="{{ 'auth.password' | translate }}"
               />
             </div>
-            <div
-              class="flex mt-4 text-xs text-gray-700  intro-x dark:text-gray-600 sm:text-sm"
-            >
-              <div class="flex items-center mr-auto">
-                <input
-                  id="remember-me"
-                  type="checkbox"
-                  class="mr-2 border form-check-input"
-                />
-                <label class="cursor-pointer select-none" for="remember-me"
-                  >Remember me</label
-                >
-              </div>
-              <a href="">Forgot Password?</a>
-            </div>
+
             <div class="mt-5 text-center intro-x xl:mt-8 xl:text-left">
               <button
                 type="submit"
                 class="w-full px-4 py-3 align-top  btn btn-primary xl:w-32 xl:mr-3"
               >
                 Login
-              </button>
-              <button
-                class="w-full px-4 py-3 mt-3 align-top  btn btn-outline-secondary xl:w-32 xl:mt-0"
-              >
-                Sign up
               </button>
             </div>
             <!-- <div class="mt-10 text-center text-gray-700 intro-x xl:mt-24 dark:text-gray-600 xl:text-left">
