@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     //alert(`Bienvenu : ${this.tokenService.getInfos().userName}`);
     this.notification.success(
       `Bienvenu : ${this.tokenService.getInfos().userName}`,
-      'Vous êtes connectés !'
+      'Vous êtes connecté !'
     );
     this.router.navigateByUrl('/application');
   }

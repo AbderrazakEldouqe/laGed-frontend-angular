@@ -70,7 +70,7 @@ export class ContainerCategoryDocumentComponent implements OnInit {
       this.categoryDocumentsData,
       data
     );
-    this.notification.success('Category Document bien crée !', 'bien crée !');
+    this.notification.success('Categorie document bien crée !', 'Bien crée !');
     this.formIsShow = false;
   }
 
@@ -103,8 +103,8 @@ export class ContainerCategoryDocumentComponent implements OnInit {
         'idCategorie'
       );
     this.notification.success(
-      `Category Document bien Modfiee !`,
-      'bien Modfiee !'
+      `Categorie document bien Modfiée !`,
+      'Bien modfiée !'
     );
     this.formIsShow = false;
   }
@@ -127,7 +127,7 @@ export class ContainerCategoryDocumentComponent implements OnInit {
       )
     );
     this.notification.success(
-      `Category Document bien supprimer !`,
+      `Categorie Document bien supprimer !`,
       'bien supprimer !'
     );
   }

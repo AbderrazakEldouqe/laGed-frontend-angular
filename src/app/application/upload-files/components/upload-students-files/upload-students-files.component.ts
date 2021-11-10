@@ -73,7 +73,7 @@ export class UploadStudentsFilesComponent implements OnInit {
       }
     } else {
       console.log('add Files ');
-      this.notification.error(`Merci d'ajouté des documents`, '');
+      this.notification.error(`Merci d'ajouter des documents`, '');
       this.reactiveFormsService.validateAllFormFields(
         this.filesStudentUploadedFromGroup
       );

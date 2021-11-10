@@ -60,7 +60,7 @@ export class ListConsultFilesComponent implements OnInit {
   annuler(idFile: any) {
     //this.downloadEvent.emit(data);
     Swal.fire({
-      title: 'Tu es sure?',
+      title: 'Veuillez confirmer cette action!',
       text: 'Voulez-vous vraiment annuler ce document',
       icon: 'warning',
       showCancelButton: true,
@@ -109,7 +109,7 @@ export class ListConsultFilesComponent implements OnInit {
 
   shareWithEmail(idFile: any) {
     Swal.fire({
-      title: 'Entrer Votre Email',
+      title: 'Entrez votre email',
       input: 'text',
       inputValue: 'test@gmail.com',
       inputAttributes: {

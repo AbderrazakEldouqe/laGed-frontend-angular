@@ -47,7 +47,7 @@ export class ListCategoryDocumentComponent implements OnInit {
 
   delete(categoryDocuments: ICategoryDoc): void {
     Swal.fire({
-      title: 'Tu es sure?',
+      title: 'Veuillez confirmer cette action!',
       text: 'Vous ne pourrez pas récupérer ce categorie',
       icon: 'warning',
       showCancelButton: true,

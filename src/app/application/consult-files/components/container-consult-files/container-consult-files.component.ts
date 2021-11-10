@@ -184,7 +184,7 @@ export class ContainerConsultFilesComponent implements OnInit, OnDestroy {
       this.filesData.splice(index, 1);
     }
     this.filesData = this.jsService.spread(this.filesData);
-    Swal.fire('Le document est Annulée !', '', 'success');
+    Swal.fire('Le document est annulé !', '', 'success');
   }
   ngOnDestroy(): void {
     this.subs.unsubscribe();

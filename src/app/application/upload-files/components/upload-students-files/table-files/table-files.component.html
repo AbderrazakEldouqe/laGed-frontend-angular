@@ -4,10 +4,18 @@
     <table class="table -mt-2 table-report">
       <thead>
         <tr>
-          <th class="text-center whitespace-nowrap">{{ 'FilesName' | translate }}</th>
-          <th class="text-center whitespace-nowrap">{{ 'DocumentType' | translate }}</th>
-          <th class="text-center whitespace-nowrap">{{ 'SupplementaryText' | translate }}</th>
-          <th class="text-center whitespace-nowrap">{{ 'Actions' | translate }}</th>
+          <th class="text-center whitespace-nowrap">
+            {{ "FilesName" | translate }}
+          </th>
+          <th class="text-center whitespace-nowrap">
+            {{ "DocumentType" | translate }}
+          </th>
+          <th class="text-center whitespace-nowrap">
+            {{ "SupplementaryText" | translate }}
+          </th>
+          <th class="text-center whitespace-nowrap">
+            {{ "Actions" | translate }}
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -28,64 +36,71 @@
                 }}</a>
               </td>
               <td>
-                <ng-select class="col-span-3" placeholder="Type Document"
+                <ng-select
+                  class="col-span-3"
+                  placeholder="Type Document"
                   formControlName="sousCategorieDTO"
-                  dropdownPosition ="bottom"
+                  dropdownPosition="bottom"
                   [ngClass]="{
                     'is-valid': file.get('sousCategorieDTO')?.valid,
                     'is-invalid':
-                    file.get('sousCategorieDTO')?.invalid &&
+                      file.get('sousCategorieDTO')?.invalid &&
                       (file.get('sousCategorieDTO')?.touched ||
-                      file.get('sousCategorieDTO')?.dirty)
-                  }">
-                  <ng-option *ngFor='let sousCat of sousCategoryDocumentsData' [value]='sousCat'>{{sousCat.libelle}}</ng-option>
+                        file.get('sousCategorieDTO')?.dirty)
+                  }"
+                >
+                  <ng-option
+                    *ngFor="let sousCat of sousCategoryDocumentsData"
+                    [value]="sousCat"
+                    >{{ sousCat.libelle }}</ng-option
+                  >
                 </ng-select>
                 <div
-                *ngIf="
-                  (file.get('sousCategorieDTO')?.invalid 
-                  && file.get('sousCategorieDTO')?.touched) ||
-                  file.get('sousCategorieDTO')?.dirty
-                "
-              >
-                <div
-                  *ngIf="file.get('sousCategorieDTO')?.getError('required')"
-                  class="mt-2 text-theme-6"
+                  *ngIf="
+                    (file.get('sousCategorieDTO')?.invalid &&
+                      file.get('sousCategorieDTO')?.touched) ||
+                    file.get('sousCategorieDTO')?.dirty
+                  "
                 >
-                  This field is required
+                  <div
+                    *ngIf="file.get('sousCategorieDTO')?.getError('required')"
+                    class="mt-2 text-theme-6"
+                  >
+                    {{ "FieldRequired" | translate }}
+                  </div>
                 </div>
-              </div>
               </td>
               <td>
                 <input
                   id="regular-form-1"
                   type="text"
-                  class="w-3/12 form-control form-control-sm "
+                  class="w-3/12 form-control form-control-sm"
                   placeholder="libellé complémentaire"
                   formControlName="libelleComplementaire"
                   [ngClass]="{
                     'border-theme-9': file.get('libelleComplementaire')?.valid,
                     'border-theme-6':
-                    file.get('libelleComplementaire')?.invalid &&
-                      (file.get('libelleComplementaire')?.touched || 
-                      file.get('libelleComplementaire')?.dirty)
+                      file.get('libelleComplementaire')?.invalid &&
+                      (file.get('libelleComplementaire')?.touched ||
+                        file.get('libelleComplementaire')?.dirty)
                   }"
-           
                 />
                 <div
-                *ngIf="
-                  (file.get('libelleComplementaire')?.invalid 
-                  && file.get('libelleComplementaire')?.touched) ||
-                  file.get('libelleComplementaire')?.dirty
-                "
-              >
-                <div
-                  *ngIf="file.get('libelleComplementaire')?.getError('required')"
-                  class="mt-2 text-theme-6"
+                  *ngIf="
+                    (file.get('libelleComplementaire')?.invalid &&
+                      file.get('libelleComplementaire')?.touched) ||
+                    file.get('libelleComplementaire')?.dirty
+                  "
                 >
-                 {{ 'FieldRequired' | translate }}
-
+                  <div
+                    *ngIf="
+                      file.get('libelleComplementaire')?.getError('required')
+                    "
+                    class="mt-2 text-theme-6"
+                  >
+                    {{ "FieldRequired" | translate }}
+                  </div>
                 </div>
-              </div>
               </td>
               <td class="w-56 table-report__action">
                 <div class="flex items-center justify-center">
@@ -97,7 +112,7 @@
                     data-target="#delete-confirmation-modal"
                   >
                     <i class="w-4 h-4 mr-1 fas fa-trash"></i>
-                    {{ 'Delete' | translate }}
+                    {{ "Delete" | translate }}
                   </a>
                 </div>
               </td>

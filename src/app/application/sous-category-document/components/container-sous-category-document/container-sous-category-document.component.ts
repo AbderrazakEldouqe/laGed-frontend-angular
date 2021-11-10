@@ -10,22 +10,23 @@ import { SousCategoryDocumentService } from '../../services/sous-category-docume
 @Component({
   selector: 'app-container-sous-category-document',
   templateUrl: './container-sous-category-document.component.html',
-  styleUrls: ['./container-sous-category-document.component.css']
+  styleUrls: ['./container-sous-category-document.component.css'],
 })
 export class ContainerSousCategoryDocumentComponent implements OnInit {
-    /* Start Variables */
-    private subs = new SubSink();
-    categoryDocumentsData: ICategoryDoc[] = [];
-    sousCategoryDocumentsData: ISousCategoryDoc[] = [];
-    formIsShow = false;
-    selectedSousCategoryDocument: ICategoryDoc | null = null;
+  /* Start Variables */
+  private subs = new SubSink();
+  categoryDocumentsData: ICategoryDoc[] = [];
+  sousCategoryDocumentsData: ISousCategoryDoc[] = [];
+  formIsShow = false;
+  selectedSousCategoryDocument: ICategoryDoc | null = null;
 
-    
-    /* End Variables */
-  constructor( private categoryDocumentService: CategoryDocumentService,
-    private sousCategoryDocumentService : SousCategoryDocumentService,
+  /* End Variables */
+  constructor(
+    private categoryDocumentService: CategoryDocumentService,
+    private sousCategoryDocumentService: SousCategoryDocumentService,
     private notification: NotificationService,
-    private jsService: JsService) { }
+    private jsService: JsService
+  ) {}
 
   ngOnInit(): void {
     this.getAllSousCategoryDocuments();
@@ -41,7 +42,7 @@ export class ContainerSousCategoryDocumentComponent implements OnInit {
     this.formIsShow = false;
   }
 
-    /* Start Services */
+  /* Start Services */
 
   /**
    * getAllCategoryDocuments
@@ -59,12 +60,14 @@ export class ContainerSousCategoryDocumentComponent implements OnInit {
    * getAllSousCategoryDocuments
    * * It is called for get data From Backend
    */
-   getAllSousCategoryDocuments(): void {
+  getAllSousCategoryDocuments(): void {
     this.subs.add(
-     this.sousCategoryDocumentService.getAll().subscribe((res: ISousCategoryDoc[]) => {
-      this.sousCategoryDocumentsData = res;
-      console.log(this.sousCategoryDocumentsData)
-    })
+      this.sousCategoryDocumentService
+        .getAll()
+        .subscribe((res: ISousCategoryDoc[]) => {
+          this.sousCategoryDocumentsData = res;
+          console.log(this.sousCategoryDocumentsData);
+        })
     );
   }
 
@@ -77,9 +80,11 @@ export class ContainerSousCategoryDocumentComponent implements OnInit {
   delete(sousCategoryDocument: any): void {
     const id = sousCategoryDocument.idSousCategorie;
     this.subs.add(
-      this.sousCategoryDocumentService.delete(id).subscribe((res: ISousCategoryDoc) => {
-        this.handleResponseDelete(sousCategoryDocument);
-      })
+      this.sousCategoryDocumentService
+        .delete(id)
+        .subscribe((res: ISousCategoryDoc) => {
+          this.handleResponseDelete(sousCategoryDocument);
+        })
     );
   }
   store(sousCategoryDocument: ISousCategoryDoc): void {
@@ -97,7 +102,10 @@ export class ContainerSousCategoryDocumentComponent implements OnInit {
       this.sousCategoryDocumentsData,
       data
     );
-    this.notification.success('Sous Category Document bien crée !', 'bien crée !');
+    this.notification.success(
+      'Sous categorie cocument bien crée !',
+      'Bien crée !'
+    );
     this.formIsShow = false;
   }
 
@@ -110,7 +118,7 @@ export class ContainerSousCategoryDocumentComponent implements OnInit {
       )
     );
     this.notification.success(
-      `Category Document bien supprimer !`,
+      `Categorie document bien supprimer !`,
       'bien supprimer !'
     );
   }
@@ -134,21 +142,18 @@ export class ContainerSousCategoryDocumentComponent implements OnInit {
         'idSousCategorie'
       );
     this.notification.success(
-      `Category Document bien Modfiee !`,
-      'bien Modfiee !'
+      `Categorie document bien Modfiée !`,
+      'Bien Modfiée !'
     );
     this.formIsShow = false;
   }
-
-
 
   /* End Services */
   /**
    * ngOnDestroy
    * * It is called for cleanup logic when a component is destroyed
    */
-   ngOnDestroy(): void {
+  ngOnDestroy(): void {
     this.subs.unsubscribe();
   }
-
 }
