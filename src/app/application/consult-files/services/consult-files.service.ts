@@ -79,9 +79,13 @@ export class ConsultFilesService {
     data: { idFile: any; email: any },
     headersObject = {}
   ): Observable<any> {
-    return this.http.post(`${environment.apiUrl}/sendEmail`, data, {
-      headers: headersObject,
-    });
+    return this.http.post(
+      `${environment.apiUrl}/apiEtudiantDocument/shareFile`,
+      data,
+      {
+        headers: headersObject,
+      }
+    );
   }
 
   annulerFile(

@@ -166,6 +166,7 @@ export class ContainerConsultFilesComponent implements OnInit, OnDestroy {
   sendEmail(data: { idFile: any; email: any }) {
     this.consultFilesService.SendEmail(data).subscribe((res) => {
       console.log('send mail ok');
+      Swal.fire('Email est bien envoyer ', '', 'success');
     });
   }
 

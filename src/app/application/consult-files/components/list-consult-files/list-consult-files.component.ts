@@ -130,7 +130,6 @@ export class ListConsultFilesComponent implements OnInit {
       allowOutsideClick: () => !Swal.isLoading(),
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire('Annuler ' + result.value, '', 'success');
         this.shareEvent.emit({ idFile, email: result.value });
       }
     });
